@@ -3,6 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://dh1blcur3k5tl" path="res://assets/sprites/puzzle_reference.png" id="1_nlmpk"]
 [ext_resource type="PackedScene" uid="uid://drorgjbwrm5x" path="res://scenes/puzzle_piece/puzzle_piece.tscn" id="1_wue6p"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4npt"]
+size = Vector2(227, 837)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlmpk"]
+size = Vector2(227, 837)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0jet"]
+size = Vector2(1155.25, 447.5)
+
 [node name="LockPuzzle" type="Node2D" unique_id=1017078992]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=472871172]
@@ -50,3 +59,21 @@ position = Vector2(270, 616)
 rotation = 1.5707964
 length = 171
 direction = 1
+
+[node name="Boundaries" type="StaticBody2D" parent="." unique_id=1462244930]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries" unique_id=401273366]
+position = Vector2(103.5, 408.5)
+shape = SubResource("RectangleShape2D_u4npt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries" unique_id=495816955]
+position = Vector2(1493, 421)
+shape = SubResource("RectangleShape2D_nlmpk")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundaries" unique_id=914267062]
+position = Vector2(803.375, -74)
+shape = SubResource("RectangleShape2D_x0jet")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundaries" unique_id=976046027]
+position = Vector2(801, 954)
+shape = SubResource("RectangleShape2D_x0jet")

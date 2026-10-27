@@ -6,8 +6,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dxmq"]
 size = Vector2(42, 50)
 
-[node name="PuzzlePiece" type="Node2D" unique_id=1993099465]
+[node name="PuzzlePiece" type="StaticBody2D" unique_id=1614769464]
 script = ExtResource("1_cst2k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=110951652]
+shape = SubResource("RectangleShape2D_0dxmq")
 
 [node name="Right" type="Sprite2D" parent="." unique_id=923025411]
 texture_filter = 3
@@ -26,7 +29,12 @@ texture_filter = 3
 position = Vector2(-12, 0)
 texture = ExtResource("2_m3spb")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=62809014]
+[node name="ClickPoint" type="Control" parent="." unique_id=1120366694]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -21.0
+offset_top = -25.0
+offset_right = 21.0
+offset_bottom = 25.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=110951652]
-shape = SubResource("RectangleShape2D_0dxmq")
+[connection signal="gui_input" from="ClickPoint" to="." method="_on_click_point_gui_input"]
