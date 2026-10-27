@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://drorgjbwrm5x"]
+
+[ext_resource type="Script" uid="uid://khbkkn3m6306" path="res://scenes/puzzle_piece/puzzle_piece.gd" id="1_cst2k"]
+[ext_resource type="Texture2D" uid="uid://ctg3fvt7xv5y8" path="res://assets/sprites/puzzle_spritesheet.png" id="2_m3spb"]
+
+[node name="PuzzlePiece" type="Node2D" unique_id=1993099465]
+script = ExtResource("1_cst2k")
+width = 17
+
+[node name="Right" type="Sprite2D" parent="." unique_id=923025411]
+texture_filter = 3
+position = Vector2(14, 0)
+texture = ExtResource("2_m3spb")
+flip_h = true
+
+[node name="Middle" type="Polygon2D" parent="." unique_id=1774124294]
+texture_filter = 3
+texture = ExtResource("2_m3spb")
+polygon = PackedVector2Array(-5, -25, 5, -25, 5, 25, -5, 25)
+uv = PackedVector2Array(17, 0, 18, 0, 18, 50, 17, 50)
+
+[node name="Left" type="Sprite2D" parent="." unique_id=1998540773]
+texture_filter = 3
+position = Vector2(-14, 0)
+texture = ExtResource("2_m3spb")
