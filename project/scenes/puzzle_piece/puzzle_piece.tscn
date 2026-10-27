@@ -5,6 +5,7 @@
 
 [node name="PuzzlePiece" type="Node2D" unique_id=1993099465]
 script = ExtResource("1_cst2k")
+width = 10
 
 [node name="Right" type="Sprite2D" parent="." unique_id=923025411]
 texture_filter = 3

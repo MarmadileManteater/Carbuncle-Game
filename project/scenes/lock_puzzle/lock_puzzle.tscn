@@ -1,9 +1,52 @@
 [gd_scene format=3 uid="uid://bf2nt0ibn252v"]
 
+[ext_resource type="Texture2D" uid="uid://dh1blcur3k5tl" path="res://assets/sprites/puzzle_reference.png" id="1_nlmpk"]
 [ext_resource type="PackedScene" uid="uid://drorgjbwrm5x" path="res://scenes/puzzle_piece/puzzle_piece.tscn" id="1_wue6p"]
 
 [node name="LockPuzzle" type="Node2D" unique_id=1017078992]
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=472871172]
+visible = false
+self_modulate = Color(1, 1, 1, 0.2784314)
+position = Vector2(800, 453)
+texture = ExtResource("1_nlmpk")
+
 [node name="PuzzlePiece" parent="." unique_id=1993099465 instance=ExtResource("1_wue6p")]
-position = Vector2(409, 19)
-width = 339
+position = Vector2(978, 215)
+length = 682
+
+[node name="PuzzlePiece2" parent="." unique_id=743115487 instance=ExtResource("1_wue6p")]
+position = Vector2(1131, 547)
+length = 383
+
+[node name="PuzzlePiece3" parent="." unique_id=181184539 instance=ExtResource("1_wue6p")]
+position = Vector2(1309, 385)
+rotation = 1.5707964
+length = 200
+direction = 1
+
+[node name="PuzzlePiece4" parent="." unique_id=479020984 instance=ExtResource("1_wue6p")]
+position = Vector2(879, 538)
+rotation = 1.5707964
+length = 191
+direction = 1
+
+[node name="PuzzlePiece5" parent="." unique_id=2041984280 instance=ExtResource("1_wue6p")]
+position = Vector2(577, 273)
+rotation = 1.5707964
+length = 141
+direction = 1
+
+[node name="PuzzlePiece6" parent="." unique_id=912916827 instance=ExtResource("1_wue6p")]
+position = Vector2(496, 547)
+length = 325
+
+[node name="PuzzlePiece7" parent="." unique_id=836966965 instance=ExtResource("1_wue6p")]
+position = Vector2(611, 685)
+length = 562
+
+[node name="PuzzlePiece8" parent="." unique_id=933270591 instance=ExtResource("1_wue6p")]
+position = Vector2(270, 616)
+rotation = 1.5707964
+length = 171
+direction = 1
