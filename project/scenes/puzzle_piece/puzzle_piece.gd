@@ -8,7 +8,7 @@ enum Direction { Horizonal, Vertical }
 @export var length = 10
 @export var direction = Direction.Horizonal
 
-var is_clicking = false
+var click_start = null
 
 func _ready() -> void:
 	var shape = RectangleShape2D.new()
@@ -37,10 +37,15 @@ func _process(_delta: float) -> void:
 
 func _on_click_point_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		is_clicking = event.pressed
-	if is_clicking:
+		if event.pressed:
+			click_start = event.global_position
+		else:
+			click_start = null
+	if click_start != null:
 		if event is InputEventMouseMotion:
+			var diff = click_start - event.global_position
 			if direction == Direction.Horizonal:
-				move_and_collide(Vector2(event.velocity.x / 70, 0))
+				move_and_collide(Vector2(-diff.x, 0))
 			if direction == Direction.Vertical:
-				move_and_collide(Vector2(0, event.velocity.x / 70))
+				move_and_collide(Vector2(0, -diff.y))
+			click_start = event.global_position
