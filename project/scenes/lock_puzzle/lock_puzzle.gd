@@ -10,7 +10,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_done_area_entered(body: Node2D) -> void:
-	if body == $Driver:
+	if body == $Driver/CharacterBody:
 		$Driver/AnimationPlayer.play_backwards("RotateIn")

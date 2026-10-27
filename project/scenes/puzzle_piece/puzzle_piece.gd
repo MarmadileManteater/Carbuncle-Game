@@ -9,6 +9,8 @@ enum Direction { Horizonal, Vertical }
 @export var direction = Direction.Horizonal
 @export var collision_enabled = true
 @export var click_enabled = true
+@export var image_scale: Vector2 = Vector2(1, 1)
+@export var image_position: Vector2 = Vector2(0, 0)
 
 var click_start = null
 
@@ -19,14 +21,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	var array: PackedVector2Array = $Middle.polygon
+	$Modifier.scale = image_scale
+	$Modifier.position = image_position
+	$CollisionShape2D.scale = image_scale
+	var array: PackedVector2Array = $Modifier/Middle.polygon
 	array[0].x = -(length / 2.0)
 	array[1].x = (length / 2.0)
 	array[2].x = (length / 2.0)
 	array[3].x = -(length / 2.0)
-	$Middle.polygon = array
-	$Left.position.x = -7 - (length / 2.0) # magic number
-	$Right.position.x = 7 + (length / 2.0) # magic number
+	$Modifier/Middle.polygon = array
+	$Modifier/Left.position.x = -7 - (length / 2.0) # magic number
+	$Modifier/Right.position.x = 7 + (length / 2.0) # magic number
 	if direction == Direction.Horizonal:
 		rotation_degrees = 0
 	elif direction == Direction.Vertical:

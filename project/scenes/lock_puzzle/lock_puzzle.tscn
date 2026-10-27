@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://cjn8x8edh6ob3" path="res://assets/sprites/puzzle_back.png" id="1_nlmpk"]
 [ext_resource type="PackedScene" uid="uid://drorgjbwrm5x" path="res://scenes/puzzle_piece/puzzle_piece.tscn" id="1_wue6p"]
 [ext_resource type="Texture2D" uid="uid://b4maqkysnriw5" path="res://assets/sprites/knob_shaft.png" id="3_x0jet"]
+[ext_resource type="Texture2D" uid="uid://cmtfkg3l2x5g1" path="res://assets/sprites/bolt_end.png" id="5_3qiwk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dxmq"]
-size = Vector2(45.5, 126)
+size = Vector2(91.75, 126)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4npt"]
 size = Vector2(227, 410)
@@ -34,62 +35,86 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath(".:click_enabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1470, 395)]
+"update": 1,
+"values": [null]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
+tracks/2/path = NodePath("nob:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
+"update": 1,
+"values": [true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:click_enabled")
+tracks/3/path = NodePath("nob:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [null]
+"update": 0,
+"values": [Vector2(1, 2)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("nob:visible")
+tracks/4/path = NodePath(".:image_scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("nob:scale")
+tracks/5/path = NodePath(".:image_position:y")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("nob:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 2)]
+"values": [Vector2(1, -4)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("nob:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-4.0]
 }
 
 [sub_resource type="Animation" id="Animation_nlmpk"]
@@ -110,62 +135,74 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath(".:click_enabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.3, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1470, 360), Vector2(1470, 445)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.3, 0.40000424),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.5, 0.75), Vector2(1.5, 1.5)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:click_enabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0.297687, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [null, true]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("nob:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.3),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("nob:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.33333334),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("nob:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("nob:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.65, 1.5), Vector2(1.5, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:image_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 2), Vector2(1, 1e-05)]
+"values": [Vector2(1.5, 0.75), Vector2(1.5, 1.5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:image_position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-79.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("nob:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.3, 0.43333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-77.0, -13.767, -72.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x0jet"]
@@ -174,14 +211,17 @@ _data = {
 &"RotateIn": SubResource("Animation_nlmpk")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wcjf"]
-size = Vector2(144, 121)
+[sub_resource type="CircleShape2D" id="CircleShape2D_0dxmq"]
+radius = 27.365875
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcxea"]
+size = Vector2(76, 106)
 
 [node name="LockPuzzle" type="Node2D" unique_id=1017078992]
 script = ExtResource("1_jv80f")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=472871172]
-self_modulate = Color(1, 1, 1, 0.2784314)
+self_modulate = Color(0.2784314, 0.2784314, 0.2784314, 1)
 z_index = -1
 position = Vector2(800, 453)
 texture = ExtResource("1_nlmpk")
@@ -189,42 +229,58 @@ texture = ExtResource("1_nlmpk")
 [node name="PuzzlePiece" parent="." unique_id=1993099465 instance=ExtResource("1_wue6p")]
 position = Vector2(978, 215)
 length = 682
+collision_enabled = true
+click_enabled = true
 
 [node name="PuzzlePiece2" parent="." unique_id=743115487 instance=ExtResource("1_wue6p")]
 position = Vector2(1131, 547)
 length = 393
+collision_enabled = true
+click_enabled = true
 
 [node name="PuzzlePiece3" parent="." unique_id=181184539 instance=ExtResource("1_wue6p")]
 position = Vector2(1309, 385)
 rotation = 1.5707964
 length = 200
 direction = 1
+collision_enabled = true
+click_enabled = true
 
 [node name="PuzzlePiece4" parent="." unique_id=479020984 instance=ExtResource("1_wue6p")]
 position = Vector2(879, 538)
 rotation = 1.5707964
 length = 191
 direction = 1
+collision_enabled = true
+click_enabled = true
 
 [node name="PuzzlePiece5" parent="." unique_id=2041984280 instance=ExtResource("1_wue6p")]
 position = Vector2(577, 273)
 rotation = 1.5707964
 length = 141
 direction = 1
+collision_enabled = true
+click_enabled = true
 
 [node name="PuzzlePiece6" parent="." unique_id=912916827 instance=ExtResource("1_wue6p")]
 position = Vector2(496, 547)
 length = 325
+collision_enabled = true
+click_enabled = true
 
 [node name="PuzzlePiece7" parent="." unique_id=836966965 instance=ExtResource("1_wue6p")]
 position = Vector2(611, 685)
 length = 562
+collision_enabled = true
+click_enabled = true
 
 [node name="PuzzlePiece8" parent="." unique_id=933270591 instance=ExtResource("1_wue6p")]
 position = Vector2(270, 616)
 rotation = 1.5707964
 length = 171
 direction = 1
+collision_enabled = true
+click_enabled = true
 
 [node name="Boundaries" type="StaticBody2D" parent="." unique_id=1462244930]
 
@@ -257,18 +313,18 @@ position = Vector2(1461, 697.625)
 shape = SubResource("RectangleShape2D_nlmpk")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Boundaries" unique_id=1544634752]
-position = Vector2(12, 443)
+position = Vector2(24.125, 443)
 shape = SubResource("RectangleShape2D_0dxmq")
 
 [node name="Driver" parent="." unique_id=1614769464 instance=ExtResource("1_wue6p")]
-position = Vector2(1470, 395)
+position = Vector2(1470, 445)
 length = 17
-click_enabled = null
+collision_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Driver" unique_id=46300742]
 libraries/ = SubResource("AnimationLibrary_x0jet")
 autoplay = &"RotateIn"
-speed_scale = 0.9
+speed_scale = 0.8
 
 [node name="nob" type="Sprite2D" parent="Driver" unique_id=238374325]
 z_index = -1
@@ -277,12 +333,28 @@ position = Vector2(1, -4)
 scale = Vector2(1, 2)
 texture = ExtResource("3_x0jet")
 
-[node name="DoneArea" type="Area2D" parent="." unique_id=519103121]
-position = Vector2(80, 447)
+[node name="CharacterBody" type="CharacterBody2D" parent="Driver" unique_id=222681801]
+collision_layer = 2
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoneArea" unique_id=1489806586]
-position = Vector2(27, -7.5)
-shape = SubResource("RectangleShape2D_6wcjf")
-debug_color = Color(0.42181915, 0.60393906, 0, 0.41960785)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Driver/CharacterBody" unique_id=1625649724]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_0dxmq")
+
+[node name="Bolt" type="Sprite2D" parent="Driver" unique_id=1666716695]
+self_modulate = Color(0.2784314, 0.2784314, 0.2784314, 1)
+texture_filter = 1
+position = Vector2(1390, -1.9999964)
+scale = Vector2(1.1200007, 1.08)
+texture = ExtResource("5_3qiwk")
+
+[node name="DoneArea" type="Area2D" parent="." unique_id=602596763]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoneArea" unique_id=1471581134]
+position = Vector2(39, 445)
+shape = SubResource("RectangleShape2D_fcxea")
+debug_color = Color(2.117753e-06, 0.6400614, 0.36016127, 0.41960785)
 
 [connection signal="body_entered" from="DoneArea" to="." method="_on_done_area_entered"]

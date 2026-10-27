@@ -3,31 +3,36 @@
 [ext_resource type="Script" uid="uid://khbkkn3m6306" path="res://scenes/puzzle_piece/puzzle_piece.gd" id="1_cst2k"]
 [ext_resource type="Texture2D" uid="uid://ctg3fvt7xv5y8" path="res://assets/sprites/puzzle_spritesheet.png" id="2_m3spb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0dxmq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3spb"]
 size = Vector2(42, 50)
 
 [node name="PuzzlePiece" type="StaticBody2D" unique_id=1614769464]
 script = ExtResource("1_cst2k")
+collision_enabled = null
+click_enabled = null
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=110951652]
-shape = SubResource("RectangleShape2D_0dxmq")
+[node name="Modifier" type="Node2D" parent="." unique_id=588230946]
 
-[node name="Right" type="Sprite2D" parent="." unique_id=923025411]
+[node name="Right" type="Sprite2D" parent="Modifier" unique_id=923025411]
 texture_filter = 3
 position = Vector2(12, 0)
 texture = ExtResource("2_m3spb")
 flip_h = true
 
-[node name="Middle" type="Polygon2D" parent="." unique_id=1774124294]
+[node name="Left" type="Sprite2D" parent="Modifier" unique_id=1998540773]
+texture_filter = 3
+position = Vector2(-12, 0)
+texture = ExtResource("2_m3spb")
+
+[node name="Middle" type="Polygon2D" parent="Modifier" unique_id=1774124294]
 texture_filter = 3
 texture = ExtResource("2_m3spb")
 polygon = PackedVector2Array(-5, -25, 5, -25, 5, 25, -5, 25)
 uv = PackedVector2Array(17, 0, 18, 0, 18, 50, 17, 50)
 
-[node name="Left" type="Sprite2D" parent="." unique_id=1998540773]
-texture_filter = 3
-position = Vector2(-12, 0)
-texture = ExtResource("2_m3spb")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=110951652]
+shape = SubResource("RectangleShape2D_m3spb")
+disabled = true
 
 [node name="ClickPoint" type="Control" parent="." unique_id=1120366694]
 layout_mode = 3
