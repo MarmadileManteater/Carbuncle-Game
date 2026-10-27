@@ -5,11 +5,10 @@
 
 [node name="PuzzlePiece" type="Node2D" unique_id=1993099465]
 script = ExtResource("1_cst2k")
-width = 17
 
 [node name="Right" type="Sprite2D" parent="." unique_id=923025411]
 texture_filter = 3
-position = Vector2(14, 0)
+position = Vector2(12, 0)
 texture = ExtResource("2_m3spb")
 flip_h = true
 
@@ -21,5 +20,5 @@ uv = PackedVector2Array(17, 0, 18, 0, 18, 50, 17, 50)
 
 [node name="Left" type="Sprite2D" parent="." unique_id=1998540773]
 texture_filter = 3
-position = Vector2(-14, 0)
+position = Vector2(-12, 0)
 texture = ExtResource("2_m3spb")

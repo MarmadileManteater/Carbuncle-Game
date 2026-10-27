@@ -5,4 +5,5 @@
 [node name="LockPuzzle" type="Node2D" unique_id=1017078992]
 
 [node name="PuzzlePiece" parent="." unique_id=1993099465 instance=ExtResource("1_wue6p")]
-width = 20
+position = Vector2(409, 19)
+width = 339
