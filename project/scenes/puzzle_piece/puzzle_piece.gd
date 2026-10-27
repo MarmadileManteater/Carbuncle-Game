@@ -7,6 +7,8 @@ enum Direction { Horizonal, Vertical }
 
 @export var length = 10
 @export var direction = Direction.Horizonal
+@export var collision_enabled = true
+@export var click_enabled = true
 
 var click_start = null
 
@@ -33,9 +35,13 @@ func _process(_delta: float) -> void:
 	$CollisionShape2D.shape.size.x = (42 - 10) + length
 	$ClickPoint.size.x = $CollisionShape2D.shape.size.x
 	$ClickPoint.position.x = -$CollisionShape2D.shape.size.x / 2.0
+	if $CollisionShape2D.disabled != !collision_enabled:
+		$CollisionShape2D.disabled = !collision_enabled
 
 
 func _on_click_point_gui_input(event: InputEvent) -> void:
+	if not click_enabled:
+		return
 	if event is InputEventMouseButton:
 		if event.pressed:
 			click_start = event.global_position

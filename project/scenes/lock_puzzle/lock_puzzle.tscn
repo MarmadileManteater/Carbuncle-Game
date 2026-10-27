@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://bf2nt0ibn252v"]
 
+[ext_resource type="Script" uid="uid://bvcyhc3wosrxo" path="res://scenes/lock_puzzle/lock_puzzle.gd" id="1_jv80f"]
 [ext_resource type="Texture2D" uid="uid://cjn8x8edh6ob3" path="res://assets/sprites/puzzle_back.png" id="1_nlmpk"]
 [ext_resource type="PackedScene" uid="uid://drorgjbwrm5x" path="res://scenes/puzzle_piece/puzzle_piece.tscn" id="1_wue6p"]
+[ext_resource type="Texture2D" uid="uid://b4maqkysnriw5" path="res://assets/sprites/knob_shaft.png" id="3_x0jet"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dxmq"]
 size = Vector2(45.5, 126)
@@ -15,10 +17,172 @@ size = Vector2(227, 397.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x0jet"]
 size = Vector2(1155.25, 462.75)
 
+[sub_resource type="Animation" id="Animation_x0jet"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:collision_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1470, 395)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:click_enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("nob:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("nob:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_nlmpk"]
+resource_name = "RotateIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:collision_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1470, 360), Vector2(1470, 445)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.40000424),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.5, 0.75), Vector2(1.5, 1.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:click_enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.297687, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [null, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("nob:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("nob:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 2), Vector2(1, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x0jet"]
+_data = {
+&"RESET": SubResource("Animation_x0jet"),
+&"RotateIn": SubResource("Animation_nlmpk")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wcjf"]
+size = Vector2(144, 121)
+
 [node name="LockPuzzle" type="Node2D" unique_id=1017078992]
+script = ExtResource("1_jv80f")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=472871172]
 self_modulate = Color(1, 1, 1, 0.2784314)
+z_index = -1
 position = Vector2(800, 453)
 texture = ExtResource("1_nlmpk")
 
@@ -96,6 +260,29 @@ shape = SubResource("RectangleShape2D_nlmpk")
 position = Vector2(12, 443)
 shape = SubResource("RectangleShape2D_0dxmq")
 
-[node name="PuzzlePiece9" parent="." unique_id=1614769464 instance=ExtResource("1_wue6p")]
-position = Vector2(1464, 441)
+[node name="Driver" parent="." unique_id=1614769464 instance=ExtResource("1_wue6p")]
+position = Vector2(1470, 395)
 length = 17
+click_enabled = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Driver" unique_id=46300742]
+libraries/ = SubResource("AnimationLibrary_x0jet")
+autoplay = &"RotateIn"
+speed_scale = 0.9
+
+[node name="nob" type="Sprite2D" parent="Driver" unique_id=238374325]
+z_index = -1
+texture_filter = 3
+position = Vector2(1, -4)
+scale = Vector2(1, 2)
+texture = ExtResource("3_x0jet")
+
+[node name="DoneArea" type="Area2D" parent="." unique_id=519103121]
+position = Vector2(80, 447)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoneArea" unique_id=1489806586]
+position = Vector2(27, -7.5)
+shape = SubResource("RectangleShape2D_6wcjf")
+debug_color = Color(0.42181915, 0.60393906, 0, 0.41960785)
+
+[connection signal="body_entered" from="DoneArea" to="." method="_on_done_area_entered"]
