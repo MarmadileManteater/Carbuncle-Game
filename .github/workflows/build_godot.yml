@@ -1,0 +1,142 @@
+name: "Build Godot Game"
+on: push
+
+jobs:
+  export-windows:
+    name: Windows Export
+    runs-on: ubuntu-24.04  # Use 24.04 with godot 4
+    container:
+      image: barichello/godot-ci:4.7.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          lfs: true
+      - name: Set environment variables
+        run: 
+          |
+          bash ./.github/workflows/get_json_environment_variables.sh ./project.json
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/export_templates/
+          mkdir -v -p ~/.config/
+          mv /root/.config/godot ~/.config/godot
+          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Windows Build
+        if: env.PROJECT_PATH != ''
+        run: |
+          WORKING_DIRECTORY=$(pwd)
+          mkdir -v -p build/windows
+          EXPORT_DIR="$(readlink -f build)"
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-release "Windows Desktop" "$EXPORT_DIR/windows/$EXPORT_NAME.exe"
+          cd $WORKING_DIRECTORY
+          cp -r $WORKING_DIRECTORY/licenses/ $EXPORT_DIR/windows/licenses/
+      - name: Upload Artifact
+        if: env.PROJECT_PATH != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ env.EXPORT_NAME }}_${{ env.VERSION }}_${{ github.run_number }}_windows
+          path: build/windows
+
+  export-linux:
+    name: Linux Export
+    runs-on: ubuntu-24.04  # Use 24.04 with godot 4
+    container:
+      image: barichello/godot-ci:4.7.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          lfs: true
+      - name: Set environment variables
+        run: 
+          |
+          bash ./.github/workflows/get_json_environment_variables.sh ./project.json
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/export_templates/
+          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Linux Build
+        if: env.PROJECT_PATH != ''
+        run: |
+          WORKING_DIRECTORY=$(pwd)
+          mkdir -v -p build/linux
+          EXPORT_DIR="$(readlink -f build)"
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-release "Linux" "$EXPORT_DIR/linux/$EXPORT_NAME.x86_64"
+          cd $WORKING_DIRECTORY
+          cp -r $WORKING_DIRECTORY/licenses/ $EXPORT_DIR/linux/licenses/
+      - name: Upload Artifact
+        if: env.PROJECT_PATH != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ env.EXPORT_NAME }}_${{ env.VERSION }}_${{ github.run_number }}_linux
+          path: build/linux
+
+  export-web:
+    name: Web Export
+    runs-on: ubuntu-24.04  # Use 24.04 with godot 4
+    container:
+      image: barichello/godot-ci:4.7.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          lfs: true
+      - name: Set environment variables
+        run: 
+          |
+          bash ./.github/workflows/get_json_environment_variables.sh ./project.json
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/export_templates/
+          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Build
+        if: env.PROJECT_PATH != ''
+        run: |
+          WORKING_DIRECTORY=$(pwd)
+          mkdir -v -p "build/web"
+          EXPORT_DIR="$(readlink -f build/web)"
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-release "Web" "$EXPORT_DIR/index.html"
+          cd $WORKING_DIRECTORY
+          cp -r $WORKING_DIRECTORY/licenses/ $EXPORT_DIR/licenses/
+      - name: Upload Artifact
+        if: env.PROJECT_PATH != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ env.EXPORT_NAME }}_${{ env.VERSION }}_${{ github.run_number }}_web
+          path: build/web
+
+  push-to-itch:
+    name: Push to Itch.io
+    runs-on: ubuntu-latest
+    needs: [export-linux, export-windows, export-web]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          lfs: true
+      - name: Set environment variables
+        run: 
+          |
+          bash ./.github/workflows/get_json_environment_variables.sh ./project.json
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v6
+      - name: Download Butler
+        if: env.ITCH_USER != '' && env.ITCH_PROJECT_STUB != ''
+        run: |
+          curl -Lo ./butler.zip "https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default"
+          unzip ./butler.zip
+      - name: Load API key from secrets
+        if: env.ITCH_USER != '' && env.ITCH_PROJECT_STUB != ''
+        run: |
+          mkdir -p ~/.config/itch/
+          echo "${{ secrets.ITCH_API_KEY }}" >> ~/.config/itch/butler_creds
+      - name: Push to itch
+        if: env.ITCH_USER != '' && env.ITCH_PROJECT_STUB != ''
+        run: |
+          ./butler push "${{ env.EXPORT_NAME }}_${{ env.VERSION }}_${{ github.run_number }}_web" $ITCH_USER/$ITCH_PROJECT_STUB:${{ env.CHANNEL_PREFIX }}web --userversion ${{ env.VERSION }}.${{ github.run_number }}
+          ./butler push "${{ env.EXPORT_NAME }}_${{ env.VERSION }}_${{ github.run_number }}_windows" $ITCH_USER/$ITCH_PROJECT_STUB:${{ env.CHANNEL_PREFIX }}win --userversion ${{ env.VERSION }}.${{ github.run_number }}
+          ./butler push "${{ env.EXPORT_NAME }}_${{ env.VERSION }}_${{ github.run_number }}_linux" $ITCH_USER/$ITCH_PROJECT_STUB:${{ env.CHANNEL_PREFIX }}linux --userversion ${{ env.VERSION }}.${{ github.run_number }}
