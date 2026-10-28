@@ -221,7 +221,6 @@ size = Vector2(76, 106)
 script = ExtResource("1_jv80f")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=472871172]
-self_modulate = Color(0.2784314, 0.2784314, 0.2784314, 1)
 z_index = -1
 position = Vector2(800, 453)
 texture = ExtResource("1_nlmpk")
