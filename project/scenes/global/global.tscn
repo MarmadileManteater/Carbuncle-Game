@@ -4,3 +4,4 @@
 
 [node name="Global" type="Node2D" unique_id=127505025]
 script = ExtResource("1_bhh4k")
+starting_scene = "window"

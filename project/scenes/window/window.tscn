@@ -1,0 +1,224 @@
+[gd_scene format=3 uid="uid://r6g8he8icfek"]
+
+[ext_resource type="Texture2D" uid="uid://xpp5hcoemw4k" path="res://assets/sprites/window-back.png" id="1_lnte3"]
+[ext_resource type="Texture2D" uid="uid://c7ouswwsa36wl" path="res://assets/sprites/monster_approaching_1_spritesheet.png" id="2_0osky"]
+[ext_resource type="Texture2D" uid="uid://bbgqacoafiya" path="res://assets/sprites/monster_approach_2_spritesheet.png" id="3_obuqq"]
+[ext_resource type="Texture2D" uid="uid://dhtbnksvvm4c8" path="res://assets/sprites/window-front.png" id="4_y2ayq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obuqq"]
+atlas = ExtResource("2_0osky")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnte3"]
+atlas = ExtResource("2_0osky")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2ayq"]
+atlas = ExtResource("2_0osky")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt84n"]
+atlas = ExtResource("3_obuqq")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1s4i"]
+atlas = ExtResource("3_obuqq")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ritjm"]
+atlas = ExtResource("3_obuqq")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0dxmq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obuqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnte3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2ayq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnte3")
+}],
+"loop": 1,
+"name": &"walk_1",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt84n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1s4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ritjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1s4i")
+}],
+"loop": 1,
+"name": &"walk_2",
+"speed": 4.0
+}]
+
+[sub_resource type="Animation" id="Animation_omw1o"]
+resource_name = "Approach"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Monster:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 9.7, 9.7001, 19.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(1, 1), Vector2(0.4, 0.4), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Monster:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 9.7, 19.966667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(692, 264), Vector2(632, 482), Vector2(-66, 632)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Monster:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 9.7001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"walk_1", &"walk_2"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Monster:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.3666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Monster:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 8.333333, 20),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.20871013, 0.20871016, 0.20871013, 1), Color(0.20871013, 0.20871016, 0.20871013, 1), Color(0.5251013, 0.5251013, 0.5251012, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_58ypt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Monster:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.4, 0.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Monster:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(692, 264)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Monster:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk_2"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Monster:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Monster:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.20871013, 0.20871016, 0.20871013, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aejpm"]
+_data = {
+&"Approach": SubResource("Animation_omw1o"),
+&"RESET": SubResource("Animation_58ypt")
+}
+
+[node name="Window" type="Node2D" unique_id=584179736]
+
+[node name="Back" type="Sprite2D" parent="." unique_id=1076970953]
+position = Vector2(800, 450)
+texture = ExtResource("1_lnte3")
+
+[node name="Monster" type="AnimatedSprite2D" parent="." unique_id=685572280]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.20871013, 0.20871016, 0.20871013, 1)
+position = Vector2(692, 264)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_0dxmq")
+animation = &"walk_2"
+autoplay = "walk_1"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1810840078]
+libraries/ = SubResource("AnimationLibrary_aejpm")
+autoplay = &"Approach"
+speed_scale = 0.4
+
+[node name="Front" type="Sprite2D" parent="." unique_id=154334044]
+position = Vector2(800, 450)
+texture = ExtResource("4_y2ayq")
