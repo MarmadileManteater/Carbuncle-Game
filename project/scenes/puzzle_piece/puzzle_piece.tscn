@@ -14,18 +14,18 @@ click_enabled = null
 [node name="Modifier" type="Node2D" parent="." unique_id=588230946]
 
 [node name="Right" type="Sprite2D" parent="Modifier" unique_id=923025411]
-texture_filter = 3
+texture_filter = 5
 position = Vector2(12, 0)
 texture = ExtResource("2_m3spb")
 flip_h = true
 
 [node name="Left" type="Sprite2D" parent="Modifier" unique_id=1998540773]
-texture_filter = 3
+texture_filter = 5
 position = Vector2(-12, 0)
 texture = ExtResource("2_m3spb")
 
 [node name="Middle" type="Polygon2D" parent="Modifier" unique_id=1774124294]
-texture_filter = 3
+texture_filter = 5
 texture = ExtResource("2_m3spb")
 polygon = PackedVector2Array(-5, -25, 5, -25, 5, 25, -5, 25)
 uv = PackedVector2Array(17, 0, 18, 0, 18, 50, 17, 50)
