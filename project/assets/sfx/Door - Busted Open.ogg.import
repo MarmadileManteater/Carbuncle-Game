@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cngmmfjbay1gs"
+path="res://.godot/imported/Door - Busted Open.ogg-bbc51ed9f7a8a403c1b46174a1c49814.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/Door - Busted Open.ogg"
+dest_files=["res://.godot/imported/Door - Busted Open.ogg-bbc51ed9f7a8a403c1b46174a1c49814.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

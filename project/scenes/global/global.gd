@@ -32,4 +32,8 @@ func load_scene(scene_name: String) -> void:
 		func ():
 			$Cursor.unlock()
 	)
+	loaded_scene.change_scene.connect(
+		func(scene_name: String):
+			load_scene(scene_name)
+	)
 	add_child(loaded_scene)

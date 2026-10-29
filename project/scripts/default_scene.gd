@@ -1,22 +1,38 @@
 extends Node2D
 class_name DefaultScene
 
+signal change_scene
 signal change_cursor
 signal lock_cursor_to_node
 signal unlock_cursor_from_node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	var clickables = find_child("Clickable")
+	if clickables != null:
+		for clickable in clickables.get_children():
+			if clickable is VirtualClickable:
+				clickable.click.connect(
+					func ():
+						clickable_clicked(clickable)
+				)
+				clickable.unclick.connect(
+					func ():
+						pass
+				)
+				clickable.hover.connect(
+					func ():
+						cursor_change(clickable.cursor)
+				)
+				clickable.unhover.connect(
+					func ():
+						cursor_change(VirtualCursor.Type.Default)
+				)
 
 func nest(scene: DefaultScene) -> void:
 	scene.change_cursor.connect(cursor_change)
 	scene.lock_cursor_to_node.connect(lock_cursor)
 	scene.unlock_cursor_from_node.connect(unlock_cursor)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 	
 func cursor_change(cursor: VirtualCursor.Type) -> void:
 	change_cursor.emit(cursor)
@@ -26,3 +42,6 @@ func lock_cursor(node: Node2D) -> void:
 	
 func unlock_cursor() -> void:
 	unlock_cursor_from_node.emit()
+	
+func clickable_clicked(node: VirtualClickable) -> void:
+	pass

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c0b2dwxda0qna"
+path="res://.godot/imported/Door - Banging.ogg-302eff6f350b7828017f04b1ed7c5c73.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/Door - Banging.ogg"
+dest_files=["res://.godot/imported/Door - Banging.ogg-302eff6f350b7828017f04b1ed7c5c73.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://rti47wiorjtg"]
+
+[ext_resource type="Script" uid="uid://cceo7rh311cqd" path="res://scenes/room_with_window/room_with_window.gd" id="1_ooi6j"]
+[ext_resource type="Texture2D" uid="uid://casv4et4ybbeo" path="res://assets/sprites/window_zoom_out_background.png" id="2_ho63l"]
+[ext_resource type="Texture2D" uid="uid://biwivpv1apee8" path="res://assets/sprites/lamp.png" id="3_tps42"]
+[ext_resource type="Texture2D" uid="uid://3lm2pn837lan" path="res://assets/sprites/lamp_light.png" id="4_ooi6j"]
+[ext_resource type="PackedScene" uid="uid://6ow7g2olutni" path="res://scenes/virtual_clickable/virtual_clickable.tscn" id="5_ooi6j"]
+[ext_resource type="AudioStream" uid="uid://ddpw6biuxf8b8" path="res://assets/sfx/Lamp.ogg" id="6_7ia37"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooi6j"]
+atlas = ExtResource("3_tps42")
+region = Rect2(236, 0, 236, 655)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ia37"]
+atlas = ExtResource("3_tps42")
+region = Rect2(0, 0, 236, 655)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0dxmq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooi6j")
+}],
+"loop": 1,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ia37")
+}],
+"loop": 1,
+"name": &"on",
+"speed": 5.0
+}]
+
+[node name="RoomWithWindow" type="Node2D" unique_id=1188096537]
+script = ExtResource("1_ooi6j")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=488778490]
+position = Vector2(800, 450)
+texture = ExtResource("2_ho63l")
+
+[node name="WindowShadow" type="Polygon2D" parent="." unique_id=986743781]
+color = Color(0, 0, 0, 0.19215687)
+polygon = PackedVector2Array(12, 909, 390, 560, 365, 88, 732, 96, 758, 567, 1110, 910, 1687, 952, 1663, -96, -82, -77, -69, 932)
+
+[node name="Lamp" type="AnimatedSprite2D" parent="." unique_id=416693443]
+position = Vector2(1310, 524)
+sprite_frames = SubResource("SpriteFrames_0dxmq")
+animation = &"off"
+frame_progress = 0.16814868
+
+[node name="Shadow" type="Polygon2D" parent="." unique_id=592220649]
+modulate = Color(0, 0, 0, 0.40392157)
+polygon = PackedVector2Array(1626, -66, -150, -63, -194, 1013, 1683, 1024)
+
+[node name="LampShadeShadow" type="Polygon2D" parent="." unique_id=2083885332]
+visible = false
+color = Color(0, 0, 0, 0.22745098)
+polygon = PackedVector2Array(1295, 402, 1368, 960, -160, 1089, -270, -263, 1796, -172, 1632, 54, 1411, 206, 1400, 208, 1389, 215, 1384, 216, 1375, 219, 1366, 223, 1355, 229, 1345, 235, 1333, 245, 1318, 259, 1303, 276, 1295, 288, 1289, 299, 1287, 345, 1288, 360, 1289, 365, 1290, 370, 1292, 378, 1295, 381, 1296, 385, 1297, 388, 1298, 392)
+
+[node name="LampLight" type="Sprite2D" parent="." unique_id=786514518]
+visible = false
+position = Vector2(1029, 449)
+texture = ExtResource("4_ooi6j")
+
+[node name="Clickable" type="Node2D" parent="." unique_id=487308867]
+
+[node name="Window" parent="Clickable" unique_id=1515518074 instance=ExtResource("5_ooi6j")]
+position = Vector2(563, 336)
+cursor = 4
+size = Vector2(450, 550)
+
+[node name="Lamp" parent="Clickable" unique_id=600591416 instance=ExtResource("5_ooi6j")]
+position = Vector2(1320, 514)
+cursor = 3
+size = Vector2(200, 653)
+
+[node name="LampNoise" type="AudioStreamPlayer" parent="." unique_id=736783075]
+stream = ExtResource("6_7ia37")
+pitch_scale = 0.85

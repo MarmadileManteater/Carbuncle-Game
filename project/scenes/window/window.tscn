@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://r6g8he8icfek"]
 
 [ext_resource type="Texture2D" uid="uid://xpp5hcoemw4k" path="res://assets/sprites/window-back.png" id="1_lnte3"]
+[ext_resource type="Script" uid="uid://l7bqtjx8lw0f" path="res://scenes/window/window.gd" id="1_y2ayq"]
 [ext_resource type="PackedScene" uid="uid://dtgqki0g23pfr" path="res://scenes/monster/monster.tscn" id="2_lnte3"]
 [ext_resource type="Texture2D" uid="uid://dhtbnksvvm4c8" path="res://assets/sprites/window-front.png" id="4_y2ayq"]
+[ext_resource type="PackedScene" uid="uid://6ow7g2olutni" path="res://scenes/virtual_clickable/virtual_clickable.tscn" id="5_y2ayq"]
 
 [sub_resource type="Animation" id="Animation_omw1o"]
 resource_name = "Approach"
@@ -162,6 +164,7 @@ _data = {
 }
 
 [node name="Window" type="Node2D" unique_id=584179736]
+script = ExtResource("1_y2ayq")
 
 [node name="Back" type="Sprite2D" parent="." unique_id=1076970953]
 position = Vector2(800, 450)
@@ -182,3 +185,10 @@ speed_scale = 0.4
 [node name="Front" type="Sprite2D" parent="." unique_id=154334044]
 position = Vector2(800, 450)
 texture = ExtResource("4_y2ayq")
+
+[node name="Clickable" type="Node2D" parent="." unique_id=1190675720]
+
+[node name="Back" parent="Clickable" unique_id=1515518074 instance=ExtResource("5_y2ayq")]
+position = Vector2(802, 740)
+cursor = 0
+size = Vector2(1600, 300)
