@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c0dtw1rktbouu"]
+
+[ext_resource type="Script" uid="uid://yuyaxx0ny104" path="res://scenes/lock_puzzle_3/lock_puzzle_3.gd" id="1_6xy55"]
+[ext_resource type="PackedScene" uid="uid://bf2nt0ibn252v" path="res://scenes/lock_puzzle/lock_puzzle.tscn" id="2_kslug"]
+[ext_resource type="PackedScene" uid="uid://drorgjbwrm5x" path="res://scenes/puzzle_piece/puzzle_piece.tscn" id="3_kslug"]
+
+[node name="LockPuzzle3" type="Node2D" unique_id=250860321]
+script = ExtResource("1_6xy55")
+metadata/_custom_type_script = "uid://b1dagrohhup7i"
+
+[node name="LockPuzzle" parent="." unique_id=1173022754 instance=ExtResource("2_kslug")]
+
+[node name="PuzzlePiece" parent="LockPuzzle" unique_id=1614769464 instance=ExtResource("3_kslug")]
+position = Vector2(1071, 443)
+rotation = 1.5707964
+length = 201
+direction = 1
+
+[node name="PuzzlePiece2" parent="LockPuzzle" unique_id=386532537 instance=ExtResource("3_kslug")]
+position = Vector2(943, 289)
+length = 762
+
+[node name="PuzzlePiece3" parent="LockPuzzle" unique_id=388091480 instance=ExtResource("3_kslug")]
+position = Vector2(937, 597)
+length = 435
+
+[node name="PuzzlePiece4" parent="LockPuzzle" unique_id=421219090 instance=ExtResource("3_kslug")]
+position = Vector2(509, 311)
+rotation = 1.5707964
+length = 200
+direction = 1

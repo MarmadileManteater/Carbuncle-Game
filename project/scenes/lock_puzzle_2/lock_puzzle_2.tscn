@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://1u7vkay7cvho"]
+
+[ext_resource type="Script" uid="uid://blc2bjhhncxad" path="res://scenes/lock_puzzle_2/lock_puzzle_2.gd" id="1_1fsct"]
+[ext_resource type="PackedScene" uid="uid://bf2nt0ibn252v" path="res://scenes/lock_puzzle/lock_puzzle.tscn" id="2_mwvah"]
+[ext_resource type="PackedScene" uid="uid://drorgjbwrm5x" path="res://scenes/puzzle_piece/puzzle_piece.tscn" id="3_mwvah"]
+
+[node name="LockPuzzle2" type="Node2D" unique_id=1449560801]
+script = ExtResource("1_1fsct")
+metadata/_custom_type_script = "uid://b1dagrohhup7i"
+
+[node name="LockPuzzle" parent="." unique_id=1173022754 instance=ExtResource("2_mwvah")]
+lock_start = 0
+
+[node name="PuzzlePiece" parent="LockPuzzle" unique_id=1614769464 instance=ExtResource("3_mwvah")]
+position = Vector2(274, 445)
+rotation = 1.5707964
+length = 200
+direction = 1
+
+[node name="PuzzlePiece2" parent="LockPuzzle" unique_id=616837079 instance=ExtResource("3_mwvah")]
+position = Vector2(665, 681)
+length = 800
+
+[node name="PuzzlePiece3" parent="LockPuzzle" unique_id=1003625805 instance=ExtResource("3_mwvah")]
+position = Vector2(373, 242)
+length = 228
+
+[node name="PuzzlePiece4" parent="LockPuzzle" unique_id=1535320449 instance=ExtResource("3_mwvah")]
+position = Vector2(539, 300)
+rotation = 1.5707964
+length = 185
+direction = 1
+
+[node name="PuzzlePiece5" parent="LockPuzzle" unique_id=821211796 instance=ExtResource("3_mwvah")]
+position = Vector2(1116, 601)
+rotation = 1.5707964
+length = 183
+direction = 1
+
+[node name="PuzzlePiece6" parent="LockPuzzle" unique_id=877724314 instance=ExtResource("3_mwvah")]
+position = Vector2(955, 301)
+length = 728
+
+[node name="PuzzlePiece7" parent="LockPuzzle" unique_id=1743184877 instance=ExtResource("3_mwvah")]
+position = Vector2(637, 555)
+length = 400
+
+[node name="PuzzlePiece8" parent="LockPuzzle" unique_id=1251617236 instance=ExtResource("3_mwvah")]
+position = Vector2(1243, 612)
+length = 152
+
+[node name="PuzzlePiece9" parent="LockPuzzle" unique_id=1841246050 instance=ExtResource("3_mwvah")]
+position = Vector2(1306, 453)
+rotation = 1.5707964
+length = 200
+direction = 1
