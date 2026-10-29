@@ -29,18 +29,21 @@ func _ready() -> void:
 			func ():
 				_on_piece_unhover()
 		)
-	pass # Replace with function body.
+	set_start_of_puzzle()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
-		if lock_start == LockPosition.Right:
-			$DoneArea/CollisionShape2D.position = $LeftEnd.position
-			$Driver.position = $RightStart.position
-		if lock_start == LockPosition.Left:
-			$DoneArea/CollisionShape2D.position = $RightEnd.position
-			$Driver.position = $LeftStart.position
+		set_start_of_puzzle()
+
+func set_start_of_puzzle():
+	if lock_start == LockPosition.Right:
+		$DoneArea/CollisionShape2D.position = $LeftEnd.position
+		$Driver.position = $RightStart.position
+	if lock_start == LockPosition.Left:
+		$DoneArea/CollisionShape2D.position = $RightEnd.position
+		$Driver.position = $LeftStart.position
 
 func _on_done_area_entered(body: Node2D) -> void:
 	if body == $Driver/CharacterBody:

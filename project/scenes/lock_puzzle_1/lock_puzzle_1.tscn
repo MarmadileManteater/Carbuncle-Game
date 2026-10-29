@@ -9,59 +9,44 @@ script = ExtResource("1_0heaw")
 metadata/_custom_type_script = "uid://b1dagrohhup7i"
 
 [node name="LockPuzzle" parent="." unique_id=1173022754 instance=ExtResource("1_lr11s")]
+lock_start = 0
 
 [node name="PuzzlePiece" parent="LockPuzzle" unique_id=1614769464 instance=ExtResource("2_0heaw")]
 position = Vector2(978, 215)
 length = 682
-collision_enabled = true
-click_enabled = true
 
 [node name="PuzzlePiece2" parent="LockPuzzle" unique_id=840227628 instance=ExtResource("2_0heaw")]
 position = Vector2(1131, 547)
 length = 393
-collision_enabled = true
-click_enabled = true
 
 [node name="PuzzlePiece3" parent="LockPuzzle" unique_id=538664263 instance=ExtResource("2_0heaw")]
 position = Vector2(1309, 385)
 rotation = 1.5707964
 length = 200
 direction = 1
-collision_enabled = true
-click_enabled = true
 
 [node name="PuzzlePiece4" parent="LockPuzzle" unique_id=677250871 instance=ExtResource("2_0heaw")]
 position = Vector2(879, 538)
 rotation = 1.5707964
 length = 191
 direction = 1
-collision_enabled = true
-click_enabled = true
 
 [node name="PuzzlePiece5" parent="LockPuzzle" unique_id=745407822 instance=ExtResource("2_0heaw")]
 position = Vector2(577, 273)
 rotation = 1.5707964
 length = 141
 direction = 1
-collision_enabled = true
-click_enabled = true
 
 [node name="PuzzlePiece6" parent="LockPuzzle" unique_id=2108720135 instance=ExtResource("2_0heaw")]
 position = Vector2(496, 547)
 length = 325
-collision_enabled = true
-click_enabled = true
 
 [node name="PuzzlePiece7" parent="LockPuzzle" unique_id=1412093453 instance=ExtResource("2_0heaw")]
 position = Vector2(611, 685)
 length = 562
-collision_enabled = true
-click_enabled = true
 
 [node name="PuzzlePiece8" parent="LockPuzzle" unique_id=552658137 instance=ExtResource("2_0heaw")]
 position = Vector2(270, 616)
 rotation = 1.5707964
 length = 171
 direction = 1
-collision_enabled = true
-click_enabled = true
