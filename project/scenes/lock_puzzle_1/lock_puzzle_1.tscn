@@ -9,7 +9,6 @@ script = ExtResource("1_0heaw")
 metadata/_custom_type_script = "uid://b1dagrohhup7i"
 
 [node name="LockPuzzle" parent="." unique_id=1173022754 instance=ExtResource("1_lr11s")]
-lock_start = 0
 
 [node name="PuzzlePiece" parent="LockPuzzle" unique_id=1614769464 instance=ExtResource("2_0heaw")]
 position = Vector2(978, 215)
