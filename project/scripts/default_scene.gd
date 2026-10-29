@@ -6,6 +6,9 @@ signal change_cursor
 signal lock_cursor_to_node
 signal unlock_cursor_from_node
 
+var time_elapsed: float = 0.0
+var first_time: bool = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var clickables = find_child("Clickable")
@@ -44,4 +47,10 @@ func unlock_cursor() -> void:
 	unlock_cursor_from_node.emit()
 	
 func clickable_clicked(node: VirtualClickable) -> void:
+	pass
+	
+func save_state() -> Dictionary:
+	return {}
+	
+func load_state(state_info: Dictionary) -> void:
 	pass

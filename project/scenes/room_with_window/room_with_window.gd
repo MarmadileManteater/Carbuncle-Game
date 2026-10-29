@@ -18,7 +18,8 @@ func _process(delta: float) -> void:
 			$LampLight.show()
 			$WindowShadow.hide()
 			$LampNoise.pitch_scale = 1
-			$LampNoise.play()
+			if not first_time:
+				$LampNoise.play()
 		else:
 			$Lamp.play("off")
 			$LampShadeShadow.hide()
@@ -33,3 +34,11 @@ func clickable_clicked(node: VirtualClickable) -> void:
 		change_scene.emit("window")
 	if node.name == "Lamp":
 		lamp_state = !lamp_state
+
+func save_state() -> Dictionary:
+	return {
+		"lamp_state": lamp_state
+	}
+
+func load_state(state: Dictionary):
+	lamp_state = state["lamp_state"]

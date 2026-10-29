@@ -2,6 +2,8 @@ extends Node
 
 @export var starting_scene: String = "lock_puzzle"
 var loaded_scene: DefaultScene = null
+var state: Dictionary = {}
+var time_elapsed: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,7 +35,21 @@ func load_scene(scene_name: String) -> void:
 			$Cursor.unlock()
 	)
 	loaded_scene.change_scene.connect(
-		func(scene_name: String):
-			load_scene(scene_name)
+		func(new_scene_name: String):
+			state[scene_name] = loaded_scene.save_state()
+			load_scene(new_scene_name)
 	)
+	
+
+	loaded_scene.time_elapsed = time_elapsed
+	loaded_scene.first_time = not state.has(scene_name)
+	if state.has(scene_name):
+		loaded_scene.load_state(state[scene_name])
 	add_child(loaded_scene)
+
+
+func _on_game_interval() -> void:
+	time_elapsed += 0.1
+	$RichTextLabel.text = "%f" % time_elapsed
+	if loaded_scene != null:
+		loaded_scene.time_elapsed = time_elapsed
