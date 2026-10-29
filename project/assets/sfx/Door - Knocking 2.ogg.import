@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bo8a6kspep5yf"
+path="res://.godot/imported/Door - Knocking 2.ogg-a67c633594a16fe946cb5a9e1019e876.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/Door - Knocking 2.ogg"
+dest_files=["res://.godot/imported/Door - Knocking 2.ogg-a67c633594a16fe946cb5a9e1019e876.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

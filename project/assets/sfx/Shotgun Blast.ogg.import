@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bvk4hy88oq0n3"
+path="res://.godot/imported/Shotgun Blast.ogg-02d9d19f75a614fee6e59d36cb9f0281.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/Shotgun Blast.ogg"
+dest_files=["res://.godot/imported/Shotgun Blast.ogg-02d9d19f75a614fee6e59d36cb9f0281.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

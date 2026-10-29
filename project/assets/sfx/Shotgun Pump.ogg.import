@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://htcib0yjuydi"
+path="res://.godot/imported/Shotgun Pump.ogg-3928447a77c500011f1e360aeefae00b.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/Shotgun Pump.ogg"
+dest_files=["res://.godot/imported/Shotgun Pump.ogg-3928447a77c500011f1e360aeefae00b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

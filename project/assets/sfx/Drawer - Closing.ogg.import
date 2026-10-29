@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c51qcaccnwd2i"
+path="res://.godot/imported/Drawer - Closing.ogg-62c3234f76b11fa6e0ba72602a7f58d9.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/Drawer - Closing.ogg"
+dest_files=["res://.godot/imported/Drawer - Closing.ogg-62c3234f76b11fa6e0ba72602a7f58d9.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
