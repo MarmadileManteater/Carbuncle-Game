@@ -50,7 +50,7 @@ shape = SubResource("RectangleShape2D_7qhew")
 [node name="SlideNoise" type="AudioStreamPlayer" parent="." unique_id=402574274]
 stream = ExtResource("3_7qhew")
 volume_db = -3.649
-pitch_scale = 1.05
+pitch_scale = 1.3541666
 
 [connection signal="gui_input" from="ClickPoint" to="." method="_on_click_point_gui_input"]
 [connection signal="mouse_entered" from="ClickPoint" to="." method="_on_mouse_entered"]

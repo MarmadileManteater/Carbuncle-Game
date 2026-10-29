@@ -48,6 +48,10 @@ func set_start_of_puzzle():
 func _on_done_area_entered(body: Node2D) -> void:
 	if body == $Driver/CharacterBody:
 		$Driver/AnimationPlayer.play_backwards("RotateIn")
+		if lock_start == LockPosition.Left:
+			$LockNoise.play()
+		if lock_start == LockPosition.Right:
+			$UnlockNoise.play()
 		unlock_cursor()
 
 func _on_piece_click(node: PuzzlePiece) -> void:

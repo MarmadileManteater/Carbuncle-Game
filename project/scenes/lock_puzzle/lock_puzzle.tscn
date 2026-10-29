@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b4maqkysnriw5" path="res://assets/sprites/knob_shaft.png" id="3_x0jet"]
 [ext_resource type="Texture2D" uid="uid://cmtfkg3l2x5g1" path="res://assets/sprites/bolt_end.png" id="5_3qiwk"]
 [ext_resource type="Texture2D" uid="uid://cuqudm3xf4rqc" path="res://assets/sprites/bolt_back.png" id="6_vn2dd"]
+[ext_resource type="AudioStream" uid="uid://b07yq0lju3y7f" path="res://assets/sfx/Lock.ogg" id="7_1x1do"]
+[ext_resource type="AudioStream" uid="uid://dt8n1w2aumfmv" path="res://assets/sfx/Unlock.ogg" id="8_6v2fq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dxmq"]
 size = Vector2(91.75, 126)
@@ -264,7 +266,7 @@ shape = SubResource("RectangleShape2D_0dxmq")
 [node name="Driver" parent="." unique_id=1614769464 instance=ExtResource("1_wue6p")]
 position = Vector2(1470, 445)
 length = 17
-collision_enabled = true
+click_enabled = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Driver" unique_id=46300742]
 libraries/ = SubResource("AnimationLibrary_x0jet")
@@ -330,6 +332,14 @@ position = Vector2(39, 445)
 
 [node name="RightEnd" type="Node2D" parent="." unique_id=752370969]
 position = Vector2(1556, 445)
+
+[node name="LockNoise" type="AudioStreamPlayer" parent="." unique_id=428636529]
+stream = ExtResource("7_1x1do")
+volume_db = -4.516
+
+[node name="UnlockNoise" type="AudioStreamPlayer" parent="." unique_id=80893652]
+stream = ExtResource("8_6v2fq")
+volume_db = -3.961
 
 [connection signal="click" from="Driver" to="." method="_on_driver_click"]
 [connection signal="hover" from="Driver" to="." method="_on_piece_hover"]
