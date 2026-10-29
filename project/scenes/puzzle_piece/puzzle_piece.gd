@@ -17,12 +17,14 @@ enum Direction { Horizonal, Vertical }
 @export var image_scale: Vector2 = Vector2(1, 1)
 @export var image_position: Vector2 = Vector2(0, 0)
 
-var click_start = null
+var is_hovered = false
+var is_clicked = false
 
 func _ready() -> void:
 	var shape = RectangleShape2D.new()
 	shape.size = $CollisionShape2D.shape.size
 	$CollisionShape2D.shape = shape
+	$Area2D/CollisionShape2D.shape = shape
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -48,28 +50,29 @@ func _process(_delta: float) -> void:
 	if $CollisionShape2D.disabled != !collision_enabled:
 		$CollisionShape2D.disabled = !collision_enabled
 
+func move(motion: Vector2):
+	if direction == Direction.Horizonal:
+		move_and_collide(Vector2(motion.x, 0))
+	if direction == Direction.Vertical:
+		move_and_collide(Vector2(0, motion.y))
 
-func _on_click_point_gui_input(event: InputEvent) -> void:
-	if not click_enabled:
-		return
-	if event is InputEventMouseButton:
-		if event.pressed:
-			click.emit()
-			click_start = event.global_position
-		else:
-			unclick.emit()
-			click_start = null
-	if click_start != null:
-		if event is InputEventMouseMotion:
-			var diff = click_start - event.global_position
-			if direction == Direction.Horizonal:
-				move_and_collide(Vector2(-diff.x, 0))
-			if direction == Direction.Vertical:
-				move_and_collide(Vector2(0, -diff.y))
-			click_start = event.global_position
+func _input(event: InputEvent):
+		if event is InputEventMouseButton:
+			if event.pressed:
+				if is_hovered:
+					click.emit()
+					is_clicked = true
+			else:
+				unclick.emit()
+				is_clicked = false
+				is_hovered = false
 
-func _on_mouse_entered() -> void:
-	hover.emit()
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if not is_clicked:
+		hover.emit()
+		is_hovered = true
 	
-func _on_mouse_exited() -> void:
-	unhover.emit()
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if not is_clicked:
+		unhover.emit()
+		is_hovered = false

@@ -42,6 +42,15 @@ offset_top = -25.0
 offset_right = 21.0
 offset_bottom = 25.0
 
+[node name="Area2D" type="Area2D" parent="." unique_id=388256928]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1315855489]
+shape = SubResource("RectangleShape2D_m3spb")
+
 [connection signal="gui_input" from="ClickPoint" to="." method="_on_click_point_gui_input"]
 [connection signal="mouse_entered" from="ClickPoint" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="ClickPoint" to="." method="_on_mouse_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

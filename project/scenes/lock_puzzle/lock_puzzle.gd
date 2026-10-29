@@ -1,5 +1,7 @@
 extends DefaultScene
 
+var is_clicked = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -12,23 +14,26 @@ func _process(delta: float) -> void:
 func _on_done_area_entered(body: Node2D) -> void:
 	if body == $Driver/CharacterBody:
 		$Driver/AnimationPlayer.play_backwards("RotateIn")
+		unlock_cursor()
 
 func _on_piece_click(node: PuzzlePiece) -> void:
-	cursor_change("grab")
+	cursor_change(VirtualCursor.Type.Grab)
 	lock_cursor(node)
+	is_clicked = true
 
 func _on_piece_unclick() -> void:
 	unlock_cursor()
-	cursor_change("notice")
+	cursor_change(VirtualCursor.Type.Notice)
+	is_clicked = false
 
 func _on_piece_hover() -> void:
-	cursor_change("notice")
-	return
+	if not is_clicked:
+		cursor_change(VirtualCursor.Type.Notice)
 	#cursor_change("point")
 	
 func _on_piece_unhover() -> void:
-	cursor_change("default")
-	return
+	if not is_clicked:
+		cursor_change(VirtualCursor.Type.Default)
 	#cursor_change("default")
 
 func _on_driver_click() -> void:

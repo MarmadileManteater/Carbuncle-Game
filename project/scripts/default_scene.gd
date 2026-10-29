@@ -14,7 +14,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func cursor_change(cursor: String) -> void:
+func cursor_change(cursor: VirtualCursor.Type) -> void:
 	change_cursor.emit(cursor)
 
 func lock_cursor(node: Node2D) -> void:
