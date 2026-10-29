@@ -3,6 +3,11 @@ extends StaticBody2D
 
 class_name PuzzlePiece
 
+signal click
+signal unclick
+signal hover
+signal unhover
+
 enum Direction { Horizonal, Vertical }
 
 @export var length = 10
@@ -49,8 +54,10 @@ func _on_click_point_gui_input(event: InputEvent) -> void:
 		return
 	if event is InputEventMouseButton:
 		if event.pressed:
+			click.emit()
 			click_start = event.global_position
 		else:
+			unclick.emit()
 			click_start = null
 	if click_start != null:
 		if event is InputEventMouseMotion:
@@ -60,3 +67,9 @@ func _on_click_point_gui_input(event: InputEvent) -> void:
 			if direction == Direction.Vertical:
 				move_and_collide(Vector2(0, -diff.y))
 			click_start = event.global_position
+
+func _on_mouse_entered() -> void:
+	hover.emit()
+	
+func _on_mouse_exited() -> void:
+	unhover.emit()

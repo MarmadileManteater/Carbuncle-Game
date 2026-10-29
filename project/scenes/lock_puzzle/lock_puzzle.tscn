@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://drorgjbwrm5x" path="res://scenes/puzzle_piece/puzzle_piece.tscn" id="1_wue6p"]
 [ext_resource type="Texture2D" uid="uid://b4maqkysnriw5" path="res://assets/sprites/knob_shaft.png" id="3_x0jet"]
 [ext_resource type="Texture2D" uid="uid://cmtfkg3l2x5g1" path="res://assets/sprites/bolt_end.png" id="5_3qiwk"]
-[ext_resource type="Texture2D" uid="uid://b3rksm6n1bvwb" path="res://assets/sprites/bolt_back.png" id="6_vn2dd"]
+[ext_resource type="Texture2D" uid="uid://cuqudm3xf4rqc" path="res://assets/sprites/bolt_back.png" id="6_vn2dd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dxmq"]
 size = Vector2(91.75, 126)
@@ -218,8 +218,9 @@ radius = 27.365875
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcxea"]
 size = Vector2(76, 106)
 
-[node name="LockPuzzle" type="Node2D" unique_id=1017078992]
+[node name="LockPuzzle" type="Node2D" unique_id=1173022754]
 script = ExtResource("1_jv80f")
+metadata/_custom_type_script = "uid://b1dagrohhup7i"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=472871172]
 z_index = -1
@@ -374,4 +375,41 @@ position = Vector2(39, 445)
 shape = SubResource("RectangleShape2D_fcxea")
 debug_color = Color(2.117753e-06, 0.6400614, 0.36016127, 0.41960785)
 
+[connection signal="click" from="PuzzlePiece" to="." method="_on_puzzle_piece_click"]
+[connection signal="hover" from="PuzzlePiece" to="." method="_on_piece_hover"]
+[connection signal="unclick" from="PuzzlePiece" to="." method="_on_piece_unclick"]
+[connection signal="unhover" from="PuzzlePiece" to="." method="_on_piece_unhover"]
+[connection signal="click" from="PuzzlePiece2" to="." method="_on_puzzle_piece_2_click"]
+[connection signal="hover" from="PuzzlePiece2" to="." method="_on_piece_hover"]
+[connection signal="unclick" from="PuzzlePiece2" to="." method="_on_piece_unclick"]
+[connection signal="unhover" from="PuzzlePiece2" to="." method="_on_piece_unhover"]
+[connection signal="click" from="PuzzlePiece3" to="." method="_on_puzzle_piece_3_click"]
+[connection signal="hover" from="PuzzlePiece3" to="." method="_on_piece_hover"]
+[connection signal="unclick" from="PuzzlePiece3" to="." method="_on_piece_unclick"]
+[connection signal="unhover" from="PuzzlePiece3" to="." method="_on_piece_unhover"]
+[connection signal="click" from="PuzzlePiece4" to="." method="_on_puzzle_piece_4_click"]
+[connection signal="hover" from="PuzzlePiece4" to="." method="_on_piece_hover"]
+[connection signal="unclick" from="PuzzlePiece4" to="." method="_on_piece_unclick"]
+[connection signal="unhover" from="PuzzlePiece4" to="." method="_on_piece_unhover"]
+[connection signal="click" from="PuzzlePiece5" to="." method="_on_puzzle_piece_5_click"]
+[connection signal="hover" from="PuzzlePiece5" to="." method="_on_piece_hover"]
+[connection signal="unclick" from="PuzzlePiece5" to="." method="_on_piece_unclick"]
+[connection signal="unhover" from="PuzzlePiece5" to="." method="_on_piece_unhover"]
+[connection signal="click" from="PuzzlePiece6" to="." method="_on_puzzle_piece_6_click"]
+[connection signal="hover" from="PuzzlePiece6" to="." method="_on_piece_hover"]
+[connection signal="unclick" from="PuzzlePiece6" to="." method="_on_piece_unclick"]
+[connection signal="unhover" from="PuzzlePiece6" to="." method="_on_piece_unhover"]
+[connection signal="click" from="PuzzlePiece7" to="." method="_on_puzzle_piece_7_click"]
+[connection signal="hover" from="PuzzlePiece7" to="." method="_on_piece_hover"]
+[connection signal="unclick" from="PuzzlePiece7" to="." method="_on_piece_unclick"]
+[connection signal="unhover" from="PuzzlePiece7" to="." method="_on_piece_unhover"]
+[connection signal="click" from="PuzzlePiece8" to="." method="_on_puzzle_piece_8_click"]
+[connection signal="hover" from="PuzzlePiece8" to="." method="_on_piece_hover"]
+[connection signal="unclick" from="PuzzlePiece8" to="." method="_on_piece_unclick"]
+[connection signal="unhover" from="PuzzlePiece8" to="." method="_on_piece_unhover"]
+[connection signal="click" from="Driver" to="." method="_on_driver_click"]
+[connection signal="hover" from="Driver" to="." method="_on_piece_hover"]
+[connection signal="unclick" from="Driver" to="." method="_on_piece_unclick"]
+[connection signal="unhover" from="Driver" to="." method="_on_piece_unhover"]
+[connection signal="animation_finished" from="Driver/AnimationPlayer" to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="DoneArea" to="." method="_on_done_area_entered"]

@@ -43,3 +43,5 @@ offset_right = 21.0
 offset_bottom = 25.0
 
 [connection signal="gui_input" from="ClickPoint" to="." method="_on_click_point_gui_input"]
+[connection signal="mouse_entered" from="ClickPoint" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ClickPoint" to="." method="_on_mouse_exited"]
