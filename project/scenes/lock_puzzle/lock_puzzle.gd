@@ -4,6 +4,26 @@ var is_clicked = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var pieces = find_children("PuzzlePiece*")
+	for piece in pieces:
+		var p: PuzzlePiece = piece
+		p.click.connect(
+			func ():
+				_on_piece_click(p)
+		)
+		p.hover.connect(
+			func ():
+				_on_piece_hover()
+				
+		)
+		p.unclick.connect(
+			func ():
+				_on_piece_unclick()
+		)
+		p.unhover.connect(
+			func ():
+				_on_piece_unhover()
+		)
 	pass # Replace with function body.
 
 
@@ -29,39 +49,13 @@ func _on_piece_unclick() -> void:
 func _on_piece_hover() -> void:
 	if not is_clicked:
 		cursor_change(VirtualCursor.Type.Notice)
-	#cursor_change("point")
 	
 func _on_piece_unhover() -> void:
 	if not is_clicked:
 		cursor_change(VirtualCursor.Type.Default)
-	#cursor_change("default")
 
 func _on_driver_click() -> void:
 	_on_piece_click($Driver)
-
-func _on_puzzle_piece_8_click() -> void:
-	_on_piece_click($PuzzlePiece8)
-
-func _on_puzzle_piece_7_click() -> void:
-	_on_piece_click($PuzzlePiece7)
-
-func _on_puzzle_piece_6_click() -> void:
-	_on_piece_click($PuzzlePiece6)
-
-func _on_puzzle_piece_5_click() -> void:
-	_on_piece_click($PuzzlePiece5)
-
-func _on_puzzle_piece_4_click() -> void:
-	_on_piece_click($PuzzlePiece4)
-
-func _on_puzzle_piece_3_click() -> void:
-	_on_piece_click($PuzzlePiece3)
-
-func _on_puzzle_piece_2_click() -> void:
-	_on_piece_click($PuzzlePiece2)
-
-func _on_puzzle_piece_click() -> void:
-	_on_piece_click($PuzzlePiece)
 
 func _on_animation_finished(anim_name: StringName) -> void:
 	_on_piece_unclick()
