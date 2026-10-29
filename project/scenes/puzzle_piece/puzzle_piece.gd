@@ -3,6 +3,8 @@ extends StaticBody2D
 
 class_name PuzzlePiece
 
+const SLIDE_NOISE_THRESHOLD = 15
+
 signal click
 signal unclick
 signal hover
@@ -19,7 +21,7 @@ enum Direction { Horizonal, Vertical }
 
 var is_hovered = false
 var is_clicked = false
-var is_last_movement_positive = false
+var is_last_movement_positive = null
 
 func _ready() -> void:
 	var shape = RectangleShape2D.new()
@@ -52,16 +54,17 @@ func _process(_delta: float) -> void:
 		$CollisionShape2D.disabled = !collision_enabled
 
 func move(motion: Vector2):
-	var movement
+	var movement: Vector2
 	if direction == Direction.Horizonal:
 		movement = Vector2(motion.x, 0)
 	if direction == Direction.Vertical:
 		movement = Vector2(0, motion.y)
 	var is_positive = movement >= Vector2.ZERO
-	if is_positive != is_last_movement_positive:
-		is_last_movement_positive = is_positive
-		if not $SlideNoise.playing:
-			$SlideNoise.play()
+	if movement.distance_to(Vector2.ZERO) > SLIDE_NOISE_THRESHOLD:
+		if is_positive != is_last_movement_positive:
+			is_last_movement_positive = is_positive
+			if not $SlideNoise.playing:
+				$SlideNoise.play()
 	move_and_collide(movement)
 
 func _input(event: InputEvent):
