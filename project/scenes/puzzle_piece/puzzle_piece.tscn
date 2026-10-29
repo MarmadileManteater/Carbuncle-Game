@@ -8,8 +8,6 @@ size = Vector2(42, 50)
 
 [node name="PuzzlePiece" type="StaticBody2D" unique_id=1614769464]
 script = ExtResource("1_cst2k")
-collision_enabled = null
-click_enabled = null
 
 [node name="Modifier" type="Node2D" parent="." unique_id=588230946]
 
@@ -32,7 +30,6 @@ uv = PackedVector2Array(17, 0, 18, 0, 18, 50, 17, 50)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=110951652]
 shape = SubResource("RectangleShape2D_m3spb")
-disabled = true
 
 [node name="ClickPoint" type="Control" parent="." unique_id=1120366694]
 layout_mode = 3

@@ -227,62 +227,6 @@ z_index = -1
 position = Vector2(800, 453)
 texture = ExtResource("1_nlmpk")
 
-[node name="PuzzlePiece" parent="." unique_id=1993099465 instance=ExtResource("1_wue6p")]
-position = Vector2(978, 215)
-length = 682
-collision_enabled = true
-click_enabled = true
-
-[node name="PuzzlePiece2" parent="." unique_id=743115487 instance=ExtResource("1_wue6p")]
-position = Vector2(1131, 547)
-length = 393
-collision_enabled = true
-click_enabled = true
-
-[node name="PuzzlePiece3" parent="." unique_id=181184539 instance=ExtResource("1_wue6p")]
-position = Vector2(1309, 385)
-rotation = 1.5707964
-length = 200
-direction = 1
-collision_enabled = true
-click_enabled = true
-
-[node name="PuzzlePiece4" parent="." unique_id=479020984 instance=ExtResource("1_wue6p")]
-position = Vector2(879, 538)
-rotation = 1.5707964
-length = 191
-direction = 1
-collision_enabled = true
-click_enabled = true
-
-[node name="PuzzlePiece5" parent="." unique_id=2041984280 instance=ExtResource("1_wue6p")]
-position = Vector2(577, 273)
-rotation = 1.5707964
-length = 141
-direction = 1
-collision_enabled = true
-click_enabled = true
-
-[node name="PuzzlePiece6" parent="." unique_id=912916827 instance=ExtResource("1_wue6p")]
-position = Vector2(496, 547)
-length = 325
-collision_enabled = true
-click_enabled = true
-
-[node name="PuzzlePiece7" parent="." unique_id=836966965 instance=ExtResource("1_wue6p")]
-position = Vector2(611, 685)
-length = 562
-collision_enabled = true
-click_enabled = true
-
-[node name="PuzzlePiece8" parent="." unique_id=933270591 instance=ExtResource("1_wue6p")]
-position = Vector2(270, 616)
-rotation = 1.5707964
-length = 171
-direction = 1
-collision_enabled = true
-click_enabled = true
-
 [node name="Boundaries" type="StaticBody2D" parent="." unique_id=1462244930]
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Boundaries" unique_id=1440641784]
@@ -375,38 +319,18 @@ position = Vector2(39, 445)
 shape = SubResource("RectangleShape2D_fcxea")
 debug_color = Color(2.117753e-06, 0.6400614, 0.36016127, 0.41960785)
 
-[connection signal="click" from="PuzzlePiece" to="." method="_on_puzzle_piece_click"]
-[connection signal="hover" from="PuzzlePiece" to="." method="_on_piece_hover"]
-[connection signal="unclick" from="PuzzlePiece" to="." method="_on_piece_unclick"]
-[connection signal="unhover" from="PuzzlePiece" to="." method="_on_piece_unhover"]
-[connection signal="click" from="PuzzlePiece2" to="." method="_on_puzzle_piece_2_click"]
-[connection signal="hover" from="PuzzlePiece2" to="." method="_on_piece_hover"]
-[connection signal="unclick" from="PuzzlePiece2" to="." method="_on_piece_unclick"]
-[connection signal="unhover" from="PuzzlePiece2" to="." method="_on_piece_unhover"]
-[connection signal="click" from="PuzzlePiece3" to="." method="_on_puzzle_piece_3_click"]
-[connection signal="hover" from="PuzzlePiece3" to="." method="_on_piece_hover"]
-[connection signal="unclick" from="PuzzlePiece3" to="." method="_on_piece_unclick"]
-[connection signal="unhover" from="PuzzlePiece3" to="." method="_on_piece_unhover"]
-[connection signal="click" from="PuzzlePiece4" to="." method="_on_puzzle_piece_4_click"]
-[connection signal="hover" from="PuzzlePiece4" to="." method="_on_piece_hover"]
-[connection signal="unclick" from="PuzzlePiece4" to="." method="_on_piece_unclick"]
-[connection signal="unhover" from="PuzzlePiece4" to="." method="_on_piece_unhover"]
-[connection signal="click" from="PuzzlePiece5" to="." method="_on_puzzle_piece_5_click"]
-[connection signal="hover" from="PuzzlePiece5" to="." method="_on_piece_hover"]
-[connection signal="unclick" from="PuzzlePiece5" to="." method="_on_piece_unclick"]
-[connection signal="unhover" from="PuzzlePiece5" to="." method="_on_piece_unhover"]
-[connection signal="click" from="PuzzlePiece6" to="." method="_on_puzzle_piece_6_click"]
-[connection signal="hover" from="PuzzlePiece6" to="." method="_on_piece_hover"]
-[connection signal="unclick" from="PuzzlePiece6" to="." method="_on_piece_unclick"]
-[connection signal="unhover" from="PuzzlePiece6" to="." method="_on_piece_unhover"]
-[connection signal="click" from="PuzzlePiece7" to="." method="_on_puzzle_piece_7_click"]
-[connection signal="hover" from="PuzzlePiece7" to="." method="_on_piece_hover"]
-[connection signal="unclick" from="PuzzlePiece7" to="." method="_on_piece_unclick"]
-[connection signal="unhover" from="PuzzlePiece7" to="." method="_on_piece_unhover"]
-[connection signal="click" from="PuzzlePiece8" to="." method="_on_puzzle_piece_8_click"]
-[connection signal="hover" from="PuzzlePiece8" to="." method="_on_piece_hover"]
-[connection signal="unclick" from="PuzzlePiece8" to="." method="_on_piece_unclick"]
-[connection signal="unhover" from="PuzzlePiece8" to="." method="_on_piece_unhover"]
+[node name="LeftStart" type="Node2D" parent="." unique_id=475010035]
+position = Vector2(102, 445)
+
+[node name="RightStart" type="Node2D" parent="." unique_id=1877505301]
+position = Vector2(1470, 445)
+
+[node name="LeftEnd" type="Node2D" parent="." unique_id=1766678859]
+position = Vector2(39, 445)
+
+[node name="RightEnd" type="Node2D" parent="." unique_id=752370969]
+position = Vector2(1556, 445)
+
 [connection signal="click" from="Driver" to="." method="_on_driver_click"]
 [connection signal="hover" from="Driver" to="." method="_on_piece_hover"]
 [connection signal="unclick" from="Driver" to="." method="_on_piece_unclick"]

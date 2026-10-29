@@ -1,4 +1,9 @@
+@tool
 extends DefaultScene
+
+enum LockPosition { Left, Right }
+
+@export var lock_start: LockPosition = LockPosition.Right
 
 var is_clicked = false
 
@@ -29,7 +34,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Engine.is_editor_hint():
+		if lock_start == LockPosition.Right:
+			$DoneArea/CollisionShape2D.position = $LeftEnd.position
+			$Driver.position = $RightStart.position
+		if lock_start == LockPosition.Left:
+			$DoneArea/CollisionShape2D.position = $RightEnd.position
+			$Driver.position = $LeftStart.position
 
 func _on_done_area_entered(body: Node2D) -> void:
 	if body == $Driver/CharacterBody:

@@ -9,6 +9,10 @@ signal unlock_cursor_from_node
 func _ready() -> void:
 	pass # Replace with function body.
 
+func nest(scene: DefaultScene) -> void:
+	scene.change_cursor.connect(cursor_change)
+	scene.lock_cursor_to_node.connect(lock_cursor)
+	scene.unlock_cursor_from_node.connect(unlock_cursor)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
