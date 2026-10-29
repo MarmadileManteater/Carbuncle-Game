@@ -52,6 +52,8 @@ func _process(_delta: float) -> void:
 	$ClickPoint.position.x = -$CollisionShape2D.shape.size.x / 2.0
 	if $CollisionShape2D.disabled != !collision_enabled:
 		$CollisionShape2D.disabled = !collision_enabled
+	
+	$SlideNoise.pitch_scale = 1.0 - ((length - 435.0) / 1200)
 
 func move(motion: Vector2):
 	var movement: Vector2

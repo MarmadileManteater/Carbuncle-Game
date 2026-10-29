@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ctg3fvt7xv5y8" path="res://assets/sprites/puzzle_spritesheet.png" id="2_m3spb"]
 [ext_resource type="AudioStream" uid="uid://bchluekkqixxe" path="res://assets/sfx/Lock Slide.ogg" id="3_7qhew"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hihv"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qhew"]
 size = Vector2(42, 50)
 
 [node name="PuzzlePiece" type="StaticBody2D" unique_id=1614769464]
@@ -30,7 +30,7 @@ polygon = PackedVector2Array(-5, -25, 5, -25, 5, 25, -5, 25)
 uv = PackedVector2Array(17, 0, 18, 0, 18, 50, 17, 50)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=110951652]
-shape = SubResource("RectangleShape2D_3hihv")
+shape = SubResource("RectangleShape2D_7qhew")
 
 [node name="ClickPoint" type="Control" parent="." unique_id=1120366694]
 layout_mode = 3
@@ -45,11 +45,12 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1315855489]
-shape = SubResource("RectangleShape2D_3hihv")
+shape = SubResource("RectangleShape2D_7qhew")
 
 [node name="SlideNoise" type="AudioStreamPlayer" parent="." unique_id=402574274]
 stream = ExtResource("3_7qhew")
 volume_db = -3.649
+pitch_scale = 1.05
 
 [connection signal="gui_input" from="ClickPoint" to="." method="_on_click_point_gui_input"]
 [connection signal="mouse_entered" from="ClickPoint" to="." method="_on_mouse_entered"]
