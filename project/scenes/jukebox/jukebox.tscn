@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bakgdemg3cde0"]
+
+[ext_resource type="Script" uid="uid://b4jb4fk53dl7h" path="res://scenes/jukebox/jukebox.gd" id="1_1q0bv"]
+[ext_resource type="AudioStream" uid="uid://b31to3vn81ql1" path="res://assets/music/Phase 1.ogg" id="1_lbv8v"]
+[ext_resource type="AudioStream" uid="uid://dht5gcj4tnh21" path="res://assets/music/Phase 2.ogg" id="3_j8q5w"]
+[ext_resource type="AudioStream" uid="uid://b6w8j12rhrjqd" path="res://assets/music/Phase 3.ogg" id="4_pt7ds"]
+[ext_resource type="AudioStream" uid="uid://cdw4iloi0ydra" path="res://assets/music/Phase 4.ogg" id="5_wd12y"]
+[ext_resource type="AudioStream" uid="uid://c1rov2j21smr" path="res://assets/music/Phase 5.ogg" id="6_wd12y"]
+[ext_resource type="AudioStream" uid="uid://20b8so5ykr7v" path="res://assets/music/Phase 6.ogg" id="7_r3reh"]
+
+[node name="Jukebox" type="Node2D" unique_id=457365369]
+script = ExtResource("1_1q0bv")
+
+[node name="Phase 1" type="AudioStreamPlayer" parent="." unique_id=568112124]
+stream = ExtResource("1_lbv8v")
+
+[node name="Phase 2" type="AudioStreamPlayer" parent="." unique_id=666063148]
+stream = ExtResource("3_j8q5w")
+
+[node name="Phase 3" type="AudioStreamPlayer" parent="." unique_id=429365472]
+stream = ExtResource("4_pt7ds")
+
+[node name="Phase 4" type="AudioStreamPlayer" parent="." unique_id=540380649]
+stream = ExtResource("5_wd12y")
+
+[node name="Phase 5" type="AudioStreamPlayer" parent="." unique_id=1780584805]
+stream = ExtResource("6_wd12y")
+
+[node name="Phase 6" type="AudioStreamPlayer" parent="." unique_id=37306696]
+stream = ExtResource("7_r3reh")
+
+[connection signal="finished" from="Phase 2" to="." method="_on_phase_2_finished"]
+[connection signal="finished" from="Phase 3" to="." method="_on_phase_3_finished"]
+[connection signal="finished" from="Phase 4" to="." method="_on_phase_4_finished"]
+[connection signal="finished" from="Phase 5" to="." method="_on_phase_5_finished"]

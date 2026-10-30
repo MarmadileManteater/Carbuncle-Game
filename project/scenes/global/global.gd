@@ -7,6 +7,7 @@ var time_elapsed: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Jukebox.set_track("Phase 1")
 	load_scene(starting_scene)
 	
 func _input(event: InputEvent) -> void:
@@ -39,12 +40,29 @@ func load_scene(scene_name: String) -> void:
 			state[scene_name] = loaded_scene.save_state()
 			load_scene(new_scene_name)
 	)
-	
+	loaded_scene.on_timeout_trigger_track_change.connect(
+		func(track_name: String, time: float):
+			var timer = Timer.new()
+			timer.one_shot = true
+			timer.timeout.connect(
+				func():
+					remove_child(timer)
+					timer.queue_free()
+					$Jukebox.set_track(track_name)
+			)
+			add_child(timer)
+			timer.start(time)
+	)
+	loaded_scene.trigger_track_change.connect(
+		func(name: String):
+			$Jukebox.set_track(name)
+	)
 
 	loaded_scene.time_elapsed = time_elapsed
 	loaded_scene.first_time = not state.has(scene_name)
 	if state.has(scene_name):
 		loaded_scene.load_state(state[scene_name])
+	loaded_scene.has_visited = state.keys()
 	add_child(loaded_scene)
 
 

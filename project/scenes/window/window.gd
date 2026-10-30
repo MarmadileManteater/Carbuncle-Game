@@ -5,6 +5,7 @@ func _ready() -> void:
 	super()
 	if first_time:
 		$AnimationPlayer.play("Approach")
+		set_track_on_timeout("Phase 2", $AnimationPlayer.current_animation_length / $AnimationPlayer.speed_scale)
 
 func clickable_clicked(node: VirtualClickable) -> void:
 	if node.name == "Back":

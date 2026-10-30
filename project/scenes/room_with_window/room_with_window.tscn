@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://rti47wiorjtg"]
 
 [ext_resource type="Script" uid="uid://cceo7rh311cqd" path="res://scenes/room_with_window/room_with_window.gd" id="1_ooi6j"]
+[ext_resource type="PackedScene" uid="uid://dtgqki0g23pfr" path="res://scenes/monster/monster.tscn" id="2_c8w0o"]
 [ext_resource type="Texture2D" uid="uid://casv4et4ybbeo" path="res://assets/sprites/window_zoom_out_background.png" id="2_ho63l"]
 [ext_resource type="Texture2D" uid="uid://biwivpv1apee8" path="res://assets/sprites/lamp.png" id="3_tps42"]
 [ext_resource type="Texture2D" uid="uid://3lm2pn837lan" path="res://assets/sprites/lamp_light.png" id="4_ooi6j"]
@@ -37,6 +38,12 @@ animations = [{
 [node name="RoomWithWindow" type="Node2D" unique_id=1188096537]
 script = ExtResource("1_ooi6j")
 
+[node name="Monster" parent="." unique_id=1163829090 instance=ExtResource("2_c8w0o")]
+visible = false
+position = Vector2(610, 492.00003)
+scale = Vector2(1.633, 1.633)
+frame_progress = 0.62043685
+
 [node name="Background" type="Sprite2D" parent="." unique_id=488778490]
 position = Vector2(800, 450)
 texture = ExtResource("2_ho63l")
@@ -49,7 +56,7 @@ polygon = PackedVector2Array(12, 909, 390, 560, 365, 88, 732, 96, 758, 567, 1110
 position = Vector2(1310, 524)
 sprite_frames = SubResource("SpriteFrames_0dxmq")
 animation = &"off"
-frame_progress = 0.91796315
+frame_progress = 0.62092155
 
 [node name="Shadow" type="Polygon2D" parent="." unique_id=592220649]
 modulate = Color(0, 0, 0, 0.40392157)
@@ -68,11 +75,13 @@ texture = ExtResource("4_ooi6j")
 [node name="Clickable" type="Node2D" parent="." unique_id=487308867]
 
 [node name="Window" parent="Clickable" unique_id=1515518074 instance=ExtResource("5_ooi6j")]
+visible = false
 position = Vector2(563, 336)
 cursor = 4
 size = Vector2(450, 550)
 
 [node name="Lamp" parent="Clickable" unique_id=600591416 instance=ExtResource("5_ooi6j")]
+visible = false
 position = Vector2(1320, 514)
 cursor = 3
 size = Vector2(200, 653)
@@ -80,3 +89,9 @@ size = Vector2(200, 653)
 [node name="LampNoise" type="AudioStreamPlayer" parent="." unique_id=736783075]
 stream = ExtResource("6_7ia37")
 pitch_scale = 0.85
+
+[node name="LampTimer" type="Timer" parent="." unique_id=1812611658]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="LampTimer" to="." method="_on_lamp_timer_timeout"]

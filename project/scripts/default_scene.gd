@@ -5,9 +5,12 @@ signal change_scene
 signal change_cursor
 signal lock_cursor_to_node
 signal unlock_cursor_from_node
+signal on_timeout_trigger_track_change
+signal trigger_track_change
 
 var time_elapsed: float = 0.0
 var first_time: bool = true
+var has_visited: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,6 +48,12 @@ func lock_cursor(node: Node2D) -> void:
 	
 func unlock_cursor() -> void:
 	unlock_cursor_from_node.emit()
+	
+func set_track_on_timeout(track_name: String, time: float) -> void:
+	on_timeout_trigger_track_change.emit(track_name, time)
+	
+func set_track(name: String) -> void:
+	trigger_track_change.emit(name)
 	
 func clickable_clicked(node: VirtualClickable) -> void:
 	pass

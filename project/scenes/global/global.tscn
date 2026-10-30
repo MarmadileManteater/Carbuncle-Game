@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://durauhf4vm26h" path="res://scenes/global/global.gd" id="1_bhh4k"]
 [ext_resource type="PackedScene" uid="uid://cx8xfdka44jnc" path="res://scenes/virtual_cursor/virtual_cursor.tscn" id="2_pht4f"]
+[ext_resource type="PackedScene" uid="uid://bakgdemg3cde0" path="res://scenes/jukebox/jukebox.tscn" id="3_bm3mx"]
 
 [node name="Global" type="Node2D" unique_id=127505025]
 script = ExtResource("1_bhh4k")
@@ -21,5 +22,7 @@ offset_right = 1600.0
 offset_bottom = 884.0
 theme_override_font_sizes/normal_font_size = 23
 scroll_active = false
+
+[node name="Jukebox" parent="." unique_id=1021065957 instance=ExtResource("3_bm3mx")]
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_interval"]
