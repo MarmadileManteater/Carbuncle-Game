@@ -20,7 +20,9 @@ func _process(delta: float) -> void:
 		if is_lamp_timer_active:
 			$LampTimer.stop()
 			lamp_count += 1
-			if lamp_count > 7 and "window" in has_visited:
+			if lamp_count > 3 and "window" in has_visited and not monster_at_window:
+				lamp_count = 0
+				$WindowSlam.play()
 				$Monster.show()
 				$Clickable.remove_child($Clickable/Window)
 				set_track("Phase 2")

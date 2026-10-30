@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cciwshynstwda"
+path="res://.godot/imported/Window - Slam.ogg-90efd80f4876485222a3d4ad153ff084.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/Window - Slam.ogg"
+dest_files=["res://.godot/imported/Window - Slam.ogg-90efd80f4876485222a3d4ad153ff084.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
