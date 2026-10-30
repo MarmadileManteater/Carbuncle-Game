@@ -8,3 +8,18 @@ script = ExtResource("1_bhh4k")
 starting_scene = "lock_puzzle_3"
 
 [node name="Cursor" parent="." unique_id=1794911752 instance=ExtResource("2_pht4f")]
+
+[node name="GameTimer" type="Timer" parent="." unique_id=1626802495]
+wait_time = 0.1
+autostart = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=94002581]
+z_index = 11
+offset_left = 1285.0
+offset_top = 769.0
+offset_right = 1600.0
+offset_bottom = 884.0
+theme_override_font_sizes/normal_font_size = 23
+scroll_active = false
+
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_interval"]
