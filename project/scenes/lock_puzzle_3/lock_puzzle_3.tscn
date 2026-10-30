@@ -11,21 +11,51 @@ metadata/_custom_type_script = "uid://b1dagrohhup7i"
 [node name="LockPuzzle" parent="." unique_id=1173022754 instance=ExtResource("2_kslug")]
 
 [node name="PuzzlePiece" parent="LockPuzzle" unique_id=1614769464 instance=ExtResource("3_kslug")]
-position = Vector2(1071, 443)
+position = Vector2(1064, 465)
 rotation = 1.5707964
-length = 201
+length = 165
 direction = 1
 
-[node name="PuzzlePiece2" parent="LockPuzzle" unique_id=386532537 instance=ExtResource("3_kslug")]
-position = Vector2(943, 289)
-length = 762
+[node name="PuzzlePiece2" parent="LockPuzzle" unique_id=756104530 instance=ExtResource("3_kslug")]
+position = Vector2(1179, 604)
+length = 282
 
-[node name="PuzzlePiece3" parent="LockPuzzle" unique_id=388091480 instance=ExtResource("3_kslug")]
-position = Vector2(937, 597)
-length = 435
+[node name="PuzzlePiece3" parent="LockPuzzle" unique_id=786562486 instance=ExtResource("3_kslug")]
+position = Vector2(911, 334)
+length = 540
 
-[node name="PuzzlePiece4" parent="LockPuzzle" unique_id=421219090 instance=ExtResource("3_kslug")]
-position = Vector2(509, 311)
+[node name="PuzzlePiece4" parent="LockPuzzle" unique_id=862415611 instance=ExtResource("3_kslug")]
+position = Vector2(485, 276)
 rotation = 1.5707964
-length = 200
+length = 130
 direction = 1
+
+[node name="PuzzlePiece5" parent="LockPuzzle" unique_id=26397339 instance=ExtResource("3_kslug")]
+position = Vector2(281, 445)
+rotation = 1.5707964
+length = 144
+direction = 1
+
+[node name="PuzzlePiece6" parent="LockPuzzle" unique_id=1866840642 instance=ExtResource("3_kslug")]
+position = Vector2(348, 221)
+length = 164
+
+[node name="PuzzlePiece7" parent="LockPuzzle" unique_id=374982906 instance=ExtResource("3_kslug")]
+position = Vector2(406, 567)
+length = 276
+
+[node name="PuzzlePiece8" parent="LockPuzzle" unique_id=1458399807 instance=ExtResource("3_kslug")]
+position = Vector2(282, 656)
+rotation = 1.5707964
+length = 78
+direction = 1
+
+[node name="PuzzlePiece9" parent="LockPuzzle" unique_id=1696117590 instance=ExtResource("3_kslug")]
+position = Vector2(854, 609)
+rotation = 1.5707964
+length = 184
+direction = 1
+
+[node name="PuzzlePiece10" parent="LockPuzzle" unique_id=1548873244 instance=ExtResource("3_kslug")]
+position = Vector2(931, 277)
+length = 781

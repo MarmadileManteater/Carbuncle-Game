@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b6w8j12rhrjqd"
+path="res://.godot/imported/Phase 3.ogg-5449f587f46c4e900ccb3f4c2a7c880b.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/Phase 3.ogg"
+dest_files=["res://.godot/imported/Phase 3.ogg-5449f587f46c4e900ccb3f4c2a7c880b.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=110.0
+beat_count=0
+bar_beats=4

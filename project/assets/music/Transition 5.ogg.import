@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://54740bol63ww"
+path="res://.godot/imported/Transition 5.ogg-a977c8103dd5cc7a62f345c6b7ada7db.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/Transition 5.ogg"
+dest_files=["res://.godot/imported/Transition 5.ogg-a977c8103dd5cc7a62f345c6b7ada7db.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=140.0
+beat_count=0
+bar_beats=4
