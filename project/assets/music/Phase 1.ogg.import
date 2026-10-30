@@ -14,6 +14,6 @@ dest_files=["res://.godot/imported/Phase 1.ogg-a1b0e225e355e982365f98ea781a3b23.
 
 loop=true
 loop_offset=0.0
-bpm=0.0
+bpm=100.0
 beat_count=0
 bar_beats=4

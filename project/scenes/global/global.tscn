@@ -6,7 +6,7 @@
 
 [node name="Global" type="Node2D" unique_id=127505025]
 script = ExtResource("1_bhh4k")
-starting_scene = "room_with_window"
+starting_scene = "lock_puzzle_3"
 
 [node name="Cursor" parent="." unique_id=1794911752 instance=ExtResource("2_pht4f")]
 

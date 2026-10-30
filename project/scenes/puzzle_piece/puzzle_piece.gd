@@ -3,7 +3,7 @@ extends StaticBody2D
 
 class_name PuzzlePiece
 
-const SLIDE_NOISE_THRESHOLD = 8
+const SLIDE_NOISE_THRESHOLD = 6
 
 signal click
 signal unclick

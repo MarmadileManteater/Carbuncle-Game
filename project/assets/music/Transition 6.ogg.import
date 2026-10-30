@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Transition 6.ogg-619d6fd2d4682c34616e56432a67
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=140.0
 beat_count=0
 bar_beats=4
