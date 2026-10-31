@@ -18,6 +18,8 @@ func _ready() -> void:
 		func():
 			if carbunkle_state.phase > 1:
 				knock()
+				carbunkle_state.move()
+				loaded_scene.update_carbunkle_location(carbunkle_state.location)
 	)
 	$CarbunkleTimer.start()
 	
@@ -52,21 +54,7 @@ func load_scene(scene_name: String) -> void:
 			load_scene(new_scene_name)
 	)
 	loaded_scene.on_timeout_trigger_track_change.connect(
-		func(track_name: String, time: float):
-			var timer = Timer.new()
-			timer.one_shot = true
-			timer.timeout.connect(
-				func():
-					remove_child(timer)
-					timer.queue_free()
-					$Jukebox.set_track(track_name)
-					if track_name == "Phase 2":
-						knock()
-						carbunkle_state.location = CarbunkleState.Location.FrontDoor
-						loaded_scene.update_carbunkle_location(carbunkle_state.location)
-			)
-			add_child(timer)
-			timer.start(time)
+		on_timeout_trigger_track
 	)
 	loaded_scene.trigger_track_change.connect(
 		func(name: String):
@@ -118,6 +106,16 @@ func _on_game_interval() -> void:
 
 func _on_cursor_capture() -> void:
 	loaded_scene.capture()
+	if not state.has("window"):
+		state["window"] = {
+			"animation": "Approach",
+			"position": 0,
+			"is_playing": true,
+			"time_elapsed": time_elapsed,
+			"first_time": false,
+			"was_visible": false
+		}
+		on_timeout_trigger_track("Phase 2", 30)
 	
 func _process(delta: float) -> void:
 	$Inventory/DPH.visible = items["dph"]
@@ -140,4 +138,21 @@ func knock() -> void:
 	if sound == SoundMachine.Sound.Busted || sound == SoundMachine.Sound.Opening:
 		$Jukebox.set_track("Phase %d" % 6)
 		carbunkle_state.phase = 6
+		
 			
+func on_timeout_trigger_track(track_name: String, time: float):
+			var timer = Timer.new()
+			timer.one_shot = true
+			timer.timeout.connect(
+				func():
+					remove_child(timer)
+					timer.queue_free()
+					$Jukebox.set_track(track_name)
+					if track_name == "Phase 2":
+						knock()
+						carbunkle_state.location = CarbunkleState.Location.FrontDoor
+						loaded_scene.update_carbunkle_location(carbunkle_state.location)
+						carbunkle_state.phase = 2
+			)
+			add_child(timer)
+			timer.start(time)

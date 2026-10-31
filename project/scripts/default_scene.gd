@@ -50,6 +50,10 @@ func nest(scene: DefaultScene) -> void:
 	scene.change_cursor.connect(cursor_change)
 	scene.lock_cursor_to_node.connect(lock_cursor)
 	scene.unlock_cursor_from_node.connect(unlock_cursor)
+	scene.change_scene.connect(
+		func (scene): 
+			change_scene.emit(scene)
+	)
 	
 func cursor_change(cursor: VirtualCursor.Type) -> void:
 	change_cursor.emit(cursor)
@@ -96,7 +100,7 @@ func enable_clickable() -> void:
 				monica.frozen = false
 	, ConnectFlags.CONNECT_ONE_SHOT)
 	add_child(timer)
-	timer.start(0.5)
+	timer.start(0.1)
 
 func capture() -> void:
 	pass

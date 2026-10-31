@@ -68,3 +68,6 @@ func get_sound(is_kitchen_door_locked: bool):
 		else:
 			sound = SoundMachine.Sound.Opening
 	return sound
+	
+func move():
+	location  = (location + 1) % 5

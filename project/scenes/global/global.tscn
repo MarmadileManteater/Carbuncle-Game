@@ -68,7 +68,7 @@ texture = ExtResource("8_i54ly")
 [node name="SoundMachine" parent="." unique_id=1481692606 instance=ExtResource("8_ht0q6")]
 
 [node name="CarbunkleTimer" type="Timer" parent="." unique_id=706440034]
-wait_time = 3.0
+wait_time = 10.0
 
 [connection signal="capture" from="Cursor" to="." method="_on_cursor_capture"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_interval"]
