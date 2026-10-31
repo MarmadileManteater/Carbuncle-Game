@@ -212,7 +212,7 @@ debug_color = Color(0.7124032, 0.26126483, 1, 0.41960785)
 [node name="Carbunkle" parent="." unique_id=1163829090 instance=ExtResource("20_rsa7i")]
 visible = false
 position = Vector2(1338, 397)
-frame_progress = 0.38441652
+frame_progress = 0.2767116
 
 [node name="Area2D" type="Area2D" parent="Carbunkle" unique_id=1106582040]
 

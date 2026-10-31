@@ -30,9 +30,10 @@ func _ready() -> void:
 			if phase > carbunkle_state.phase:
 				carbunkle_state.phase = phase
 				loaded_scene.change_phase(phase)
-				if is_kitchen_door_locked:
-					carbunkle_direction = DefaultScene.Direction.Left
-				loaded_scene.carbunkle_arrives(carbunkle_direction)
+				if phase == 6:
+					if is_kitchen_door_locked:
+						carbunkle_direction = DefaultScene.Direction.Left
+					loaded_scene.carbunkle_arrives(carbunkle_direction)
 	)
 	
 func _input(event: InputEvent) -> void:
