@@ -11,6 +11,8 @@ signal item_obtained
 signal phase_change
 signal carbunkle_move
 signal death
+signal unlock_basement
+signal lock_kitchen
 
 var time_elapsed: float = 0.0
 var first_time: bool = true
@@ -20,6 +22,8 @@ var came_from: String
 var items: Dictionary
 var searches: int
 var carbunkle_location: CarbunkleState.Location
+var is_kitchen_door_locked: bool = false
+var is_basement_door_locked: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

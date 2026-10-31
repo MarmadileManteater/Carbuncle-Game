@@ -1,6 +1,8 @@
 @tool
 extends DefaultScene
 
+signal lock_completed
+
 enum LockPosition { Left, Right }
 
 @export var lock_start: LockPosition = LockPosition.Right
@@ -56,6 +58,7 @@ func _on_done_area_entered(body: Node2D) -> void:
 		end_noise.play()
 		end_noise.finished.connect(
 			func():
+				lock_completed.emit()
 				change_scene.emit("kitchen")
 		)
 		unlock_cursor()

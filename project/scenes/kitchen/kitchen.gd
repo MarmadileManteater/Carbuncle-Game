@@ -10,6 +10,10 @@ enum DoorState { Closed, Locked, Open }
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	if not is_basement_door_locked:
+		basement_state = DoorState.Closed
+	if is_kitchen_door_locked:
+		backdoor_state = DoorState.Locked
 	if items["fridge_note"]:
 		$FridgeNote.hide()
 		$Clickable.remove_child($Clickable/FridgeNote)
@@ -59,6 +63,21 @@ func _left_door_body_entered(body: Node2D) -> void:
 
 func clickable_clicked(node: VirtualClickable) -> void:
 	super(node)
+	if node.name == "BasementLock":
+		if basement_state == DoorState.Locked:
+			change_scene.emit("lock_puzzle_3")
+		elif basement_state == DoorState.Open:
+			if items["doorkey"]:
+				change_scene.emit("basement")
+			else:
+				$NoKey.advance()
+				$NoKey.done.connect(
+					func():
+						$NoKey.hide()
+						enable_clickable()
+						$Clickable.remove_child($Clickable/FridgeNote)
+				)
+				disable_clickable()
 	if node.name == "FridgeNote":
 		$FridgeNote2.advance()
 		$FridgeNote2.done.connect(
