@@ -105,7 +105,8 @@ func load_scene(scene_name: String) -> void:
 	)
 	loaded_scene.death.connect(
 		func():
-			print("dead")
+			remove_child($Jukebox)
+			load_scene("game_over")
 	)
 	loaded_scene.unlock_basement.connect(
 		func():
@@ -143,7 +144,6 @@ func load_scene(scene_name: String) -> void:
 
 func _on_game_interval() -> void:
 	time_elapsed += 0.1
-	$RichTextLabel.text = "%f" % time_elapsed
 	if loaded_scene != null:
 		loaded_scene.time_elapsed = time_elapsed
 

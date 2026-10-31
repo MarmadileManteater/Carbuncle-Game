@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d0ninhcmotupq"]
+
+[ext_resource type="Script" uid="uid://kf28yymyfap" path="res://scenes/game_over/game_over.gd" id="1_anb0t"]
+[ext_resource type="AudioStream" uid="uid://y6si4kep56sh" path="res://assets/music/Game Over.ogg" id="1_sseyc"]
+[ext_resource type="Texture2D" uid="uid://bxanxos6jdhal" path="res://assets/sprites/game_over.png" id="2_anb0t"]
+
+[node name="GameOver" type="Node2D" unique_id=1297932115]
+script = ExtResource("1_anb0t")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2049672479]
+stream = ExtResource("1_sseyc")
+autoplay = true
+
+[node name="GameOver" type="Sprite2D" parent="." unique_id=1997468372]
+position = Vector2(813, 464)
+texture = ExtResource("2_anb0t")

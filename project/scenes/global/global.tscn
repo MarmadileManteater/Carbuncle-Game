@@ -46,15 +46,6 @@ z_index = 25
 wait_time = 0.1
 autostart = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=94002581]
-z_index = 11
-offset_left = 1285.0
-offset_top = 769.0
-offset_right = 1600.0
-offset_bottom = 884.0
-theme_override_font_sizes/normal_font_size = 23
-scroll_active = false
-
 [node name="Jukebox" parent="." unique_id=1021065957 instance=ExtResource("3_bm3mx")]
 
 [node name="Inventory" type="Node2D" parent="." unique_id=1256969500]
