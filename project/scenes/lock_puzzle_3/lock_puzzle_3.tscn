@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://yuyaxx0ny104" path="res://scenes/lock_puzzle_3/lock_puzzle_3.gd" id="1_6xy55"]
 [ext_resource type="PackedScene" uid="uid://bf2nt0ibn252v" path="res://scenes/lock_puzzle/lock_puzzle.tscn" id="2_kslug"]
 [ext_resource type="PackedScene" uid="uid://drorgjbwrm5x" path="res://scenes/puzzle_piece/puzzle_piece.tscn" id="3_kslug"]
+[ext_resource type="PackedScene" uid="uid://bkvjjvf73aaod" path="res://scenes/dialogs/dialogs.tscn" id="4_smbfr"]
+[ext_resource type="PackedScene" uid="uid://cw8n73x31nrww" path="res://scenes/dialog/dialog.tscn" id="5_oeoxi"]
 
 [node name="LockPuzzle3" type="Node2D" unique_id=250860321]
 script = ExtResource("1_6xy55")
@@ -59,3 +61,16 @@ direction = 1
 [node name="PuzzlePiece10" parent="LockPuzzle" unique_id=1548873244 instance=ExtResource("3_kslug")]
 position = Vector2(931, 277)
 length = 781
+
+[node name="BasementLock" parent="." unique_id=1448613965 instance=ExtResource("4_smbfr")]
+position = Vector2(746, 621)
+
+[node name="Dialog" parent="BasementLock" unique_id=1634559854 instance=ExtResource("5_oeoxi")]
+text = "I left the backdoor wide open, but locked the basement?"
+portrait = 1
+portrait_position = 0
+
+[node name="Dialog2" parent="BasementLock" unique_id=1613788069 instance=ExtResource("5_oeoxi")]
+text = "What's wrong with me??"
+portrait = 1
+portrait_position = 0

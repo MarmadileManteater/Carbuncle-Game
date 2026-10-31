@@ -122,7 +122,7 @@ shape = SubResource("RectangleShape2D_6wcjf")
 position = Vector2(547, 290)
 cursor = 3
 size = Vector2(197.555, 456.91)
-scene = "lock_puzzle_1"
+scene = "lock_puzzle_3"
 
 [node name="BackdoorLock" parent="Clickable" unique_id=1772063982 instance=ExtResource("13_pyrih")]
 position = Vector2(1428, 396)
