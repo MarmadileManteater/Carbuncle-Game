@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://drx0lwmtnnufy"]
+
+[ext_resource type="Script" uid="uid://c1cjwln4ohlih" path="res://scenes/basement/basement.gd" id="1_02yi3"]
+[ext_resource type="Texture2D" uid="uid://cjfag4po8dbhh" path="res://assets/sprites/shotgun.png" id="2_gpc5m"]
+[ext_resource type="PackedScene" uid="uid://bkvjjvf73aaod" path="res://scenes/dialogs/dialogs.tscn" id="3_u5722"]
+[ext_resource type="PackedScene" uid="uid://cw8n73x31nrww" path="res://scenes/dialog/dialog.tscn" id="4_wuaeu"]
+[ext_resource type="AudioStream" uid="uid://htcib0yjuydi" path="res://assets/sfx/Shotgun Pump.ogg" id="5_wuaeu"]
+[ext_resource type="AudioStream" uid="uid://bvk4hy88oq0n3" path="res://assets/sfx/Shotgun Blast.ogg" id="6_olr0t"]
+[ext_resource type="AudioStream" uid="uid://qfqsibkj8dwk" path="res://assets/music/Transition 2.ogg" id="7_olr0t"]
+[ext_resource type="AudioStream" uid="uid://cngmmfjbay1gs" path="res://assets/sfx/Door - Busted Open.ogg" id="8_6wvo0"]
+
+[sub_resource type="Animation" id="Animation_wuaeu"]
+resource_name = "Fade"
+length = 0.39999999999999997
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.39999998),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_olr0t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6wvo0"]
+_data = {
+&"Fade": SubResource("Animation_wuaeu"),
+&"RESET": SubResource("Animation_olr0t")
+}
+
+[node name="Basement" type="Node2D" unique_id=357330135]
+script = ExtResource("1_02yi3")
+
+[node name="Gun" type="Sprite2D" parent="." unique_id=851368026]
+position = Vector2(807, 391)
+texture = ExtResource("2_gpc5m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Gun" unique_id=1643099372]
+libraries/ = SubResource("AnimationLibrary_6wvo0")
+
+[node name="Start" parent="." unique_id=1448613965 instance=ExtResource("3_u5722")]
+visible = false
+position = Vector2(746, 621)
+
+[node name="Dialog" parent="Start" unique_id=1634559854 instance=ExtResource("4_wuaeu")]
+visible = false
+text = "Here we are . . ."
+portrait = 1
+
+[node name="Dialog2" parent="Start" unique_id=817588793 instance=ExtResource("4_wuaeu")]
+visible = false
+text = "Ahhhhh-hhhhahahhaa- (cough cough cough)"
+portrait = 2
+portrait_position = 0
+
+[node name="Dialog3" parent="Start" unique_id=203446567 instance=ExtResource("4_wuaeu")]
+visible = false
+text = "h-how much do you pay for your int-int- int-int-ternet bill?"
+portrait = 2
+portrait_position = 0
+
+[node name="Dialog4" parent="Start" unique_id=375467084 instance=ExtResource("4_wuaeu")]
+visible = false
+text = "what?"
+portrait = 1
+
+[node name="Dialog5" parent="Start" unique_id=1692638646 instance=ExtResource("4_wuaeu")]
+visible = false
+text = "w-we-we were sent by the electric company to audit-"
+portrait = 2
+portrait_position = 0
+
+[node name="Dialog6" parent="Start" unique_id=482355918 instance=ExtResource("4_wuaeu")]
+visible = false
+text = "is this a multi-level marketing scheme?"
+portrait = 1
+
+[node name="Dialog7" parent="Start" unique_id=931508499 instance=ExtResource("4_wuaeu")]
+visible = false
+text = "no-n-n-n-no definitely not that. we just want to make s-s-s-sure everyone (cough cough)"
+portrait = 2
+portrait_position = 0
+
+[node name="Dialog8" parent="Start" unique_id=9693647 instance=ExtResource("4_wuaeu")]
+visible = false
+text = "we just want to make sure everyone gets the best deal."
+portrait = 2
+portrait_position = 0
+
+[node name="End" parent="." unique_id=265422722 instance=ExtResource("3_u5722")]
+position = Vector2(746, 621)
+
+[node name="Dialog" parent="End" unique_id=1517425146 instance=ExtResource("4_wuaeu")]
+visible = false
+text = "[color=#bbb][i]Wait, should I actually kill them?[/i][/color]"
+portrait = 1
+
+[node name="Dialog2" parent="End" unique_id=1909999743 instance=ExtResource("4_wuaeu")]
+visible = false
+text = "[color=#bbb][i]I [b]do[/b] hate this kind of \"force your way in at a late hour\" door to door sales tactic.[/i][/color]"
+portrait = 1
+
+[node name="Dialog3" parent="End" unique_id=1571777714 instance=ExtResource("4_wuaeu")]
+visible = false
+text = "[color=#bbb][i]But, should the punishment really be murder???[/i][/color]"
+portrait = 1
+
+[node name="Dialog4" parent="End" unique_id=1930018198 instance=ExtResource("4_wuaeu")]
+visible = false
+text = "[color=#bbb][i]. . .[/i][/color]"
+portrait = 1
+
+[node name="Dialog5" parent="End" unique_id=1576819169 instance=ExtResource("4_wuaeu")]
+visible = false
+text = "[color=#bbb][i]Yes. Undoubtedly. Yes.[/i][/color]"
+portrait = 1
+
+[node name="Dialog6" parent="End" unique_id=1455715987 instance=ExtResource("4_wuaeu")]
+visible = false
+text = "[color=#bbb][i]Even being extremely charitable, this . . . being is a member of a cult.[/i][/color]"
+portrait = 1
+
+[node name="Dialog7" parent="End" unique_id=245536215 instance=ExtResource("4_wuaeu")]
+visible = false
+text = "[color=#bbb][i]I'm basically doing them a favor by putting an end to their misery.[/i][/color]"
+portrait = 1
+
+[node name="Pump" type="AudioStreamPlayer" parent="." unique_id=1692390772]
+stream = ExtResource("5_wuaeu")
+
+[node name="Shoot" type="AudioStreamPlayer" parent="." unique_id=1278850615]
+stream = ExtResource("6_olr0t")
+
+[node name="Chaos" type="AudioStreamPlayer" parent="." unique_id=189124060]
+stream = ExtResource("7_olr0t")
+
+[node name="Busted" type="AudioStreamPlayer" parent="." unique_id=537528641]
+stream = ExtResource("8_6wvo0")

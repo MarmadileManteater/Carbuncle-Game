@@ -15,7 +15,6 @@ var carbunkle_direction: DefaultScene.Direction
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Jukebox.set_track("Phase 1")
-	load_scene(starting_scene)
 	$CarbunkleTimer.timeout.connect(
 		func():
 			if carbunkle_state.phase > 1:
@@ -36,6 +35,8 @@ func _ready() -> void:
 					loaded_scene.carbunkle_arrives(carbunkle_direction)
 	)
 	
+	load_scene(starting_scene)
+	
 func _input(event: InputEvent) -> void:
 	$Cursor.input(event)
 
@@ -45,6 +46,9 @@ func unload_scene():
 	loaded_scene = null
 
 func load_scene(scene_name: String) -> void:
+	if scene_name == "basement":
+		remove_child($Jukebox)
+		remove_child($SoundMachine)
 	if loaded_scene != null:
 		unload_scene()
 	

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dwwdqrs2k0ojy"]
+
+[ext_resource type="Script" uid="uid://m3mb7j40ee8b" path="res://scenes/fin/fin.gd" id="1_t72re"]
+[ext_resource type="Texture2D" uid="uid://cdodutnk82748" path="res://assets/sprites/fin.png" id="2_5ta74"]
+
+[node name="Fin" type="Node2D" unique_id=880592340]
+script = ExtResource("1_t72re")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=69852487]
+position = Vector2(815, 432)
+texture = ExtResource("2_5ta74")
