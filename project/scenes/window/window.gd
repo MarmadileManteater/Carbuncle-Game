@@ -6,8 +6,6 @@ var was_visible = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	if first_time:
-		$AnimationPlayer.play("Approach")
 
 func _process(delta: float) -> void:
 	if carbunkle_visible and not was_visible:
@@ -31,6 +29,7 @@ func save_state() -> Dictionary:
 
 func load_state(state: Dictionary):
 	if state["is_playing"]:
-		$AnimationPlayer.play(state["animation"])
-		$AnimationPlayer.seek(state["position"] + time_elapsed - state["time_elapsed"])
-		was_visible = state["was_visible"]
+		if phase == 1:
+			$AnimationPlayer.play(state["animation"])
+			$AnimationPlayer.seek(state["position"] + time_elapsed - state["time_elapsed"])
+			was_visible = state["was_visible"]
