@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Phase 2.ogg-f0cf1045f72b4530a4ec4a4f88563784.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0.0
 bpm=105.0
 beat_count=0

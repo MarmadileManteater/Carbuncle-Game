@@ -219,6 +219,7 @@ texture = ExtResource("4_y2ayq")
 position = Vector2(802, 740)
 cursor = 0
 size = Vector2(1600, 300)
+scene = "room_with_window"
 
 [node name="CarbunkleWalkingBy" parent="." unique_id=1448613965 instance=ExtResource("6_wt84n")]
 position = Vector2(746, 621)

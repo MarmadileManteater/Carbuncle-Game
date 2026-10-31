@@ -60,7 +60,8 @@ func set_track(name: String) -> void:
 	trigger_track_change.emit(name)
 	
 func clickable_clicked(node: VirtualClickable) -> void:
-	pass
+	if node.scene != null and node.scene != "":
+		change_scene.emit(node.scene)
 	
 func save_state() -> Dictionary:
 	return {}

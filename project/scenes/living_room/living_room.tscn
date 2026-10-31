@@ -1,9 +1,60 @@
 [gd_scene format=3 uid="uid://c47f4hds5ih22"]
 
-[ext_resource type="Texture2D" uid="uid://dyqw1wll2cdnr" path="res://assets/sprites/living_room.png" id="1_3m8il"]
+[ext_resource type="Script" uid="uid://3mj6ybfsx6rw" path="res://scenes/living_room/living_room.gd" id="1_2t2pm"]
+[ext_resource type="PackedScene" uid="uid://dfm6tfc42k5tf" path="res://scenes/monica/monica.tscn" id="2_j02gd"]
+[ext_resource type="Texture2D" uid="uid://bbhuyxmhlu37h" path="res://assets/sprites/living_room_1.png" id="2_v2mqm"]
+[ext_resource type="Texture2D" uid="uid://cdrkcqeqgkyju" path="res://assets/sprites/living_room_2.png" id="4_55niu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55niu"]
+size = Vector2(11, 696)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0dxmq"]
+size = Vector2(1912, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wcjf"]
+size = Vector2(322, 591)
 
 [node name="LivingRoom" type="Node2D" unique_id=1415733533]
+position = Vector2(0, -1)
+script = ExtResource("1_2t2pm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1599605886]
+position = Vector2(800, 446)
+texture = ExtResource("2_v2mqm")
+
+[node name="Monica" parent="." unique_id=184188669 instance=ExtResource("2_j02gd")]
+modulate = Color(0.46618086, 0.4661808, 0.4661808, 1)
+position = Vector2(420, 478)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2013512582]
+position = Vector2(305, 701)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1973567735]
+position = Vector2(-35.5, -334)
+shape = SubResource("RectangleShape2D_55niu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=269399132]
+position = Vector2(593, -3.5)
+shape = SubResource("RectangleShape2D_0dxmq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=503364072]
 position = Vector2(800, 450)
-texture = ExtResource("1_3m8il")
+texture = ExtResource("4_55niu")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=1173946317]
+position = Vector2(1609, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=399528572]
+position = Vector2(156, 387)
+shape = SubResource("RectangleShape2D_6wcjf")
+debug_color = Color(0.7124032, 0.26126483, 1, 0.41960785)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1451779137]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=791443841]
+position = Vector2(156, 387)
+shape = SubResource("RectangleShape2D_6wcjf")
+debug_color = Color(0.7124032, 0.26126483, 1, 0.41960785)
+
+[connection signal="body_entered" from="Area2D2" to="." method="_on_kitchen_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_left_door_body_entered"]

@@ -9,6 +9,8 @@ signal unhover
 
 @export var cursor: VirtualCursor.Type = VirtualCursor.Type.Point
 @export var size: Vector2 = Vector2.ZERO
+@export var scene: String
+	
 var is_hovered: bool = false
 var is_clicked: bool = false
 
