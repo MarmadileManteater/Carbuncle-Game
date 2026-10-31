@@ -1,9 +1,9 @@
 {
     "godot_version": "4.7.1",
     "export_name": "godot_game",
-    "version": "0.1",
+    "version": "1.0",
     "project_path": "project",
     "itch_user": "marmadilemanteater",
-    "itch_project_stub": "lil-horror-jam-26",
-    "channel_prefix": "dev-"
+    "itch_project_stub": "carbuncle",
+    "channel_prefix": ""
 }
