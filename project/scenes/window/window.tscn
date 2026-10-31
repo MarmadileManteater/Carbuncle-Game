@@ -248,3 +248,8 @@ portrait = 1
 visible = false
 text = "Ugh, people walking up to my house in the dark always scheezes me out."
 portrait = 1
+
+[node name="Dialog6" parent="CarbunkleWalkingBy" unique_id=1034051598 instance=ExtResource("7_k1s4i")]
+visible = false
+text = "I should probably lock my doors just in case."
+portrait = 1

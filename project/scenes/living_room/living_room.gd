@@ -76,7 +76,13 @@ func clickable_clicked(node: VirtualClickable) -> void:
 		elif $Drawer.animation == "open_key":
 			$Drawer.play("open_empty")
 			item_obtained.emit("doorkey")
-
+	if node.name == "Bookshelf":
+		$Books.advance()
+		$Books.done.connect(
+			func():
+				enable_clickable()
+		)
+		disable_clickable()
 func save_state() -> Dictionary:
 	return {
 		"drawer": $Drawer.animation,
