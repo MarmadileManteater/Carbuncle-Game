@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dfm6tfc42k5tf"]
+
+[ext_resource type="Script" uid="uid://de45cd6ufo4h5" path="res://scenes/monica/monica.gd" id="1_ebi6p"]
+[ext_resource type="Texture2D" uid="uid://c4fhyrrkgd63a" path="res://assets/sprites/monica_spritesheet.png" id="1_fsw0l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0dxmq"]
+size = Vector2(144, 417)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t2pm"]
+atlas = ExtResource("1_fsw0l")
+region = Rect2(0, 0, 400, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebi6p"]
+atlas = ExtResource("1_fsw0l")
+region = Rect2(800, 0, 400, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jptxy"]
+atlas = ExtResource("1_fsw0l")
+region = Rect2(400, 0, 400, 800)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0dxmq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t2pm")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebi6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t2pm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jptxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t2pm")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Monica" type="CharacterBody2D" unique_id=184188669]
+script = ExtResource("1_ebi6p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=888699851]
+position = Vector2(-11, 4.5)
+shape = SubResource("RectangleShape2D_0dxmq")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=635240182]
+scale = Vector2(0.55, 0.55)
+sprite_frames = SubResource("SpriteFrames_0dxmq")
+animation = &"walk"
+frame_progress = 0.058658626
+flip_h = true

@@ -49,8 +49,7 @@ func _process(delta: float) -> void:
 				is_lamp_timer_active = true
 
 func clickable_clicked(node: VirtualClickable) -> void:
-	if node.name == "Window":
-		change_scene.emit("window")
+	super(node)
 	if node.name == "Lamp":
 		lamp_state = !lamp_state
 

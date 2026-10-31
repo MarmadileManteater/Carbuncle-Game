@@ -20,10 +20,6 @@ func _process(delta: float) -> void:
 				enable_clickable()
 		, ConnectFlags.CONNECT_ONE_SHOT)
 
-func clickable_clicked(node: VirtualClickable) -> void:
-	if node.name == "Back":
-		change_scene.emit("room_with_window")
-
 func save_state() -> Dictionary:
 	
 	return {
