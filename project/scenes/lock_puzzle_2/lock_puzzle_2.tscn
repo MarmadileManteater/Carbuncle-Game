@@ -28,7 +28,7 @@ position = Vector2(373, 242)
 length = 228
 
 [node name="PuzzlePiece4" parent="LockPuzzle" unique_id=1535320449 instance=ExtResource("3_mwvah")]
-position = Vector2(539, 300)
+position = Vector2(539, 382)
 rotation = 1.5707964
 length = 185
 direction = 1
