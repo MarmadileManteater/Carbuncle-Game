@@ -71,3 +71,6 @@ func _on_game_interval() -> void:
 	$RichTextLabel.text = "%f" % time_elapsed
 	if loaded_scene != null:
 		loaded_scene.time_elapsed = time_elapsed
+
+func _on_cursor_capture() -> void:
+	loaded_scene.capture()

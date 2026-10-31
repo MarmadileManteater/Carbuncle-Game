@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dtgqki0g23pfr" path="res://scenes/monster/monster.tscn" id="2_lnte3"]
 [ext_resource type="Texture2D" uid="uid://dhtbnksvvm4c8" path="res://assets/sprites/window-front.png" id="4_y2ayq"]
 [ext_resource type="PackedScene" uid="uid://6ow7g2olutni" path="res://scenes/virtual_clickable/virtual_clickable.tscn" id="5_y2ayq"]
+[ext_resource type="PackedScene" uid="uid://bkvjjvf73aaod" path="res://scenes/dialogs/dialogs.tscn" id="6_wt84n"]
+[ext_resource type="PackedScene" uid="uid://cw8n73x31nrww" path="res://scenes/dialog/dialog.tscn" id="7_k1s4i"]
 
 [sub_resource type="Animation" id="Animation_omw1o"]
 resource_name = "Approach"
@@ -81,6 +83,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [0, 2]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:carbunkle_visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3.5876899, 19.719585),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_58ypt"]
 length = 0.001
@@ -156,6 +170,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:carbunkle_visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aejpm"]
 _data = {
@@ -176,7 +202,7 @@ self_modulate = Color(0.20871013, 0.20871016, 0.20871013, 1)
 position = Vector2(692, 264)
 scale = Vector2(0.4, 0.4)
 animation = &"walk_2"
-frame_progress = 0.0
+frame_progress = 0.7581102
 form = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1810840078]
@@ -193,3 +219,31 @@ texture = ExtResource("4_y2ayq")
 position = Vector2(802, 740)
 cursor = 0
 size = Vector2(1600, 300)
+
+[node name="CarbunkleWalkingBy" parent="." unique_id=1448613965 instance=ExtResource("6_wt84n")]
+position = Vector2(746, 621)
+
+[node name="Dialog" parent="CarbunkleWalkingBy" unique_id=1634559854 instance=ExtResource("7_k1s4i")]
+visible = false
+text = "Who's walking toward my house at this hour?"
+portrait = 1
+
+[node name="Dialog2" parent="CarbunkleWalkingBy" unique_id=2045828333 instance=ExtResource("7_k1s4i")]
+visible = false
+text = ". . ."
+portrait = 1
+
+[node name="Dialog3" parent="CarbunkleWalkingBy" unique_id=1285436527 instance=ExtResource("7_k1s4i")]
+visible = false
+text = "They are probably just walking by."
+portrait = 1
+
+[node name="Dialog4" parent="CarbunkleWalkingBy" unique_id=2003299136 instance=ExtResource("7_k1s4i")]
+visible = false
+text = ". . ."
+portrait = 1
+
+[node name="Dialog5" parent="CarbunkleWalkingBy" unique_id=1088186870 instance=ExtResource("7_k1s4i")]
+visible = false
+text = "Ugh, people walking up to my house in the dark always scheezes me out."
+portrait = 1

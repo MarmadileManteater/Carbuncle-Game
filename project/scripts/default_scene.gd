@@ -11,6 +11,7 @@ signal trigger_track_change
 var time_elapsed: float = 0.0
 var first_time: bool = true
 var has_visited: Array = []
+var enable_clickable_zones: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,7 +21,8 @@ func _ready() -> void:
 			if clickable is VirtualClickable:
 				clickable.click.connect(
 					func ():
-						clickable_clicked(clickable)
+						if enable_clickable_zones:
+							clickable_clicked(clickable)
 				)
 				clickable.unclick.connect(
 					func ():
@@ -28,11 +30,13 @@ func _ready() -> void:
 				)
 				clickable.hover.connect(
 					func ():
-						cursor_change(clickable.cursor)
+						if enable_clickable_zones:
+							cursor_change(clickable.cursor)
 				)
 				clickable.unhover.connect(
 					func ():
-						cursor_change(VirtualCursor.Type.Default)
+						if enable_clickable_zones:
+							cursor_change(VirtualCursor.Type.Default)
 				)
 
 func nest(scene: DefaultScene) -> void:
@@ -62,4 +66,22 @@ func save_state() -> Dictionary:
 	return {}
 	
 func load_state(state_info: Dictionary) -> void:
+	pass
+	
+func disable_clickable() -> void:
+	enable_clickable_zones = false
+	cursor_change(VirtualCursor.Type.Default)
+
+func enable_clickable() -> void:
+	var timer = Timer.new()
+	timer.one_shot = true
+	timer.timeout.connect(
+		func():
+			enable_clickable_zones = true
+			remove_child(timer)
+			timer.queue_free()
+	, ConnectFlags.CONNECT_ONE_SHOT)
+	add_child(timer)
+	timer.start(0.5)
+func capture() -> void:
 	pass

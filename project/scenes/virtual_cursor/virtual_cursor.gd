@@ -2,6 +2,8 @@
 extends Node2D
 class_name VirtualCursor
 
+signal capture
+
 enum Type { Back, Default, Grab, Notice, Point }
 const types = ["back", "default", "grab", "notice", "point"]
 
@@ -33,6 +35,7 @@ func _process(delta: float) -> void:
 		
 func input(event: InputEvent):
 	if event is InputEventMouseButton and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		capture.emit()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		position = event.global_position
 

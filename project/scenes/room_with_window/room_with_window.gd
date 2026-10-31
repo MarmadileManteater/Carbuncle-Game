@@ -71,3 +71,11 @@ func load_state(state: Dictionary):
 func _on_lamp_timer_timeout() -> void:
 	is_lamp_timer_active = false
 	lamp_count = 0
+
+func capture() -> void:
+	$OpeningDialog.advance()
+	disable_clickable()
+	$OpeningDialog.done.connect(
+		func ():
+			enable_clickable()
+	)
