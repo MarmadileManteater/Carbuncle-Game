@@ -8,6 +8,8 @@ signal unlock_cursor_from_node
 signal on_timeout_trigger_track_change
 signal trigger_track_change
 signal item_obtained
+signal phase_change
+signal carbunkle_move
 
 var time_elapsed: float = 0.0
 var first_time: bool = true
@@ -94,5 +96,6 @@ func enable_clickable() -> void:
 	, ConnectFlags.CONNECT_ONE_SHOT)
 	add_child(timer)
 	timer.start(0.5)
+
 func capture() -> void:
 	pass

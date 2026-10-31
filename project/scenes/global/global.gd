@@ -6,7 +6,9 @@ var loaded_scene_name: String
 var state: Dictionary = {}
 var time_elapsed: float = 0.0
 var items: Dictionary = { "dph": false, "doorkey": false }
+var is_kitchen_door_locked: bool = false
 var searches: int = 0
+var carbunkle_state: CarbunkleState = CarbunkleState.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -74,6 +76,16 @@ func load_scene(scene_name: String) -> void:
 						loaded_scene.enable_clickable()
 				)
 	)
+	loaded_scene.phase_change.connect(
+		func(phase: int):
+			if phase >= carbunkle_state.phase:
+				$Jukebox.set_track("Phase %d" % phase)
+				carbunkle_state.phase = phase
+	)
+	loaded_scene.carbunkle_move.connect(
+		func(location: CarbunkleState.Location):
+			carbunkle_state.location = location
+	)
 
 	loaded_scene.time_elapsed = time_elapsed
 	loaded_scene.first_time = not state.has(scene_name)
@@ -99,3 +111,21 @@ func _on_cursor_capture() -> void:
 func _process(delta: float) -> void:
 	$Inventory/DPH.visible = items["dph"]
 	$Inventory/Key.visible = items["doorkey"]
+
+func knock() -> void:
+	var distance = carbunkle_state.get_distance(loaded_scene_name)
+	
+	var sound = carbunkle_state.get_sound(is_kitchen_door_locked)
+	
+	var audio_level = 1
+	
+	if distance == 1:
+		audio_level = 0.8
+	if distance == 2:
+		audio_level = 0.6
+	
+	$SoundMachine.play(sound, audio_level)
+	if sound == SoundMachine.Sound.Busted || sound == SoundMachine.Sound.Opening:
+		$Jukebox.set_track("Phase %d" % 6)
+		carbunkle_state.phase = 6
+			

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dvnivjsaotr5k" path="res://assets/sprites/key.png" id="5_g0msn"]
 [ext_resource type="PackedScene" uid="uid://bkvjjvf73aaod" path="res://scenes/dialogs/dialogs.tscn" id="6_orsvi"]
 [ext_resource type="PackedScene" uid="uid://cw8n73x31nrww" path="res://scenes/dialog/dialog.tscn" id="7_ht0q6"]
+[ext_resource type="PackedScene" uid="uid://fla105b8cbde" path="res://scenes/sound_machine/sound_machine.tscn" id="8_ht0q6"]
 
 [node name="Global" type="Node2D" unique_id=127505025]
 script = ExtResource("1_bhh4k")
@@ -57,6 +58,11 @@ texture = ExtResource("4_ts12r")
 visible = false
 position = Vector2(100, 0)
 texture = ExtResource("5_g0msn")
+
+[node name="SoundMachine" parent="." unique_id=1481692606 instance=ExtResource("8_ht0q6")]
+
+[node name="CarbunkleTimer" type="Timer" parent="." unique_id=706440034]
+wait_time = 15.0
 
 [connection signal="capture" from="Cursor" to="." method="_on_cursor_capture"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_interval"]

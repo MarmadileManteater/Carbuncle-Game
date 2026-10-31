@@ -65,7 +65,8 @@ func load_state(state: Dictionary):
 	if monster_at_window:
 		$Monster.show()
 		$Clickable.remove_child($Clickable/Window)
-		set_track("Phase 2")
+		phase_change.emit(2)
+		carbunkle_move.emit(CarbunkleState.Location.BedroomWindow)
 
 func _on_lamp_timer_timeout() -> void:
 	is_lamp_timer_active = false

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://fla105b8cbde"]
+
+[ext_resource type="AudioStream" uid="uid://d1d02vy6epw3d" path="res://assets/sfx/Door - Knocking 1.ogg" id="1_a47ck"]
+[ext_resource type="Script" uid="uid://bkfxk1jdk4k4q" path="res://scenes/sound_machine/sound_machine.gd" id="1_tt0oq"]
+[ext_resource type="AudioStream" uid="uid://bo8a6kspep5yf" path="res://assets/sfx/Door - Knocking 2.ogg" id="2_tt0oq"]
+[ext_resource type="AudioStream" uid="uid://c0b2dwxda0qna" path="res://assets/sfx/Door - Banging.ogg" id="3_dyia7"]
+[ext_resource type="AudioStream" uid="uid://c5hiwoyoghl0x" path="res://assets/sfx/Window - Knocking.ogg" id="4_b8vg5"]
+[ext_resource type="AudioStream" uid="uid://c3aeyjxx2bgtp" path="res://assets/sfx/Door - Trying to Break.ogg" id="5_3rw7w"]
+[ext_resource type="AudioStream" uid="uid://c6l4iliut2qjy" path="res://assets/sfx/Door - Opening.ogg" id="6_6on40"]
+[ext_resource type="AudioStream" uid="uid://bgvqts4s3mlww" path="res://assets/sfx/Door - Jiggling Handle.ogg" id="7_7lcau"]
+[ext_resource type="AudioStream" uid="uid://cngmmfjbay1gs" path="res://assets/sfx/Door - Busted Open.ogg" id="8_ueknm"]
+
+[node name="SoundMachine" type="Node2D" unique_id=1481692606]
+script = ExtResource("1_tt0oq")
+
+[node name="Knocking1" type="AudioStreamPlayer" parent="." unique_id=1287168001]
+stream = ExtResource("1_a47ck")
+
+[node name="Knocking2" type="AudioStreamPlayer" parent="." unique_id=1636660524]
+stream = ExtResource("2_tt0oq")
+
+[node name="DoorBanging" type="AudioStreamPlayer" parent="." unique_id=172115327]
+stream = ExtResource("3_dyia7")
+
+[node name="WindowKnocking" type="AudioStreamPlayer" parent="." unique_id=484022430]
+stream = ExtResource("4_b8vg5")
+
+[node name="DoorTryingToBreakIn" type="AudioStreamPlayer" parent="." unique_id=138606172]
+stream = ExtResource("5_3rw7w")
+
+[node name="DoorOpening" type="AudioStreamPlayer" parent="." unique_id=844460527]
+stream = ExtResource("6_6on40")
+
+[node name="DoorJigglingHandle" type="AudioStreamPlayer" parent="." unique_id=588849095]
+stream = ExtResource("7_7lcau")
+
+[node name="DoorBustedOpen" type="AudioStreamPlayer" parent="." unique_id=326065728]
+stream = ExtResource("8_ueknm")
