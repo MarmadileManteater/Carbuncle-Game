@@ -8,7 +8,7 @@ func _ready() -> void:
 	super()
 	if first_time:
 		$AnimationPlayer.play("Approach")
-		set_track_on_timeout("Phase 2", $AnimationPlayer.current_animation_length / $AnimationPlayer.speed_scale)
+		set_track_on_timeout("Phase 2", ($AnimationPlayer.current_animation_length / $AnimationPlayer.speed_scale) - 4)
 
 func _process(delta: float) -> void:
 	if carbunkle_visible and not was_visible:

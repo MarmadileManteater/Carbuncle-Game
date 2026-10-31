@@ -14,6 +14,12 @@ var carbunkle_state: CarbunkleState = CarbunkleState.new()
 func _ready() -> void:
 	$Jukebox.set_track("Phase 1")
 	load_scene(starting_scene)
+	$CarbunkleTimer.timeout.connect(
+		func():
+			if carbunkle_state.phase > 1:
+				knock()
+	)
+	$CarbunkleTimer.start()
 	
 func _input(event: InputEvent) -> void:
 	$Cursor.input(event)
@@ -54,6 +60,10 @@ func load_scene(scene_name: String) -> void:
 					remove_child(timer)
 					timer.queue_free()
 					$Jukebox.set_track(track_name)
+					if track_name == "Phase 2":
+						knock()
+						carbunkle_state.location = CarbunkleState.Location.FrontDoor
+						loaded_scene.update_carbunkle_location(carbunkle_state.location)
 			)
 			add_child(timer)
 			timer.start(time)
@@ -96,6 +106,7 @@ func load_scene(scene_name: String) -> void:
 	loaded_scene_name = scene_name
 	loaded_scene.items = items
 	loaded_scene.searches = searches
+	loaded_scene.carbunkle_location = carbunkle_state.location
 	add_child(loaded_scene)
 
 
@@ -117,12 +128,12 @@ func knock() -> void:
 	
 	var sound = carbunkle_state.get_sound(is_kitchen_door_locked)
 	
-	var audio_level = 1
+	var audio_level = 5
 	
 	if distance == 1:
-		audio_level = 0.8
+		audio_level = 0
 	if distance == 2:
-		audio_level = 0.6
+		audio_level = -5
 	
 	$SoundMachine.play(sound, audio_level)
 	if sound == SoundMachine.Sound.Busted || sound == SoundMachine.Sound.Opening:

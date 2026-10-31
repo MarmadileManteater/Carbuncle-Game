@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://3mj6ybfsx6rw" path="res://scenes/living_room/living_room.gd" id="1_2t2pm"]
 [ext_resource type="PackedScene" uid="uid://dfm6tfc42k5tf" path="res://scenes/monica/monica.tscn" id="2_j02gd"]
 [ext_resource type="Texture2D" uid="uid://bbhuyxmhlu37h" path="res://assets/sprites/living_room_1.png" id="2_v2mqm"]
+[ext_resource type="PackedScene" uid="uid://dtgqki0g23pfr" path="res://scenes/monster/monster.tscn" id="2_wk2qu"]
 [ext_resource type="Texture2D" uid="uid://cdrkcqeqgkyju" path="res://assets/sprites/living_room_2.png" id="4_55niu"]
 [ext_resource type="AudioStream" uid="uid://dl0rej6jvvqto" path="res://assets/sfx/Drawer - Opening.ogg" id="5_8ddjr"]
 [ext_resource type="Texture2D" uid="uid://cuve5ia783db5" path="res://assets/sprites/couch.png" id="5_55niu"]
@@ -75,6 +76,17 @@ size = Vector2(322, 591)
 [node name="LivingRoom" type="Node2D" unique_id=1415733533]
 position = Vector2(0, -1)
 script = ExtResource("1_2t2pm")
+
+[node name="MonsterBehindWindow" parent="." unique_id=1163829090 instance=ExtResource("2_wk2qu")]
+visible = false
+position = Vector2(1065, 473)
+frame_progress = 0.14656574
+
+[node name="MonsterBehindDoor" parent="." unique_id=777084332 instance=ExtResource("2_wk2qu")]
+visible = false
+position = Vector2(116.00006, 469)
+scale = Vector2(1.3779999, 1.3779999)
+frame_progress = 0.54810995
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1599605886]
 position = Vector2(800, 451)

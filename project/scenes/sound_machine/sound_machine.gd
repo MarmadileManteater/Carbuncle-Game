@@ -14,7 +14,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func play(sound: Sound, audio_level: float = 1) -> void:
+func play(sound: Sound, audio_level: float = 0) -> void:
 	var player: AudioStreamPlayer
 	if sound == Sound.Knocking:
 		var knocking = [ $Knocking1, $Knocking2 ]
@@ -31,5 +31,5 @@ func play(sound: Sound, audio_level: float = 1) -> void:
 		player = $WindowKnocking
 	if sound == Sound.Opening:
 		player = $DoorOpening
-	player.volume_linear = audio_level
+	player.volume_db = audio_level
 	player.play()

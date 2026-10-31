@@ -18,6 +18,7 @@ var enable_clickable_zones: bool = true
 var came_from: String
 var items: Dictionary
 var searches: int
+var carbunkle_location: CarbunkleState.Location
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -98,4 +99,7 @@ func enable_clickable() -> void:
 	timer.start(0.5)
 
 func capture() -> void:
+	pass
+
+func update_carbunkle_location(location: CarbunkleState.Location) -> void:
 	pass

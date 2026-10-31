@@ -45,7 +45,7 @@ script = ExtResource("1_ooi6j")
 visible = false
 position = Vector2(610, 492.00003)
 scale = Vector2(1.633, 1.633)
-frame_progress = 0.20866734
+frame_progress = 0.81991893
 
 [node name="Background" type="Sprite2D" parent="." unique_id=488778490]
 position = Vector2(800, 450)
@@ -59,7 +59,7 @@ polygon = PackedVector2Array(12, 909, 390, 560, 365, 88, 732, 96, 758, 567, 1110
 position = Vector2(1310, 524)
 sprite_frames = SubResource("SpriteFrames_0dxmq")
 animation = &"off"
-frame_progress = 0.20915252
+frame_progress = 0.8204041
 
 [node name="Shadow" type="Polygon2D" parent="." unique_id=592220649]
 modulate = Color(0, 0, 0, 0.40392157)

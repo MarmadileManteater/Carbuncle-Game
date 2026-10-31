@@ -6,6 +6,7 @@ var looked_in_couch = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	update_carbunkle_location(carbunkle_location)
 	if came_from == "kitchen":
 		$Monica.position = $RightEntrance.position
 		
@@ -76,3 +77,11 @@ func save_state() -> Dictionary:
 func load_state(state_info: Dictionary) -> void:
 	$Drawer.play(state_info["drawer"])
 	looked_in_couch = state_info["looked_in_couch"]
+
+func update_carbunkle_location(location: CarbunkleState.Location) -> void:
+	$MonsterBehindDoor.hide()
+	$MonsterBehindWindow.hide()
+	if location == CarbunkleState.Location.FrontDoor:
+		$MonsterBehindDoor.show()
+	if location == CarbunkleState.Location.LivingRoomWindow:
+		$MonsterBehindWindow.show()

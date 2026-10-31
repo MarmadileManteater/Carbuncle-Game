@@ -7,10 +7,15 @@ var lamp_state_set = null
 var is_lamp_timer_active = false
 var lamp_count = 0
 var monster_at_window = false
-
+var has_opened = false
+var window
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	window = $Clickable/Window
+	if carbunkle_location == CarbunkleState.Location.BedroomWindow:
+		$Monster.show()
+		$Clickable.remove_child(window)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -25,8 +30,9 @@ func _process(delta: float) -> void:
 				$WindowSlam.play()
 				$Monster.show()
 				$Clickable.remove_child($Clickable/Window)
-				set_track("Phase 2")
+				phase_change.emit(2)
 				monster_at_window = true
+				carbunkle_move.emit(CarbunkleState.Location.BedroomWindow)
 		if lamp_state:
 			$Lamp.play("on")
 			$LampShadeShadow.show()
@@ -56,26 +62,32 @@ func clickable_clicked(node: VirtualClickable) -> void:
 func save_state() -> Dictionary:
 	return {
 		"lamp_state": lamp_state,
-		"monster_at_window": monster_at_window
+		"monster_at_window": monster_at_window,
+		"has_opened": has_opened
 	}
 
 func load_state(state: Dictionary):
 	lamp_state = state["lamp_state"]
-	monster_at_window = state["monster_at_window"]
-	if monster_at_window:
-		$Monster.show()
-		$Clickable.remove_child($Clickable/Window)
-		phase_change.emit(2)
-		carbunkle_move.emit(CarbunkleState.Location.BedroomWindow)
+	has_opened = state["has_opened"]
 
 func _on_lamp_timer_timeout() -> void:
 	is_lamp_timer_active = false
 	lamp_count = 0
 
 func capture() -> void:
-	$OpeningDialog.advance()
-	disable_clickable()
-	$OpeningDialog.done.connect(
-		func ():
-			enable_clickable()
-	)
+	if not has_opened:
+		has_opened = true
+		$OpeningDialog.advance()
+		disable_clickable()
+		$OpeningDialog.done.connect(
+			func ():
+				enable_clickable()
+		)
+	
+func update_carbunkle_location(location: CarbunkleState.Location) -> void:
+	if location == CarbunkleState.Location.BedroomWindow:
+		$Monster.show()
+		$Clickable.remove_child(window)
+	else:
+		$Monster.hide()
+		$Clickable.add_child(window)
