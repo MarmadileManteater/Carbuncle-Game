@@ -66,7 +66,7 @@ func clickable_clicked(node: VirtualClickable) -> void:
 	if node.name == "BasementLock":
 		if basement_state == DoorState.Locked:
 			change_scene.emit("lock_puzzle_3")
-		elif basement_state == DoorState.Open:
+		elif basement_state == DoorState.Closed:
 			if items["doorkey"]:
 				change_scene.emit("basement")
 			else:

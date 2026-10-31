@@ -128,7 +128,6 @@ shape = SubResource("RectangleShape2D_6wcjf")
 position = Vector2(547, 290)
 cursor = 3
 size = Vector2(197.555, 456.91)
-scene = "lock_puzzle_3"
 
 [node name="BackdoorLock" parent="Clickable" unique_id=1772063982 instance=ExtResource("13_pyrih")]
 position = Vector2(1428, 396)
@@ -170,7 +169,7 @@ portrait = 1
 [node name="Carbunkle" parent="." unique_id=1163829090 instance=ExtResource("20_rsa7i")]
 visible = false
 position = Vector2(1338, 397)
-frame_progress = 0.27693424
+frame_progress = 0.4763147
 
 [node name="Area2D" type="Area2D" parent="Carbunkle" unique_id=1106582040]
 
