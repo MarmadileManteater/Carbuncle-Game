@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://blc2bjhhncxad" path="res://scenes/lock_puzzle_2/lock_puzzle_2.gd" id="1_1fsct"]
 [ext_resource type="PackedScene" uid="uid://bf2nt0ibn252v" path="res://scenes/lock_puzzle/lock_puzzle.tscn" id="2_mwvah"]
 [ext_resource type="PackedScene" uid="uid://drorgjbwrm5x" path="res://scenes/puzzle_piece/puzzle_piece.tscn" id="3_mwvah"]
+[ext_resource type="PackedScene" uid="uid://bkvjjvf73aaod" path="res://scenes/dialogs/dialogs.tscn" id="4_3771h"]
+[ext_resource type="PackedScene" uid="uid://cw8n73x31nrww" path="res://scenes/dialog/dialog.tscn" id="5_f5jkq"]
 
 [node name="LockPuzzle2" type="Node2D" unique_id=1449560801]
 script = ExtResource("1_1fsct")
@@ -54,3 +56,10 @@ position = Vector2(1306, 453)
 rotation = 1.5707964
 length = 200
 direction = 1
+
+[node name="BackdoorLock" parent="." unique_id=1448613965 instance=ExtResource("4_3771h")]
+position = Vector2(746, 621)
+
+[node name="Dialog" parent="BackdoorLock" unique_id=1634559854 instance=ExtResource("5_f5jkq")]
+text = "I don't know why I thought it was a good idea to install these."
+portrait = 1

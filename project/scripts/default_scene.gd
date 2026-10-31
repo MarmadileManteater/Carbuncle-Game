@@ -51,7 +51,7 @@ func nest(scene: DefaultScene) -> void:
 	scene.lock_cursor_to_node.connect(lock_cursor)
 	scene.unlock_cursor_from_node.connect(unlock_cursor)
 	scene.change_scene.connect(
-		func (scene): 
+		func (scene):
 			change_scene.emit(scene)
 	)
 	

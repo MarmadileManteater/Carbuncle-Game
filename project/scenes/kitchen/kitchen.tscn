@@ -150,6 +150,7 @@ position = Vector2(800, 450)
 texture = ExtResource("9_0mum6")
 
 [node name="FridgeNote2" parent="." unique_id=1448613965 instance=ExtResource("18_isx8r")]
+visible = false
 position = Vector2(746, 621)
 
 [node name="Dialog" parent="FridgeNote2" unique_id=1634559854 instance=ExtResource("19_rsa7i")]
