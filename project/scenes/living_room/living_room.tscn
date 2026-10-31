@@ -4,6 +4,64 @@
 [ext_resource type="PackedScene" uid="uid://dfm6tfc42k5tf" path="res://scenes/monica/monica.tscn" id="2_j02gd"]
 [ext_resource type="Texture2D" uid="uid://bbhuyxmhlu37h" path="res://assets/sprites/living_room_1.png" id="2_v2mqm"]
 [ext_resource type="Texture2D" uid="uid://cdrkcqeqgkyju" path="res://assets/sprites/living_room_2.png" id="4_55niu"]
+[ext_resource type="AudioStream" uid="uid://dl0rej6jvvqto" path="res://assets/sfx/Drawer - Opening.ogg" id="5_8ddjr"]
+[ext_resource type="Texture2D" uid="uid://cuve5ia783db5" path="res://assets/sprites/couch.png" id="5_55niu"]
+[ext_resource type="Texture2D" uid="uid://bnrgk25ycomie" path="res://assets/sprites/bookshelf.png" id="6_tjl2r"]
+[ext_resource type="Texture2D" uid="uid://dwemxcsjvgypy" path="res://assets/sprites/drawer.png" id="7_t80q3"]
+[ext_resource type="PackedScene" uid="uid://6ow7g2olutni" path="res://scenes/virtual_clickable/virtual_clickable.tscn" id="8_0hj4s"]
+[ext_resource type="PackedScene" uid="uid://bkvjjvf73aaod" path="res://scenes/dialogs/dialogs.tscn" id="10_3o82y"]
+[ext_resource type="PackedScene" uid="uid://cw8n73x31nrww" path="res://scenes/dialog/dialog.tscn" id="11_wk2qu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hj4s"]
+atlas = ExtResource("7_t80q3")
+region = Rect2(0, 0, 193, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o82y"]
+atlas = ExtResource("7_t80q3")
+region = Rect2(579, 0, 193, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ddjr"]
+atlas = ExtResource("7_t80q3")
+region = Rect2(193, 0, 193, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vp5rr"]
+atlas = ExtResource("7_t80q3")
+region = Rect2(386, 0, 193, 222)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0dxmq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hj4s")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o82y")
+}],
+"loop": 1,
+"name": &"open_dph",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ddjr")
+}],
+"loop": 1,
+"name": &"open_empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vp5rr")
+}],
+"loop": 1,
+"name": &"open_key",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_55niu"]
 size = Vector2(11, 696)
@@ -19,8 +77,21 @@ position = Vector2(0, -1)
 script = ExtResource("1_2t2pm")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1599605886]
-position = Vector2(800, 446)
+position = Vector2(800, 451)
 texture = ExtResource("2_v2mqm")
+
+[node name="Bookshelf" type="Sprite2D" parent="." unique_id=1838528401]
+position = Vector2(778.00006, 310)
+rotation = 0.017453292
+skew = 0.017453292
+texture = ExtResource("6_tjl2r")
+
+[node name="Drawer" type="AnimatedSprite2D" parent="." unique_id=1175252340]
+position = Vector2(1263, 498)
+sprite_frames = SubResource("SpriteFrames_0dxmq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Drawer" unique_id=1308506173]
+stream = ExtResource("5_8ddjr")
 
 [node name="Monica" parent="." unique_id=184188669 instance=ExtResource("2_j02gd")]
 modulate = Color(0.46618086, 0.4661808, 0.4661808, 1)
@@ -38,7 +109,7 @@ position = Vector2(593, -3.5)
 shape = SubResource("RectangleShape2D_0dxmq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=503364072]
-position = Vector2(800, 450)
+position = Vector2(800, 452)
 texture = ExtResource("4_55niu")
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=1173946317]
@@ -55,6 +126,36 @@ debug_color = Color(0.7124032, 0.26126483, 1, 0.41960785)
 position = Vector2(156, 387)
 shape = SubResource("RectangleShape2D_6wcjf")
 debug_color = Color(0.7124032, 0.26126483, 1, 0.41960785)
+
+[node name="RightEntrance" type="Node2D" parent="." unique_id=1006594122]
+position = Vector2(1526, 467)
+
+[node name="Couch" type="Sprite2D" parent="." unique_id=1713690265]
+modulate = Color(0.46666667, 0.46666667, 0.46666667, 1)
+position = Vector2(1184, 786)
+texture = ExtResource("5_55niu")
+
+[node name="Clickable" type="Node2D" parent="." unique_id=300474694]
+
+[node name="Drawer" parent="Clickable" unique_id=1515518074 instance=ExtResource("8_0hj4s")]
+position = Vector2(1258, 492)
+cursor = 3
+size = Vector2(200, 200)
+
+[node name="Couch" parent="Clickable" unique_id=465711237 instance=ExtResource("8_0hj4s")]
+position = Vector2(1183, 799)
+cursor = 3
+size = Vector2(550, 200)
+
+[node name="Couch Cushions" parent="." unique_id=1448613965 instance=ExtResource("10_3o82y")]
+z_index = 10
+position = Vector2(746, 621)
+
+[node name="Dialog" parent="Couch Cushions" unique_id=1634559854 instance=ExtResource("11_wk2qu")]
+text = "[i][color=#aaaaaa]You search between the couch cushions.[/color][/i]"
+
+[node name="Dialog2" parent="Couch Cushions" unique_id=2042479526 instance=ExtResource("11_wk2qu")]
+portrait = 1
 
 [connection signal="body_entered" from="Area2D2" to="." method="_on_kitchen_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_left_door_body_entered"]

@@ -7,6 +7,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dxmq"]
 size = Vector2(1859, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wcjf"]
+size = Vector2(142, 798)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4r6q"]
+size = Vector2(322, 591)
+
 [node name="Kitchen" type="Node2D" unique_id=1659860686]
 script = ExtResource("1_madu1")
 
@@ -27,4 +33,18 @@ position = Vector2(715.00006, -103)
 rotation = -0.08726646
 shape = SubResource("RectangleShape2D_0dxmq")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=2123615123]
+position = Vector2(1231, -417)
+shape = SubResource("RectangleShape2D_6wcjf")
+
 [node name="Clickable" type="Node2D" parent="." unique_id=1126109606]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=35605313]
+position = Vector2(-236, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=565841126]
+position = Vector2(156, 387)
+shape = SubResource("RectangleShape2D_o4r6q")
+debug_color = Color(0.7124032, 0.26126483, 1, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_left_door_body_entered"]

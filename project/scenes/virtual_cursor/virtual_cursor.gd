@@ -34,6 +34,9 @@ func _process(delta: float) -> void:
 		position = locked_node.position
 		
 func input(event: InputEvent):
+	if event is InputEventKey:
+		if event.keycode == 4194305 or event.keycode == 4194327:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if event is InputEventMouseButton and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		capture.emit()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

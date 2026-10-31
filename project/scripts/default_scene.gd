@@ -7,11 +7,15 @@ signal lock_cursor_to_node
 signal unlock_cursor_from_node
 signal on_timeout_trigger_track_change
 signal trigger_track_change
+signal item_obtained
 
 var time_elapsed: float = 0.0
 var first_time: bool = true
 var has_visited: Array = []
 var enable_clickable_zones: bool = true
+var came_from: String
+var items: Dictionary
+var searches: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -72,6 +76,9 @@ func load_state(state_info: Dictionary) -> void:
 func disable_clickable() -> void:
 	enable_clickable_zones = false
 	cursor_change(VirtualCursor.Type.Default)
+	var monica = find_child("Monica")
+	if monica != null:
+		monica.frozen = true
 
 func enable_clickable() -> void:
 	var timer = Timer.new()
@@ -81,6 +88,9 @@ func enable_clickable() -> void:
 			enable_clickable_zones = true
 			remove_child(timer)
 			timer.queue_free()
+			var monica = find_child("Monica")
+			if monica != null:
+				monica.frozen = false
 	, ConnectFlags.CONNECT_ONE_SHOT)
 	add_child(timer)
 	timer.start(0.5)

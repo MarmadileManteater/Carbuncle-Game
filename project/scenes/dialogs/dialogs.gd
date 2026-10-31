@@ -1,11 +1,13 @@
 extends Node2D
 
 signal done
+signal next_line
 
 var dialogs: Array
 var current: Dialog
 var is_ready: bool = true
 var is_started: bool = false
+var index = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,6 +26,8 @@ func advance() -> void:
 			hide()
 			is_started = false
 			return
+		next_line.emit(index)
+		index += 1
 		is_ready = false
 		current = dialogs.pop_front()
 		current.show()

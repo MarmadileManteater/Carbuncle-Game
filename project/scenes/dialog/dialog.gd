@@ -56,9 +56,9 @@ func _process(delta: float) -> void:
 		$RichTextLabel.size.x = 1038.0
 		$RichTextLabel/Arrow.position.x = 1014.0
 	if portrait == Portrait.Monica:
-		$Portraits/Monica.show()
+		$Portraits/MonicaP.show()
 	else:
-		$Portraits/Monica.hide()
+		$Portraits/MonicaP.hide()
 	if portrait == Portrait.Monster:
 		$Portraits/Monster.show()
 	else:

@@ -2,12 +2,11 @@
 
 [ext_resource type="Script" uid="uid://6qbb3fbgmual" path="res://scenes/virtual_clickable/virtual_clickable.gd" id="1_tr8gq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0dxmq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tr8gq"]
 size = Vector2(10, 10)
 
 [node name="VirtualClickable" type="Node2D" unique_id=1515518074]
 script = ExtResource("1_tr8gq")
-cursor = null
 size = Vector2(10, 10)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=703860366]
@@ -15,7 +14,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1996313838]
-shape = SubResource("RectangleShape2D_0dxmq")
+shape = SubResource("RectangleShape2D_tr8gq")
 debug_color = Color(0.6186578, 0.0015600139, 0.7897209, 0.41960785)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

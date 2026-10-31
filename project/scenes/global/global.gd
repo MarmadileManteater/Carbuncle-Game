@@ -2,8 +2,11 @@ extends Node
 
 @export var starting_scene: String = "lock_puzzle"
 var loaded_scene: DefaultScene = null
+var loaded_scene_name: String
 var state: Dictionary = {}
 var time_elapsed: float = 0.0
+var items: Dictionary = { "dph": false, "doorkey": false }
+var searches: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -57,12 +60,30 @@ func load_scene(scene_name: String) -> void:
 		func(name: String):
 			$Jukebox.set_track(name)
 	)
+	loaded_scene.item_obtained.connect(
+		func (item: String):
+			searches+=1
+			loaded_scene.searches = searches
+			items[item] = true
+			loaded_scene.items = items
+			if item == "dph":
+				loaded_scene.disable_clickable()
+				$DPH.advance()
+				$DPH.done.connect(
+					func ():
+						loaded_scene.enable_clickable()
+				)
+	)
 
 	loaded_scene.time_elapsed = time_elapsed
 	loaded_scene.first_time = not state.has(scene_name)
 	if state.has(scene_name):
 		loaded_scene.load_state(state[scene_name])
 	loaded_scene.has_visited = state.keys()
+	loaded_scene.came_from = loaded_scene_name
+	loaded_scene_name = scene_name
+	loaded_scene.items = items
+	loaded_scene.searches = searches
 	add_child(loaded_scene)
 
 
@@ -74,3 +95,7 @@ func _on_game_interval() -> void:
 
 func _on_cursor_capture() -> void:
 	loaded_scene.capture()
+	
+func _process(delta: float) -> void:
+	$Inventory/DPH.visible = items["dph"]
+	$Inventory/Key.visible = items["doorkey"]

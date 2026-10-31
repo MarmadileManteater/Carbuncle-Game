@@ -8,3 +8,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _left_door_body_entered(body: Node2D) -> void:
+	if body == $Monica:
+		change_scene.emit("living_room")

@@ -87,7 +87,7 @@ texture = ExtResource("2_djj88")
 [node name="Portraits" type="Node2D" parent="." unique_id=1282781185]
 position = Vector2(601, 11)
 
-[node name="Monica" type="AnimatedSprite2D" parent="Portraits" unique_id=472911964]
+[node name="MonicaP" type="AnimatedSprite2D" parent="Portraits" unique_id=472911964]
 visible = false
 position = Vector2(-4, -44)
 sprite_frames = SubResource("SpriteFrames_0dxmq")
@@ -95,7 +95,7 @@ sprite_frames = SubResource("SpriteFrames_0dxmq")
 [node name="Monster" parent="Portraits" unique_id=1163829090 instance=ExtResource("4_fmfh2")]
 visible = false
 position = Vector2(-3, -19)
-frame_progress = 0.03565951
+frame_progress = 0.9643633
 
 [node name="DialogFront" type="Sprite2D" parent="." unique_id=148247673]
 position = Vector2(73, 126)
@@ -124,7 +124,7 @@ libraries/ = SubResource("AnimationLibrary_kihui")
 autoplay = &"bob"
 
 [node name="Timer" type="Timer" parent="." unique_id=1107149826]
-wait_time = 0.009999999999999998
+wait_time = 0.00999999999999999
 
 [node name="Chirp" type="AudioStreamPlayer" parent="." unique_id=1051176050]
 stream = ExtResource("5_54y5e")
