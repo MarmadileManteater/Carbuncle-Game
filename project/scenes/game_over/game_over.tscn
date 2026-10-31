@@ -14,3 +14,9 @@ autoplay = true
 [node name="GameOver" type="Sprite2D" parent="." unique_id=1997468372]
 position = Vector2(813, 464)
 texture = ExtResource("2_anb0t")
+
+[node name="Timer" type="Timer" parent="." unique_id=177204138]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
