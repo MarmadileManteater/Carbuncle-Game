@@ -10,13 +10,13 @@ config_version=5
 
 [application]
 
-config/name="Lil Horror Jam 26"
+config/name="Carbuncle"
 run/main_scene="uid://dg1e2bc0yvcmh"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/stretch_mode=0
 boot_splash/image="uid://bts8og4ghhifr"
-config/icon="res://icon.svg"
+config/icon="uid://bts8og4ghhifr"
 
 [display]
 
