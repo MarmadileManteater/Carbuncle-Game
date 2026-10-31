@@ -6,6 +6,8 @@ func set_track(name: String) -> void:
 	if current_track != null:
 		if name == current_track.name:
 			return
+			
+	find_child("Phase *").stop()
 	var track: AudioStreamPlayer = find_child(name)
 	var position = 0
 	if current_track != null:

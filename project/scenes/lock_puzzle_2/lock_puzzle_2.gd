@@ -5,6 +5,10 @@ extends DefaultScene
 func _ready() -> void:
 	nest($LockPuzzle)
 	super()
+	$LockPuzzle.lock_completed.connect(
+		func ():
+			lock_kitchen.emit()
+	)
 	$BackdoorLock.advance()
 
 

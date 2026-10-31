@@ -4,6 +4,10 @@ extends DefaultScene
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	nest($LockPuzzle)
+	$LockPuzzle.lock_completed.connect(
+		func ():
+			unlock_basement.emit()
+	)
 	super()
 	$BasementLock.advance()
 

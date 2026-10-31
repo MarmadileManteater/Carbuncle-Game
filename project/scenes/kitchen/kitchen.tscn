@@ -68,7 +68,7 @@ position = Vector2(815, 172)
 texture = ExtResource("7_pyrih")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=144576555]
-position = Vector2(327, 455)
+position = Vector2(323, 423)
 texture = ExtResource("4_yi3jr")
 
 [node name="BasementLockUnlocked" type="Sprite2D" parent="." unique_id=1506098836]
@@ -170,7 +170,7 @@ portrait = 1
 [node name="Carbunkle" parent="." unique_id=1163829090 instance=ExtResource("20_rsa7i")]
 visible = false
 position = Vector2(1338, 397)
-frame_progress = 0.9552502
+frame_progress = 0.27693424
 
 [node name="Area2D" type="Area2D" parent="Carbunkle" unique_id=1106582040]
 
@@ -178,6 +178,20 @@ frame_progress = 0.9552502
 position = Vector2(-13.063965, -13.521515)
 rotation = -0.12217306
 shape = SubResource("RectangleShape2D_u4npt")
+
+[node name="NoKey" parent="." unique_id=118297267 instance=ExtResource("18_isx8r")]
+visible = false
+position = Vector2(746, 621)
+
+[node name="Dialog" parent="NoKey" unique_id=515638104 instance=ExtResource("19_rsa7i")]
+visible = false
+text = "I also need a key????"
+portrait = 1
+
+[node name="Dialog2" parent="NoKey" unique_id=585949689 instance=ExtResource("19_rsa7i")]
+visible = false
+text = "What am I keeping down there????"
+portrait = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_left_door_body_entered"]
 [connection signal="body_entered" from="Carbunkle/Area2D" to="." method="_on_carbunkle_entered"]

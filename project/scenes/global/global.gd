@@ -9,6 +9,7 @@ var items: Dictionary = { "dph": false, "doorkey": false, "fridge_note": false }
 var is_kitchen_door_locked: bool = false
 var searches: int = 0
 var carbunkle_state: CarbunkleState = CarbunkleState.new()
+var is_basement_door_locked: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -89,6 +90,14 @@ func load_scene(scene_name: String) -> void:
 		func():
 			print("dead")
 	)
+	loaded_scene.unlock_basement.connect(
+		func():
+			is_basement_door_locked = false
+	)
+	loaded_scene.lock_kitchen.connect(
+		func():
+			is_kitchen_door_locked = true
+	)
 
 	loaded_scene.time_elapsed = time_elapsed
 	loaded_scene.first_time = not state.has(scene_name)
@@ -100,6 +109,8 @@ func load_scene(scene_name: String) -> void:
 	loaded_scene.items = items
 	loaded_scene.searches = searches
 	loaded_scene.carbunkle_location = carbunkle_state.location
+	loaded_scene.is_basement_door_locked = is_basement_door_locked
+	loaded_scene.is_kitchen_door_locked = is_kitchen_door_locked
 	if carbunkle_state.phase == 6:
 		loaded_scene.carbunkle_arrives()
 	add_child(loaded_scene)
