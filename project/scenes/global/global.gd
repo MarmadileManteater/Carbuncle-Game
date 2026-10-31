@@ -52,7 +52,7 @@ func load_scene(scene_name: String) -> void:
 	)
 	loaded_scene.change_scene.connect(
 		func(new_scene_name: String):
-			state[scene_name] = loaded_scene.save_state()
+			state[loaded_scene.name] = loaded_scene.save_state()
 			load_scene(new_scene_name)
 	)
 	loaded_scene.on_timeout_trigger_track_change.connect(
@@ -100,9 +100,9 @@ func load_scene(scene_name: String) -> void:
 	)
 
 	loaded_scene.time_elapsed = time_elapsed
-	loaded_scene.first_time = not state.has(scene_name)
-	if state.has(scene_name):
-		loaded_scene.load_state(state[scene_name])
+	loaded_scene.first_time = not state.has(loaded_scene.name)
+	if state.has(loaded_scene.name):
+		loaded_scene.load_state(state[loaded_scene.name])
 	loaded_scene.has_visited = state.keys()
 	loaded_scene.came_from = loaded_scene_name
 	loaded_scene_name = scene_name
