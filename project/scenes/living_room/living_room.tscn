@@ -85,13 +85,13 @@ script = ExtResource("1_2t2pm")
 [node name="MonsterBehindWindow" parent="." unique_id=1163829090 instance=ExtResource("2_wk2qu")]
 visible = false
 position = Vector2(1065, 473)
-frame_progress = 0.34370768
+frame_progress = 0.9643306
 
 [node name="MonsterBehindDoor" parent="." unique_id=777084332 instance=ExtResource("2_wk2qu")]
 visible = false
 position = Vector2(116.00006, 469)
 scale = Vector2(1.3779999, 1.3779999)
-frame_progress = 0.7452537
+frame_progress = 0.3658772
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1599605886]
 position = Vector2(799, 451)
@@ -155,7 +155,7 @@ texture = ExtResource("9_tdost")
 [node name="Carbunkle" parent="." unique_id=491502546 instance=ExtResource("2_wk2qu")]
 visible = false
 position = Vector2(1720, 459)
-frame_progress = 0.9808191
+frame_progress = 0.60144246
 
 [node name="Area2D" type="Area2D" parent="Carbunkle" unique_id=1246180061]
 
@@ -181,6 +181,11 @@ position = Vector2(1183, 799)
 cursor = 3
 size = Vector2(550, 200)
 
+[node name="Bookshelf" parent="Clickable" unique_id=647987247 instance=ExtResource("8_0hj4s")]
+position = Vector2(750, 343)
+cursor = 3
+size = Vector2(325, 575)
+
 [node name="Couch Cushions" parent="." unique_id=1448613965 instance=ExtResource("10_3o82y")]
 visible = false
 z_index = 10
@@ -191,6 +196,21 @@ text = "[i][color=#aaaaaa]You search between the couch cushions.[/color][/i]"
 
 [node name="Dialog2" parent="Couch Cushions" unique_id=2042479526 instance=ExtResource("11_wk2qu")]
 portrait = 1
+
+[node name="Books" parent="." unique_id=313188027 instance=ExtResource("10_3o82y")]
+position = Vector2(746, 621)
+
+[node name="Dialog" parent="Books" unique_id=1653665253 instance=ExtResource("11_wk2qu")]
+text = "I love books, but I feel like I never have the energy to sit down with one."
+portrait = 1
+
+[node name="Dialog2" parent="Books" unique_id=1784157829 instance=ExtResource("11_wk2qu")]
+visible = false
+text = "I should really try to find some time for that."
+portrait = 1
+
+[node name="Books2" parent="." unique_id=354922943 instance=ExtResource("10_3o82y")]
+position = Vector2(746, 621)
 
 [node name="CarbunkleLeft" type="Node2D" parent="." unique_id=2050911708]
 position = Vector2(407, 604)

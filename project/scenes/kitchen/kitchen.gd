@@ -106,7 +106,21 @@ func clickable_clicked(node: VirtualClickable) -> void:
 		elif $Fridge.animation == "open_key":
 			item_obtained.emit("doorkey")
 			$Fridge.play("open_empty")
-				
+	if node.name == "Trash":
+		$Trash.advance()
+		$Trash.done.connect(
+			func():
+				enable_clickable()
+		)
+		disable_clickable()
+	if node.name == "FridgeLower":
+		$FridgeLower.advance()
+		$FridgeLower.done.connect(
+			func():
+				enable_clickable()
+		)
+		disable_clickable()
+
 func save_state() -> Dictionary:
 	return {
 		"player_position": $Monica.position,
