@@ -85,13 +85,13 @@ script = ExtResource("1_2t2pm")
 [node name="MonsterBehindWindow" parent="." unique_id=1163829090 instance=ExtResource("2_wk2qu")]
 visible = false
 position = Vector2(1065, 473)
-frame_progress = 0.50108385
+frame_progress = 0.34370768
 
 [node name="MonsterBehindDoor" parent="." unique_id=777084332 instance=ExtResource("2_wk2qu")]
 visible = false
 position = Vector2(116.00006, 469)
 scale = Vector2(1.3779999, 1.3779999)
-frame_progress = 0.90263057
+frame_progress = 0.7452537
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1599605886]
 position = Vector2(799, 451)
@@ -155,7 +155,7 @@ texture = ExtResource("9_tdost")
 [node name="Carbunkle" parent="." unique_id=491502546 instance=ExtResource("2_wk2qu")]
 visible = false
 position = Vector2(1720, 459)
-frame_progress = 0.13819562
+frame_progress = 0.9808191
 
 [node name="Area2D" type="Area2D" parent="Carbunkle" unique_id=1246180061]
 

@@ -96,13 +96,14 @@ func update_carbunkle_location(location: CarbunkleState.Location) -> void:
 		$MonsterBehindWindow.show()
 
 func carbunkle_arrives(direction: DefaultScene.Direction):
-	if direction == DefaultScene.Direction.Right:
-		$Carbunkle.show()
-	else:
-		$Carbunkle.show()
-		$Carbunkle.position = $CarbunkleLeft.position
-		$DoorBlank.show()
-		$DoorBusteds.play()
+	if not $Carbunkle.visible:
+		if direction == DefaultScene.Direction.Right:
+			$Carbunkle.show()
+		else:
+			$Carbunkle.show()
+			$Carbunkle.position = $CarbunkleLeft.position
+			$DoorBlank.show()
+			$DoorBusteds.play()
 		
 
 func _on_carbunkle_entered(body: Node2D) -> void:

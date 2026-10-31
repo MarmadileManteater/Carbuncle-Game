@@ -118,13 +118,14 @@ func load_state(state_info: Dictionary):
 	$Fridge.animation = state_info["fridge"]
 
 func carbunkle_arrives(direction: DefaultScene.Direction):
-	if direction == DefaultScene.Direction.Right:
-		backdoor_state = DoorState.Open
-		$Carbunkle.show()
-	else:
-		$Carbunkle.position = $CarbunkleLeft.position
-		$Carbunkle.flip_h = true
-		$Carbunkle.show()
+	if not $Carbunkle.visible:
+		if direction == DefaultScene.Direction.Right:
+			backdoor_state = DoorState.Open
+			$Carbunkle.show()
+		else:
+			$Carbunkle.position = $CarbunkleLeft.position
+			$Carbunkle.scale.x = -1
+			$Carbunkle.show()
 
 
 func _on_carbunkle_entered(body: Node2D) -> void:
