@@ -29,3 +29,11 @@ func clickable_clicked(node: VirtualClickable) -> void:
 				$Clickable.remove_child($Clickable/FridgeNote)
 		)
 		disable_clickable()
+
+func save_state() -> Dictionary:
+	return {
+		"player_position": $Monica.position
+	}
+
+func load_state(state_info: Dictionary):
+	$Monica.position = state_info["player_position"]

@@ -47,11 +47,17 @@ func set_start_of_puzzle():
 
 func _on_done_area_entered(body: Node2D) -> void:
 	if body == $Driver/CharacterBody:
+		var end_noise: AudioStreamPlayer
 		$Driver/AnimationPlayer.play_backwards("RotateIn")
 		if lock_start == LockPosition.Left:
-			$LockNoise.play()
+			end_noise = $LockNoise
 		if lock_start == LockPosition.Right:
-			$UnlockNoise.play()
+			end_noise = $UnlockNoise
+		end_noise.play()
+		end_noise.finished.connect(
+			func():
+				change_scene.emit("kitchen")
+		)
 		unlock_cursor()
 
 func _on_piece_click(node: PuzzlePiece) -> void:
