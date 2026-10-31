@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b8j7rie2ekrdi" path="res://scenes/lock_puzzle_1/lock_puzzle_1.gd" id="1_0heaw"]
 [ext_resource type="PackedScene" uid="uid://bf2nt0ibn252v" path="res://scenes/lock_puzzle/lock_puzzle.tscn" id="1_lr11s"]
 [ext_resource type="PackedScene" uid="uid://drorgjbwrm5x" path="res://scenes/puzzle_piece/puzzle_piece.tscn" id="2_0heaw"]
+[ext_resource type="PackedScene" uid="uid://bkvjjvf73aaod" path="res://scenes/dialogs/dialogs.tscn" id="4_alx44"]
 
 [node name="LockPuzzle1" type="Node2D" unique_id=1725483128]
 script = ExtResource("1_0heaw")
@@ -49,3 +50,5 @@ position = Vector2(270, 616)
 rotation = 1.5707964
 length = 171
 direction = 1
+
+[node name="Dialogs" parent="." unique_id=1448613965 instance=ExtResource("4_alx44")]

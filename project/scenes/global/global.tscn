@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bkvjjvf73aaod" path="res://scenes/dialogs/dialogs.tscn" id="6_orsvi"]
 [ext_resource type="PackedScene" uid="uid://cw8n73x31nrww" path="res://scenes/dialog/dialog.tscn" id="7_ht0q6"]
 [ext_resource type="PackedScene" uid="uid://fla105b8cbde" path="res://scenes/sound_machine/sound_machine.tscn" id="8_ht0q6"]
+[ext_resource type="Texture2D" uid="uid://t0oc3gnx5tja" path="res://assets/sprites/fridge_note.png" id="8_i54ly"]
 
 [node name="Global" type="Node2D" unique_id=127505025]
 script = ExtResource("1_bhh4k")
@@ -58,6 +59,11 @@ texture = ExtResource("4_ts12r")
 visible = false
 position = Vector2(100, 0)
 texture = ExtResource("5_g0msn")
+
+[node name="Note" type="Sprite2D" parent="Inventory" unique_id=1761056237]
+visible = false
+position = Vector2(200, 0)
+texture = ExtResource("8_i54ly")
 
 [node name="SoundMachine" parent="." unique_id=1481692606 instance=ExtResource("8_ht0q6")]
 
