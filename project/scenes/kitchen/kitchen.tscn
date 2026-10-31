@@ -2,9 +2,20 @@
 
 [ext_resource type="Texture2D" uid="uid://buamkleuu3n0r" path="res://assets/sprites/kitchen.png" id="1_5wy2p"]
 [ext_resource type="Script" uid="uid://b7wmpbt85g4dq" path="res://scenes/kitchen/kitchen.gd" id="1_madu1"]
+[ext_resource type="Texture2D" uid="uid://dil3sxsk833fx" path="res://assets/sprites/kitchen_floor.png" id="2_lmija"]
+[ext_resource type="Texture2D" uid="uid://cjechyxptdqde" path="res://assets/sprites/basement_door_closed.png" id="3_m0td3"]
 [ext_resource type="PackedScene" uid="uid://dfm6tfc42k5tf" path="res://scenes/monica/monica.tscn" id="3_o4r6q"]
 [ext_resource type="Texture2D" uid="uid://b7hsdavhm2mur" path="res://assets/sprites/fridge_counter.png" id="4_7wsgf"]
 [ext_resource type="Texture2D" uid="uid://cxubkmwlmxqto" path="res://assets/sprites/trash.png" id="4_yi3jr"]
+[ext_resource type="Texture2D" uid="uid://cfjw0b3r0tcsb" path="res://assets/sprites/backdoor_closed.png" id="4_hmhdv"]
+[ext_resource type="Texture2D" uid="uid://bt7n2fd3qfr2w" path="res://assets/sprites/basement_lock_unlocked.png" id="6_m0td3"]
+[ext_resource type="Texture2D" uid="uid://di8ml677vdlqf" path="res://assets/sprites/backdoor_open.png" id="6_rryun"]
+[ext_resource type="Texture2D" uid="uid://doodtfe3skak2" path="res://assets/sprites/basement_lock_locked.png" id="7_0mum6"]
+[ext_resource type="Texture2D" uid="uid://i3nd6ghh5y0j" path="res://assets/sprites/basement_door_open.png" id="7_isaiq"]
+[ext_resource type="Texture2D" uid="uid://ddxagkbowsq6a" path="res://assets/sprites/backdoor_lock_unlocked.png" id="8_amifv"]
+[ext_resource type="Texture2D" uid="uid://bi7fqw08ir3dl" path="res://assets/sprites/kitchen_1.png" id="9_0mum6"]
+[ext_resource type="Texture2D" uid="uid://f4c4blfhqnt4" path="res://assets/sprites/backdoor_lock_locked.png" id="9_ck2ga"]
+[ext_resource type="PackedScene" uid="uid://6ow7g2olutni" path="res://scenes/virtual_clickable/virtual_clickable.tscn" id="13_pyrih"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dxmq"]
 size = Vector2(1859, 20)
@@ -17,10 +28,26 @@ size = Vector2(322, 591)
 
 [node name="Kitchen" type="Node2D" unique_id=1659860686]
 script = ExtResource("1_madu1")
+metadata/_edit_vertical_guides_ = [800.0]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1548028478]
-modulate = Color(0.50928617, 0.50928617, 0.50928617, 1)
-position = Vector2(801, 450)
+[node name="KitchenFloor" type="Sprite2D" parent="." unique_id=683181166]
+modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
+position = Vector2(812, 697)
+texture = ExtResource("2_lmija")
+
+[node name="BasementDoorClosed" type="Sprite2D" parent="." unique_id=382406589]
+modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
+position = Vector2(547, 290)
+texture = ExtResource("3_m0td3")
+
+[node name="BackdoorClosed" type="Sprite2D" parent="." unique_id=1698826754]
+modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
+position = Vector2(1429, 401)
+texture = ExtResource("4_hmhdv")
+
+[node name="KitchenWalls" type="Sprite2D" parent="." unique_id=1548028478]
+modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
+position = Vector2(800, 450)
 texture = ExtResource("1_5wy2p")
 
 [node name="Fridge" type="Sprite2D" parent="." unique_id=717615997]
@@ -31,6 +58,37 @@ texture = ExtResource("4_7wsgf")
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=144576555]
 position = Vector2(327, 455)
 texture = ExtResource("4_yi3jr")
+[node name="BasementLockUnlocked" type="Sprite2D" parent="." unique_id=1506098836]
+modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
+position = Vector2(624, 243)
+texture = ExtResource("6_m0td3")
+
+[node name="BasementLockLocked" type="Sprite2D" parent="." unique_id=795465899]
+modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
+position = Vector2(624, 243)
+texture = ExtResource("7_0mum6")
+
+[node name="BackdoorLockUnlocked" type="Sprite2D" parent="." unique_id=378934378]
+modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
+position = Vector2(1455, 369)
+texture = ExtResource("8_amifv")
+
+[node name="BackdoorLockLocked" type="Sprite2D" parent="." unique_id=230135350]
+modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
+position = Vector2(1455, 369)
+texture = ExtResource("9_ck2ga")
+
+[node name="BackdoorOpen" type="Sprite2D" parent="." unique_id=563418989]
+visible = false
+modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
+position = Vector2(1326, 337)
+texture = ExtResource("6_rryun")
+
+[node name="BasementDoorOpen" type="Sprite2D" parent="." unique_id=37220727]
+visible = false
+modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
+position = Vector2(366, 316)
+texture = ExtResource("7_isaiq")
 
 [node name="Monica" parent="." unique_id=184188669 instance=ExtResource("3_o4r6q")]
 modulate = Color(0.46666667, 0.46666667, 0.46666667, 1)
@@ -45,10 +103,23 @@ rotation = -0.034906585
 shape = SubResource("RectangleShape2D_0dxmq")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=2123615123]
+visible = false
 position = Vector2(1231, -417)
 shape = SubResource("RectangleShape2D_6wcjf")
 
 [node name="Clickable" type="Node2D" parent="." unique_id=1126109606]
+
+[node name="BasementLock" parent="Clickable" unique_id=1515518074 instance=ExtResource("13_pyrih")]
+position = Vector2(547, 290)
+cursor = 3
+size = Vector2(197.555, 456.91)
+scene = "lock_puzzle"
+
+[node name="BackdoorLock" parent="Clickable" unique_id=1772063982 instance=ExtResource("13_pyrih")]
+position = Vector2(1428, 396)
+cursor = 3
+size = Vector2(73.755, 592.125)
+scene = "lock_puzzle_2"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=35605313]
 position = Vector2(-236, 0)
@@ -57,5 +128,10 @@ position = Vector2(-236, 0)
 position = Vector2(156, 387)
 shape = SubResource("RectangleShape2D_o4r6q")
 debug_color = Color(0.7124032, 0.26126483, 1, 0.41960785)
+
+[node name="KitchenWalls1" type="Sprite2D" parent="." unique_id=1783456702]
+modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
+position = Vector2(800, 450)
+texture = ExtResource("9_0mum6")
 
 [connection signal="body_entered" from="Area2D" to="." method="_left_door_body_entered"]
