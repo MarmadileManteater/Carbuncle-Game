@@ -36,4 +36,4 @@ func save_state() -> Dictionary:
 	}
 
 func load_state(state_info: Dictionary):
-	$Monica.position = state_info["player_position"]
+	$Monica.position = state_info["player_position"] + Vector2(20, 0)
