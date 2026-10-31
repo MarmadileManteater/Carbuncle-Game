@@ -6,16 +6,19 @@
 [ext_resource type="Texture2D" uid="uid://cjechyxptdqde" path="res://assets/sprites/basement_door_closed.png" id="3_m0td3"]
 [ext_resource type="PackedScene" uid="uid://dfm6tfc42k5tf" path="res://scenes/monica/monica.tscn" id="3_o4r6q"]
 [ext_resource type="Texture2D" uid="uid://b7hsdavhm2mur" path="res://assets/sprites/fridge_counter.png" id="4_7wsgf"]
-[ext_resource type="Texture2D" uid="uid://cxubkmwlmxqto" path="res://assets/sprites/trash.png" id="4_yi3jr"]
 [ext_resource type="Texture2D" uid="uid://cfjw0b3r0tcsb" path="res://assets/sprites/backdoor_closed.png" id="4_hmhdv"]
+[ext_resource type="Texture2D" uid="uid://cxubkmwlmxqto" path="res://assets/sprites/trash.png" id="4_yi3jr"]
 [ext_resource type="Texture2D" uid="uid://bt7n2fd3qfr2w" path="res://assets/sprites/basement_lock_unlocked.png" id="6_m0td3"]
 [ext_resource type="Texture2D" uid="uid://di8ml677vdlqf" path="res://assets/sprites/backdoor_open.png" id="6_rryun"]
 [ext_resource type="Texture2D" uid="uid://doodtfe3skak2" path="res://assets/sprites/basement_lock_locked.png" id="7_0mum6"]
 [ext_resource type="Texture2D" uid="uid://i3nd6ghh5y0j" path="res://assets/sprites/basement_door_open.png" id="7_isaiq"]
+[ext_resource type="Texture2D" uid="uid://t0oc3gnx5tja" path="res://assets/sprites/fridge_note.png" id="7_pyrih"]
 [ext_resource type="Texture2D" uid="uid://ddxagkbowsq6a" path="res://assets/sprites/backdoor_lock_unlocked.png" id="8_amifv"]
 [ext_resource type="Texture2D" uid="uid://bi7fqw08ir3dl" path="res://assets/sprites/kitchen_1.png" id="9_0mum6"]
 [ext_resource type="Texture2D" uid="uid://f4c4blfhqnt4" path="res://assets/sprites/backdoor_lock_locked.png" id="9_ck2ga"]
 [ext_resource type="PackedScene" uid="uid://6ow7g2olutni" path="res://scenes/virtual_clickable/virtual_clickable.tscn" id="13_pyrih"]
+[ext_resource type="PackedScene" uid="uid://bkvjjvf73aaod" path="res://scenes/dialogs/dialogs.tscn" id="18_isx8r"]
+[ext_resource type="PackedScene" uid="uid://cw8n73x31nrww" path="res://scenes/dialog/dialog.tscn" id="19_rsa7i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dxmq"]
 size = Vector2(1859, 20)
@@ -55,9 +58,15 @@ modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
 position = Vector2(1045, 317)
 texture = ExtResource("4_7wsgf")
 
+[node name="FridgeNote" type="Sprite2D" parent="." unique_id=1235846628]
+modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
+position = Vector2(815, 172)
+texture = ExtResource("7_pyrih")
+
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=144576555]
 position = Vector2(327, 455)
 texture = ExtResource("4_yi3jr")
+
 [node name="BasementLockUnlocked" type="Sprite2D" parent="." unique_id=1506098836]
 modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
 position = Vector2(624, 243)
@@ -113,13 +122,19 @@ shape = SubResource("RectangleShape2D_6wcjf")
 position = Vector2(547, 290)
 cursor = 3
 size = Vector2(197.555, 456.91)
-scene = "lock_puzzle"
+scene = "lock_puzzle_1"
 
 [node name="BackdoorLock" parent="Clickable" unique_id=1772063982 instance=ExtResource("13_pyrih")]
 position = Vector2(1428, 396)
 cursor = 3
 size = Vector2(73.755, 592.125)
 scene = "lock_puzzle_2"
+
+[node name="FridgeNote" parent="Clickable" unique_id=1286695845 instance=ExtResource("13_pyrih")]
+position = Vector2(814, 174)
+rotation = -0.116937056
+cursor = 3
+size = Vector2(65.485, 76.48)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=35605313]
 position = Vector2(-236, 0)
@@ -133,5 +148,16 @@ debug_color = Color(0.7124032, 0.26126483, 1, 0.41960785)
 modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
 position = Vector2(800, 450)
 texture = ExtResource("9_0mum6")
+
+[node name="FridgeNote2" parent="." unique_id=1448613965 instance=ExtResource("18_isx8r")]
+position = Vector2(746, 621)
+
+[node name="Dialog" parent="FridgeNote2" unique_id=1634559854 instance=ExtResource("19_rsa7i")]
+text = "\"Cat dead, details later\""
+portrait = 1
+
+[node name="Dialog2" parent="FridgeNote2" unique_id=2057471988 instance=ExtResource("19_rsa7i")]
+text = "I guess he was too busy pushing bodies around to call..."
+portrait = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_left_door_body_entered"]

@@ -5,7 +5,7 @@ var loaded_scene: DefaultScene = null
 var loaded_scene_name: String
 var state: Dictionary = {}
 var time_elapsed: float = 0.0
-var items: Dictionary = { "dph": false, "doorkey": false }
+var items: Dictionary = { "dph": false, "doorkey": false, "fridge_note": false }
 var is_kitchen_door_locked: bool = false
 var searches: int = 0
 var carbunkle_state: CarbunkleState = CarbunkleState.new()
@@ -111,6 +111,7 @@ func _on_cursor_capture() -> void:
 func _process(delta: float) -> void:
 	$Inventory/DPH.visible = items["dph"]
 	$Inventory/Key.visible = items["doorkey"]
+	$Inventory/Note.visible = items["fridge_note"]
 
 func knock() -> void:
 	var distance = carbunkle_state.get_distance(loaded_scene_name)

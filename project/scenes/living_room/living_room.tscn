@@ -148,7 +148,6 @@ cursor = 3
 size = Vector2(550, 200)
 
 [node name="Couch Cushions" parent="." unique_id=1448613965 instance=ExtResource("10_3o82y")]
-visible = false
 z_index = 10
 position = Vector2(746, 621)
 
