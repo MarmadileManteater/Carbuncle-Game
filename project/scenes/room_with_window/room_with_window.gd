@@ -94,6 +94,3 @@ func update_carbunkle_location(location: CarbunkleState.Location) -> void:
 		$Monster.hide()
 		$Clickable.add_child(window)
 		
-		
-func carbunkle_arrives(direction: DefaultScene.Direction):
-	death.emit()
