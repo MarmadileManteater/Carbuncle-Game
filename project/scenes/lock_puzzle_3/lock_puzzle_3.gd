@@ -16,5 +16,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func carbunkle_arrives():
+func carbunkle_arrives(direction: DefaultScene.Direction):
 	death.emit()

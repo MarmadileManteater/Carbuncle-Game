@@ -16,6 +16,8 @@ func _ready() -> void:
 	if carbunkle_location == CarbunkleState.Location.BedroomWindow:
 		$Monster.show()
 		$Clickable.remove_child(window)
+	if phase == 2:
+		$Clickable.remove_child(window)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -25,7 +27,7 @@ func _process(delta: float) -> void:
 		if is_lamp_timer_active:
 			$LampTimer.stop()
 			lamp_count += 1
-			if lamp_count > 3 and "window" in has_visited and not monster_at_window:
+			if lamp_count > 3 and not monster_at_window:
 				lamp_count = 0
 				$WindowSlam.play()
 				$Monster.show()
@@ -93,5 +95,5 @@ func update_carbunkle_location(location: CarbunkleState.Location) -> void:
 		$Clickable.add_child(window)
 		
 		
-func carbunkle_arrives():
+func carbunkle_arrives(direction: DefaultScene.Direction):
 	death.emit()

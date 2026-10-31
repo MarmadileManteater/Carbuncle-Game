@@ -28,7 +28,7 @@ func _ready() -> void:
 				if searches == 0:
 					item_obtained.emit("dph")
 				if searches == 2:
-					item_obtained.emit("key")
+					item_obtained.emit("doorkey")
 				search.emit()
 	)
 
@@ -95,8 +95,15 @@ func update_carbunkle_location(location: CarbunkleState.Location) -> void:
 	if location == CarbunkleState.Location.LivingRoomWindow:
 		$MonsterBehindWindow.show()
 
-func carbunkle_arrives():
-	$Carbunkle.show()
+func carbunkle_arrives(direction: DefaultScene.Direction):
+	if direction == DefaultScene.Direction.Right:
+		$Carbunkle.show()
+	else:
+		$Carbunkle.show()
+		$Carbunkle.position = $CarbunkleLeft.position
+		$DoorBlank.show()
+		$DoorBusteds.play()
+		
 
 func _on_carbunkle_entered(body: Node2D) -> void:
 	if body == $Monica:

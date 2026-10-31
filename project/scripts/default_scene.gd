@@ -1,6 +1,8 @@
 extends Node2D
 class_name DefaultScene
 
+enum Direction { Left, Right }
+
 signal change_scene
 signal change_cursor
 signal lock_cursor_to_node
@@ -25,6 +27,7 @@ var searches: int
 var carbunkle_location: CarbunkleState.Location
 var is_kitchen_door_locked: bool = false
 var is_basement_door_locked: bool = true
+var phase: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -114,5 +117,8 @@ func capture() -> void:
 func update_carbunkle_location(location: CarbunkleState.Location) -> void:
 	pass
 
-func carbunkle_arrives():
+func carbunkle_arrives(direction: Direction):
 	pass
+
+func change_phase(given: int):
+	phase = given

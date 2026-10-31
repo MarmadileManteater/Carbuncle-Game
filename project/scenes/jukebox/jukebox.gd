@@ -1,5 +1,6 @@
 extends Node2D
 
+signal phase_change
 var current_track: AudioStreamPlayer
 
 func set_track(name: String) -> void:
@@ -7,7 +8,8 @@ func set_track(name: String) -> void:
 		if name == current_track.name:
 			return
 			
-	find_child("Phase *").stop()
+	for phase in find_children("Phase *"):
+		phase.stop()
 	var track: AudioStreamPlayer = find_child(name)
 	var position = 0
 	if current_track != null:
@@ -27,12 +29,16 @@ func _process(delta: float) -> void:
 
 func _on_phase_2_finished() -> void:
 	$"Phase 3".play()
+	phase_change.emit(3)
 
 func _on_phase_3_finished() -> void:
 	$"Phase 4".play()
+	phase_change.emit(4)
 
 func _on_phase_4_finished() -> void:
 	$"Phase 5".play()
+	phase_change.emit(5)
 
 func _on_phase_5_finished() -> void:
 	$"Phase 6".play()
+	phase_change.emit(6)

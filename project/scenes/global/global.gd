@@ -10,6 +10,7 @@ var is_kitchen_door_locked: bool = false
 var searches: int = 0
 var carbunkle_state: CarbunkleState = CarbunkleState.new()
 var is_basement_door_locked: bool = true
+var carbunkle_direction: DefaultScene.Direction
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,12 +19,21 @@ func _ready() -> void:
 	$CarbunkleTimer.timeout.connect(
 		func():
 			if carbunkle_state.phase > 1:
-				knock()
 				if carbunkle_state.phase != 6:
 					carbunkle_state.move()
+				knock()
 				loaded_scene.update_carbunkle_location(carbunkle_state.location)
 	)
 	$CarbunkleTimer.start()
+	$Jukebox.phase_change.connect(
+		func(phase):
+			if phase > carbunkle_state.phase:
+				carbunkle_state.phase = phase
+				loaded_scene.change_phase(phase)
+				if is_kitchen_door_locked:
+					carbunkle_direction = DefaultScene.Direction.Left
+				loaded_scene.carbunkle_arrives(carbunkle_direction)
+	)
 	
 func _input(event: InputEvent) -> void:
 	$Cursor.input(event)
@@ -122,8 +132,11 @@ func load_scene(scene_name: String) -> void:
 	loaded_scene.carbunkle_location = carbunkle_state.location
 	loaded_scene.is_basement_door_locked = is_basement_door_locked
 	loaded_scene.is_kitchen_door_locked = is_kitchen_door_locked
+	loaded_scene.phase = carbunkle_state.phase
 	if carbunkle_state.phase == 6:
-		loaded_scene.carbunkle_arrives()
+		loaded_scene.carbunkle_arrives(carbunkle_direction)
+		carbunkle_state.location = CarbunkleState.Location.Walking
+		loaded_scene.update_carbunkle_location(carbunkle_state.location)
 	add_child(loaded_scene)
 
 
@@ -135,8 +148,8 @@ func _on_game_interval() -> void:
 
 func _on_cursor_capture() -> void:
 	loaded_scene.capture()
-	if not state.has("window"):
-		state["window"] = {
+	if not state.has("Window"):
+		state["Window"] = {
 			"animation": "Approach",
 			"position": 0,
 			"is_playing": true,
@@ -153,7 +166,11 @@ func _process(delta: float) -> void:
 
 func knock() -> void:
 	if carbunkle_state.phase == 6:
-		loaded_scene.carbunkle_arrives()
+		carbunkle_state.location = CarbunkleState.Location.Walking
+		loaded_scene.update_carbunkle_location(carbunkle_state.location)
+		if is_kitchen_door_locked:
+			carbunkle_direction = DefaultScene.Direction.Left
+		loaded_scene.carbunkle_arrives(carbunkle_direction)
 		return		
 	var distance = carbunkle_state.get_distance(loaded_scene_name)
 	
@@ -166,13 +183,22 @@ func knock() -> void:
 	if distance == 2:
 		audio_level = -5
 	
+	if carbunkle_state.phase > 2:
+		$SoundMachine.play(SoundMachine.Sound.Jiggling, audio_level)
 	$SoundMachine.play(sound, audio_level)
 	if sound == SoundMachine.Sound.Busted || sound == SoundMachine.Sound.Opening:
+		carbunkle_direction = DefaultScene.Direction.Right
+		if is_kitchen_door_locked:
+			carbunkle_direction = DefaultScene.Direction.Left
 		$Jukebox.set_track("Phase %d" % 6)
 		carbunkle_state.phase = 6
+		loaded_scene.change_phase(carbunkle_state.phase)
 		if distance == 0:
-			loaded_scene.carbunkle_arrives()
+			if sound != SoundMachine.Sound.Busted:
+				$SoundMachine.play(SoundMachine.Sound.Busted, audio_level)
+			loaded_scene.carbunkle_arrives(carbunkle_direction)
 			carbunkle_state.location = CarbunkleState.Location.Walking
+			loaded_scene.update_carbunkle_location(carbunkle_state.location)
 		
 			
 func on_timeout_trigger_track(track_name: String, time: float):
@@ -182,12 +208,14 @@ func on_timeout_trigger_track(track_name: String, time: float):
 				func():
 					remove_child(timer)
 					timer.queue_free()
-					$Jukebox.set_track(track_name)
-					if track_name == "Phase 2":
-						knock()
-						carbunkle_state.location = CarbunkleState.Location.FrontDoor
-						loaded_scene.update_carbunkle_location(carbunkle_state.location)
-						carbunkle_state.phase = 2
+					if carbunkle_state.phase == 1:
+						$Jukebox.set_track(track_name)
+						if track_name == "Phase 2":
+							knock()
+							carbunkle_state.location = CarbunkleState.Location.FrontDoor
+							loaded_scene.update_carbunkle_location(carbunkle_state.location)
+							carbunkle_state.phase = 2
+							loaded_scene.change_phase(carbunkle_state.phase)
 			)
 			add_child(timer)
 			timer.start(time)

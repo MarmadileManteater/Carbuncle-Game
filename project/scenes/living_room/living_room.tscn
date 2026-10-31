@@ -10,8 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://bnrgk25ycomie" path="res://assets/sprites/bookshelf.png" id="6_tjl2r"]
 [ext_resource type="Texture2D" uid="uid://dwemxcsjvgypy" path="res://assets/sprites/drawer.png" id="7_t80q3"]
 [ext_resource type="PackedScene" uid="uid://6ow7g2olutni" path="res://scenes/virtual_clickable/virtual_clickable.tscn" id="8_0hj4s"]
+[ext_resource type="Texture2D" uid="uid://btxvn1xt6og6m" path="res://assets/sprites/living_room_door.png" id="9_tdost"]
 [ext_resource type="PackedScene" uid="uid://bkvjjvf73aaod" path="res://scenes/dialogs/dialogs.tscn" id="10_3o82y"]
 [ext_resource type="PackedScene" uid="uid://cw8n73x31nrww" path="res://scenes/dialog/dialog.tscn" id="11_wk2qu"]
+[ext_resource type="AudioStream" uid="uid://cngmmfjbay1gs" path="res://assets/sfx/Door - Busted Open.ogg" id="14_xincc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hj4s"]
 atlas = ExtResource("7_t80q3")
@@ -83,16 +85,16 @@ script = ExtResource("1_2t2pm")
 [node name="MonsterBehindWindow" parent="." unique_id=1163829090 instance=ExtResource("2_wk2qu")]
 visible = false
 position = Vector2(1065, 473)
-frame_progress = 0.26641726
+frame_progress = 0.50108385
 
 [node name="MonsterBehindDoor" parent="." unique_id=777084332 instance=ExtResource("2_wk2qu")]
 visible = false
 position = Vector2(116.00006, 469)
 scale = Vector2(1.3779999, 1.3779999)
-frame_progress = 0.6679634
+frame_progress = 0.90263057
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1599605886]
-position = Vector2(800, 451)
+position = Vector2(799, 451)
 texture = ExtResource("2_v2mqm")
 
 [node name="Bookshelf" type="Sprite2D" parent="." unique_id=1838528401]
@@ -145,10 +147,15 @@ debug_color = Color(0.7124032, 0.26126483, 1, 0.41960785)
 [node name="RightEntrance" type="Node2D" parent="." unique_id=1006594122]
 position = Vector2(1526, 467)
 
+[node name="DoorBlank" type="Sprite2D" parent="." unique_id=298202976]
+visible = false
+position = Vector2(152, 452)
+texture = ExtResource("9_tdost")
+
 [node name="Carbunkle" parent="." unique_id=491502546 instance=ExtResource("2_wk2qu")]
 visible = false
 position = Vector2(1720, 459)
-frame_progress = 0.9035286
+frame_progress = 0.13819562
 
 [node name="Area2D" type="Area2D" parent="Carbunkle" unique_id=1246180061]
 
@@ -184,6 +191,12 @@ text = "[i][color=#aaaaaa]You search between the couch cushions.[/color][/i]"
 
 [node name="Dialog2" parent="Couch Cushions" unique_id=2042479526 instance=ExtResource("11_wk2qu")]
 portrait = 1
+
+[node name="CarbunkleLeft" type="Node2D" parent="." unique_id=2050911708]
+position = Vector2(407, 604)
+
+[node name="DoorBusteds" type="AudioStreamPlayer" parent="." unique_id=658772013]
+stream = ExtResource("14_xincc")
 
 [connection signal="body_entered" from="Area2D2" to="." method="_on_kitchen_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_left_door_body_entered"]

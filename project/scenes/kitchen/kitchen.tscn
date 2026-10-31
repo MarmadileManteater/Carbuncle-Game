@@ -209,6 +209,18 @@ position = Vector2(156, 387)
 shape = SubResource("RectangleShape2D_o4r6q")
 debug_color = Color(0.7124032, 0.26126483, 1, 0.41960785)
 
+[node name="Carbunkle" parent="." unique_id=1163829090 instance=ExtResource("20_rsa7i")]
+visible = false
+position = Vector2(1338, 397)
+frame_progress = 0.38441652
+
+[node name="Area2D" type="Area2D" parent="Carbunkle" unique_id=1106582040]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Carbunkle/Area2D" unique_id=307118135]
+position = Vector2(-13.063965, -13.521515)
+rotation = -0.12217306
+shape = SubResource("RectangleShape2D_u4npt")
+
 [node name="KitchenWalls1" type="Sprite2D" parent="." unique_id=1783456702]
 modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
 position = Vector2(800, 450)
@@ -226,18 +238,6 @@ portrait = 1
 text = "I guess he was too busy pushing bodies around to call..."
 portrait = 1
 
-[node name="Carbunkle" parent="." unique_id=1163829090 instance=ExtResource("20_rsa7i")]
-visible = false
-position = Vector2(1338, 397)
-frame_progress = 0.49832836
-
-[node name="Area2D" type="Area2D" parent="Carbunkle" unique_id=1106582040]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Carbunkle/Area2D" unique_id=307118135]
-position = Vector2(-13.063965, -13.521515)
-rotation = -0.12217306
-shape = SubResource("RectangleShape2D_u4npt")
-
 [node name="NoKey" parent="." unique_id=118297267 instance=ExtResource("18_isx8r")]
 visible = false
 position = Vector2(746, 621)
@@ -251,6 +251,9 @@ portrait = 1
 visible = false
 text = "What am I keeping down there????"
 portrait = 1
+
+[node name="CarbunkleLeft" type="Node2D" parent="." unique_id=1234288133]
+position = Vector2(-82, 445)
 
 [connection signal="body_entered" from="Area2D" to="." method="_left_door_body_entered"]
 [connection signal="body_entered" from="Carbunkle/Area2D" to="." method="_on_carbunkle_entered"]
