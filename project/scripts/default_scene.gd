@@ -13,6 +13,7 @@ signal carbunkle_move
 signal death
 signal unlock_basement
 signal lock_kitchen
+signal search
 
 var time_elapsed: float = 0.0
 var first_time: bool = true

@@ -17,9 +17,61 @@
 [ext_resource type="Texture2D" uid="uid://bi7fqw08ir3dl" path="res://assets/sprites/kitchen_1.png" id="9_0mum6"]
 [ext_resource type="Texture2D" uid="uid://f4c4blfhqnt4" path="res://assets/sprites/backdoor_lock_locked.png" id="9_ck2ga"]
 [ext_resource type="PackedScene" uid="uid://6ow7g2olutni" path="res://scenes/virtual_clickable/virtual_clickable.tscn" id="13_pyrih"]
+[ext_resource type="AudioStream" uid="uid://dl0rej6jvvqto" path="res://assets/sfx/Drawer - Opening.ogg" id="17_akavi"]
 [ext_resource type="PackedScene" uid="uid://bkvjjvf73aaod" path="res://scenes/dialogs/dialogs.tscn" id="18_isx8r"]
 [ext_resource type="PackedScene" uid="uid://cw8n73x31nrww" path="res://scenes/dialog/dialog.tscn" id="19_rsa7i"]
 [ext_resource type="PackedScene" uid="uid://dtgqki0g23pfr" path="res://scenes/monster/monster.tscn" id="20_rsa7i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsa7i"]
+atlas = ExtResource("4_7wsgf")
+region = Rect2(0, 0, 652, 485)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akavi"]
+atlas = ExtResource("4_7wsgf")
+region = Rect2(1956, 0, 652, 485)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ebl6"]
+atlas = ExtResource("4_7wsgf")
+region = Rect2(652, 0, 652, 485)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6fii"]
+atlas = ExtResource("4_7wsgf")
+region = Rect2(1304, 0, 652, 485)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0dxmq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsa7i")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akavi")
+}],
+"loop": 1,
+"name": &"open_dph",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ebl6")
+}],
+"loop": 1,
+"name": &"open_empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6fii")
+}],
+"loop": 1,
+"name": &"open_key",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dxmq"]
 size = Vector2(1859, 20)
@@ -57,10 +109,13 @@ modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
 position = Vector2(800, 450)
 texture = ExtResource("1_5wy2p")
 
-[node name="Fridge" type="Sprite2D" parent="." unique_id=717615997]
+[node name="Fridge" type="AnimatedSprite2D" parent="." unique_id=731680367]
 modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
 position = Vector2(1045, 317)
-texture = ExtResource("4_7wsgf")
+sprite_frames = SubResource("SpriteFrames_0dxmq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Fridge" unique_id=1023848232]
+stream = ExtResource("17_akavi")
 
 [node name="FridgeNote" type="Sprite2D" parent="." unique_id=1235846628]
 modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
@@ -141,6 +196,11 @@ rotation = -0.116937056
 cursor = 3
 size = Vector2(65.485, 76.48)
 
+[node name="Drawer" parent="Clickable" unique_id=8591180 instance=ExtResource("13_pyrih")]
+position = Vector2(1166, 326)
+cursor = 3
+size = Vector2(400, 100)
+
 [node name="Area2D" type="Area2D" parent="." unique_id=35605313]
 position = Vector2(-236, 0)
 
@@ -169,7 +229,7 @@ portrait = 1
 [node name="Carbunkle" parent="." unique_id=1163829090 instance=ExtResource("20_rsa7i")]
 visible = false
 position = Vector2(1338, 397)
-frame_progress = 0.4763147
+frame_progress = 0.49832836
 
 [node name="Area2D" type="Area2D" parent="Carbunkle" unique_id=1106582040]
 

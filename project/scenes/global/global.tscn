@@ -14,12 +14,22 @@
 script = ExtResource("1_bhh4k")
 starting_scene = "room_with_window"
 
-[node name="DPH" parent="." unique_id=1448613965 instance=ExtResource("6_orsvi")]
+[node name="Key" parent="." unique_id=1448613965 instance=ExtResource("6_orsvi")]
 visible = false
 z_index = 10
 position = Vector2(746, 621)
 
-[node name="Dialog" parent="DPH" unique_id=1634559854 instance=ExtResource("7_ht0q6")]
+[node name="Dialog" parent="Key" unique_id=1634559854 instance=ExtResource("7_ht0q6")]
+visible = false
+text = "There's my basement key!"
+portrait = 1
+
+[node name="DPH" parent="." unique_id=669009965 instance=ExtResource("6_orsvi")]
+visible = false
+z_index = 10
+position = Vector2(746, 621)
+
+[node name="Dialog" parent="DPH" unique_id=921154905 instance=ExtResource("7_ht0q6")]
 visible = false
 text = "Oh sweet! Diphenhydramine~!"
 portrait = 1

@@ -6,10 +6,15 @@ var looked_in_couch = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	if $Drawer.animation == "open_empty":
+		$Clickable.remove_child($Clickable/Drawer)
+
+	if looked_in_couch:
+		$Clickable.remove_child($Clickable/Couch)
 	update_carbunkle_location(carbunkle_location)
 	if came_from == "kitchen":
 		$Monica.position = $RightEntrance.position
-		
+	
 	$"Couch Cushions".next_line.connect(
 		func (line_number):
 			if line_number == 0:
@@ -24,6 +29,7 @@ func _ready() -> void:
 					item_obtained.emit("dph")
 				if searches == 2:
 					item_obtained.emit("key")
+				search.emit()
 	)
 
 
@@ -55,14 +61,15 @@ func clickable_clicked(node: VirtualClickable) -> void:
 			disable_clickable()
 	if node.name == "Drawer":
 		if $Drawer.animation == "default":
+			$Drawer/AudioStreamPlayer2D.play()
 			if searches == 0:
 				$Drawer.play("open_dph")
-				$Drawer/AudioStreamPlayer2D.play()
 			if searches == 1:
 				$Drawer.play("open_empty")
+				item_obtained.emit("nothing")
 			if searches == 2:
 				$Drawer.play("open_key")
-				$Drawer/AudioStreamPlayer2D.play()
+			search.emit()
 		elif $Drawer.animation == "open_dph":
 			$Drawer.play("open_empty")
 			item_obtained.emit("dph")
@@ -93,4 +100,5 @@ func carbunkle_arrives():
 
 func _on_carbunkle_entered(body: Node2D) -> void:
 	if body == $Monica:
-		death.emit()
+		if $Carbunkle.visible:
+			death.emit()

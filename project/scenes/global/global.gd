@@ -64,7 +64,6 @@ func load_scene(scene_name: String) -> void:
 	)
 	loaded_scene.item_obtained.connect(
 		func (item: String):
-			searches+=1
 			loaded_scene.searches = searches
 			items[item] = true
 			loaded_scene.items = items
@@ -72,6 +71,13 @@ func load_scene(scene_name: String) -> void:
 				loaded_scene.disable_clickable()
 				$DPH.advance()
 				$DPH.done.connect(
+					func ():
+						loaded_scene.enable_clickable()
+				)
+			if item == "doorkey":
+				loaded_scene.disable_clickable()
+				$Key.advance()
+				$Key.done.connect(
 					func ():
 						loaded_scene.enable_clickable()
 				)
@@ -97,6 +103,11 @@ func load_scene(scene_name: String) -> void:
 	loaded_scene.lock_kitchen.connect(
 		func():
 			is_kitchen_door_locked = true
+	)
+	loaded_scene.search.connect(
+		func():
+			searches+=1
+			loaded_scene.searches = searches
 	)
 
 	loaded_scene.time_elapsed = time_elapsed

@@ -14,6 +14,7 @@ func _ready() -> void:
 		basement_state = DoorState.Closed
 	if is_kitchen_door_locked:
 		backdoor_state = DoorState.Locked
+		$Clickable.remove_child($Clickable/BackdoorLock)
 	if items["fridge_note"]:
 		$FridgeNote.hide()
 		$Clickable.remove_child($Clickable/FridgeNote)
@@ -88,14 +89,33 @@ func clickable_clicked(node: VirtualClickable) -> void:
 				$Clickable.remove_child($Clickable/FridgeNote)
 		)
 		disable_clickable()
-
+	if node.name == "Drawer":
+		if $Fridge.animation == "default":
+			$Fridge/AudioStreamPlayer2D.play()
+			if searches == 0:
+				$Fridge.play("open_dph")
+			if searches == 1:
+				$Fridge.play("open_empty")
+				item_obtained.emit("nothing")
+			if searches == 2:
+				$Fridge.play("open_key")
+			search.emit()
+		elif $Fridge.animation == "open_dph":
+			item_obtained.emit("dph")
+			$Fridge.play("open_empty")
+		elif $Fridge.animation == "open_key":
+			item_obtained.emit("doorkey")
+			$Fridge.play("open_empty")
+				
 func save_state() -> Dictionary:
 	return {
-		"player_position": $Monica.position
+		"player_position": $Monica.position,
+		"fridge": $Fridge.animation
 	}
 
 func load_state(state_info: Dictionary):
 	$Monica.position = state_info["player_position"] + Vector2(20, 0)
+	$Fridge.animation = state_info["fridge"]
 
 func carbunkle_arrives():
 	backdoor_state = DoorState.Open
@@ -104,4 +124,5 @@ func carbunkle_arrives():
 
 func _on_carbunkle_entered(body: Node2D) -> void:
 	if body == $Monica:
-		death.emit()
+		if $Carbunkle.visible:
+			death.emit()
