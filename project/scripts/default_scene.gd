@@ -10,6 +10,7 @@ signal trigger_track_change
 signal item_obtained
 signal phase_change
 signal carbunkle_move
+signal death
 
 var time_elapsed: float = 0.0
 var first_time: bool = true
@@ -106,4 +107,7 @@ func capture() -> void:
 	pass
 
 func update_carbunkle_location(location: CarbunkleState.Location) -> void:
+	pass
+
+func carbunkle_arrives():
 	pass

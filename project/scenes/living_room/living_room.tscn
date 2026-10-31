@@ -73,6 +73,9 @@ size = Vector2(1912, 13)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wcjf"]
 size = Vector2(322, 591)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wk2qu"]
+size = Vector2(179, 462.9492)
+
 [node name="LivingRoom" type="Node2D" unique_id=1415733533]
 position = Vector2(0, -1)
 script = ExtResource("1_2t2pm")
@@ -80,13 +83,13 @@ script = ExtResource("1_2t2pm")
 [node name="MonsterBehindWindow" parent="." unique_id=1163829090 instance=ExtResource("2_wk2qu")]
 visible = false
 position = Vector2(1065, 473)
-frame_progress = 0.14656574
+frame_progress = 0.3890264
 
 [node name="MonsterBehindDoor" parent="." unique_id=777084332 instance=ExtResource("2_wk2qu")]
 visible = false
 position = Vector2(116.00006, 469)
 scale = Vector2(1.3779999, 1.3779999)
-frame_progress = 0.54810995
+frame_progress = 0.7905703
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1599605886]
 position = Vector2(800, 451)
@@ -142,6 +145,18 @@ debug_color = Color(0.7124032, 0.26126483, 1, 0.41960785)
 [node name="RightEntrance" type="Node2D" parent="." unique_id=1006594122]
 position = Vector2(1526, 467)
 
+[node name="Carbunkle" parent="." unique_id=491502546 instance=ExtResource("2_wk2qu")]
+visible = false
+position = Vector2(1720, 459)
+frame_progress = 0.026137253
+
+[node name="Area2D" type="Area2D" parent="Carbunkle" unique_id=1246180061]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Carbunkle/Area2D" unique_id=466486997]
+position = Vector2(-13.063965, -13.521515)
+rotation = -0.12217306
+shape = SubResource("RectangleShape2D_wk2qu")
+
 [node name="Couch" type="Sprite2D" parent="." unique_id=1713690265]
 modulate = Color(0.46666667, 0.46666667, 0.46666667, 1)
 position = Vector2(1184, 786)
@@ -160,6 +175,7 @@ cursor = 3
 size = Vector2(550, 200)
 
 [node name="Couch Cushions" parent="." unique_id=1448613965 instance=ExtResource("10_3o82y")]
+visible = false
 z_index = 10
 position = Vector2(746, 621)
 
@@ -171,3 +187,4 @@ portrait = 1
 
 [connection signal="body_entered" from="Area2D2" to="." method="_on_kitchen_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_left_door_body_entered"]
+[connection signal="body_entered" from="Carbunkle/Area2D" to="." method="_on_carbunkle_entered"]

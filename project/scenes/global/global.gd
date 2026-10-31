@@ -18,7 +18,8 @@ func _ready() -> void:
 		func():
 			if carbunkle_state.phase > 1:
 				knock()
-				carbunkle_state.move()
+				if carbunkle_state.phase != 6:
+					carbunkle_state.move()
 				loaded_scene.update_carbunkle_location(carbunkle_state.location)
 	)
 	$CarbunkleTimer.start()
@@ -84,6 +85,10 @@ func load_scene(scene_name: String) -> void:
 		func(location: CarbunkleState.Location):
 			carbunkle_state.location = location
 	)
+	loaded_scene.death.connect(
+		func():
+			print("dead")
+	)
 
 	loaded_scene.time_elapsed = time_elapsed
 	loaded_scene.first_time = not state.has(scene_name)
@@ -95,6 +100,8 @@ func load_scene(scene_name: String) -> void:
 	loaded_scene.items = items
 	loaded_scene.searches = searches
 	loaded_scene.carbunkle_location = carbunkle_state.location
+	if carbunkle_state.phase == 6:
+		loaded_scene.carbunkle_arrives()
 	add_child(loaded_scene)
 
 
@@ -123,6 +130,9 @@ func _process(delta: float) -> void:
 	$Inventory/Note.visible = items["fridge_note"]
 
 func knock() -> void:
+	if carbunkle_state.phase == 6:
+		loaded_scene.carbunkle_arrives()
+		return		
 	var distance = carbunkle_state.get_distance(loaded_scene_name)
 	
 	var sound = carbunkle_state.get_sound(is_kitchen_door_locked)
@@ -138,6 +148,9 @@ func knock() -> void:
 	if sound == SoundMachine.Sound.Busted || sound == SoundMachine.Sound.Opening:
 		$Jukebox.set_track("Phase %d" % 6)
 		carbunkle_state.phase = 6
+		if distance == 0:
+			loaded_scene.carbunkle_arrives()
+			carbunkle_state.location = CarbunkleState.Location.Walking
 		
 			
 func on_timeout_trigger_track(track_name: String, time: float):

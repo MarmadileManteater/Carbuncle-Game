@@ -29,7 +29,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if not Engine.is_editor_hint():
+		if $Carbunkle.visible:
+			$Carbunkle.position -= ($Carbunkle.position - $Monica.position).normalized()
 
 
 func _on_left_door_body_entered(body: Node2D) -> void:
@@ -85,3 +87,10 @@ func update_carbunkle_location(location: CarbunkleState.Location) -> void:
 		$MonsterBehindDoor.show()
 	if location == CarbunkleState.Location.LivingRoomWindow:
 		$MonsterBehindWindow.show()
+
+func carbunkle_arrives():
+	$Carbunkle.show()
+
+func _on_carbunkle_entered(body: Node2D) -> void:
+	if body == $Monica:
+		death.emit()

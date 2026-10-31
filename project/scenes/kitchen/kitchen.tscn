@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://6ow7g2olutni" path="res://scenes/virtual_clickable/virtual_clickable.tscn" id="13_pyrih"]
 [ext_resource type="PackedScene" uid="uid://bkvjjvf73aaod" path="res://scenes/dialogs/dialogs.tscn" id="18_isx8r"]
 [ext_resource type="PackedScene" uid="uid://cw8n73x31nrww" path="res://scenes/dialog/dialog.tscn" id="19_rsa7i"]
+[ext_resource type="PackedScene" uid="uid://dtgqki0g23pfr" path="res://scenes/monster/monster.tscn" id="20_rsa7i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dxmq"]
 size = Vector2(1859, 20)
@@ -28,6 +29,9 @@ size = Vector2(142, 798)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o4r6q"]
 size = Vector2(322, 591)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4npt"]
+size = Vector2(179, 462.9492)
 
 [node name="Kitchen" type="Node2D" unique_id=1659860686]
 script = ExtResource("1_madu1")
@@ -68,6 +72,7 @@ position = Vector2(327, 455)
 texture = ExtResource("4_yi3jr")
 
 [node name="BasementLockUnlocked" type="Sprite2D" parent="." unique_id=1506098836]
+visible = false
 modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
 position = Vector2(624, 243)
 texture = ExtResource("6_m0td3")
@@ -83,6 +88,7 @@ position = Vector2(1455, 369)
 texture = ExtResource("8_amifv")
 
 [node name="BackdoorLockLocked" type="Sprite2D" parent="." unique_id=230135350]
+visible = false
 modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
 position = Vector2(1455, 369)
 texture = ExtResource("9_ck2ga")
@@ -161,4 +167,17 @@ portrait = 1
 text = "I guess he was too busy pushing bodies around to call..."
 portrait = 1
 
+[node name="Carbunkle" parent="." unique_id=1163829090 instance=ExtResource("20_rsa7i")]
+visible = false
+position = Vector2(1338, 397)
+frame_progress = 0.9552502
+
+[node name="Area2D" type="Area2D" parent="Carbunkle" unique_id=1106582040]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Carbunkle/Area2D" unique_id=307118135]
+position = Vector2(-13.063965, -13.521515)
+rotation = -0.12217306
+shape = SubResource("RectangleShape2D_u4npt")
+
 [connection signal="body_entered" from="Area2D" to="." method="_left_door_body_entered"]
+[connection signal="body_entered" from="Carbunkle/Area2D" to="." method="_on_carbunkle_entered"]
